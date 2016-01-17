@@ -13,3 +13,6 @@
 [submodule "bundle/screen"]
 	path = bundle/screen
 	url = https://github.com/ervandew/screen.git
+[submodule "bundle/solarized-theme"]
+	path = bundle/solarized-theme
+	url = https://github.com/altercation/vim-colors-solarized.git
