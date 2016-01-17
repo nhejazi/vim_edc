@@ -4,19 +4,21 @@ Setup, package manager, and plugins for my [Vim editor](http://www.vim.org/index
 
 _Caveat emptor_ - using this configuration is slightly unintuitive, see the directions.
 
-_**Directions**_ (modified from [this excellent article/post](http://vimcasts.org/episodes/synchronizing-plugins-with-git-submodules-and-pathogen/))
+_**Directions/Guide**_ (modified from [this excellent article/post](http://vimcasts.org/episodes/synchronizing-plugins-with-git-submodules-and-pathogen/))
 
 + To update submodules, simply use `sh update.sh`, or:
 ```bash
 git submodule foreach git pull origin master
 ```
-+ To add Vim plugins as submodules (as example only):
+
++ To add Vim plugins as submodules (as **example only**):
 ```bash
 cd ~/.vim
 git submodule add http://github.com/tpope/vim-fugitive.git bundle/fugitive
 git add .
 git commit -m "Install Fugitive.vim bundle as a submodule."
 ```
+
 + To clone the configuration in this repo:
 ```bash
 cd ~
