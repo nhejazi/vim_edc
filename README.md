@@ -5,6 +5,7 @@ Setup, package manager, and plugins for my [Vim editor](http://www.vim.org/index
 Caveat emptor - using this configuration is slightly unintuitive, see the directions.
 
 _**Directions**_ (modified from [this article](http://vimcasts.org/episodes/synchronizing-plugins-with-git-submodules-and-pathogen/))
+
 1. To update submodules, simply use `sh update.sh`, or:
 ```bash
 git submodule foreach git pull origin master
