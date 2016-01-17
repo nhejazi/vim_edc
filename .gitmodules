@@ -10,3 +10,6 @@
 [submodule "bundle/julia-plugin"]
 	path = bundle/julia-plugin
 	url = https://github.com/JuliaLang/julia-vim.git
+[submodule "bundle/screen"]
+	path = bundle/screen
+	url = https://github.com/ervandew/screen.git
