@@ -19,3 +19,6 @@
 [submodule "bundle/ipython-plugin"]
 	path = bundle/ipython-plugin
 	url = https://github.com/ivanov/vim-ipython.git
+[submodule "bundle/sensible"]
+	path = bundle/sensible
+	url = https://github.com/tpope/vim-sensible.git
