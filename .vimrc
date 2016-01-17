@@ -6,9 +6,13 @@ filetype plugin indent on
 
 " Set color theme and background
 syntax enable
-set background=dark
-let g:solarized_termcolors=256	" only for OS X
-colorscheme solarized	" only for OS X
+if has('gui_running')	"not different backgrounds
+	set background=dark  "or (light)
+else
+	set background=dark  "or (light)
+endif
+let g:solarized_termcolors=256	"only for OS X
+colorscheme solarized	"only for OS X
 
 " Set line numbers to appear in all files
 set number
@@ -17,18 +21,21 @@ set number
 set colorcolumn=80   "set bounds for 80-column rule
 
 " Highlighting columns after specific types
-highlight ColorColumn ctermbg=Gray guibg=Red
-highlight Comment ctermbg=DarkGray
-highlight Constant ctermbg=Blue
-highlight Normal ctermbg=Black
-highlight NonText ctermbg=Black
-highlight Special ctermbg=Magenta
-highlight Cursor ctermbg=Cyan
+highlight ColorColumn ctermbg=DarkRed guibg=Red
+highlight Comment cterm=none gui=italic
+highlight Constant cterm=underline gui=underline
+highlight Normal cterm=none gui=none
+highlight NonText cterm=none gui=none
+highlight Special ctermbg=DarkMagenta guibg=DarkMagenta
+highlight Cursor ctermbg=Cyan guibg=Cyan
 
 " Set auto-wrap at 80 characters for file types
 au BufRead,BufNewFile *.md setlocal textwidth=80
 au BufRead,BufNewFile *.txt setlocal textwidth=80
 au BufREAD,BufNewFile *.tex setlocal textwidth=80
 
-" Enable spellchecking for Markdown
-autocmd FileType markdown setlocal spell
+" Enable spellchecking for various file types
+setlocal spell spelllang=en_us
+set complete+=kspell  "word completion
+autocmd BufRead,BufNewFile *.md setlocal spell
+autocmd BufRead,BufNewFile *.txt setlocal spell
