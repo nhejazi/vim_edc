@@ -16,3 +16,6 @@
 [submodule "bundle/solarized-theme"]
 	path = bundle/solarized-theme
 	url = https://github.com/altercation/vim-colors-solarized.git
+[submodule "bundle/ipython-plugin"]
+	path = bundle/ipython-plugin
+	url = https://github.com/ivanov/vim-ipython.git
