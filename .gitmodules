@@ -7,3 +7,6 @@
 [submodule "bundle/jedi-completion"]
 	path = bundle/jedi-completion
 	url = https://github.com/davidhalter/jedi-vim.git
+[submodule "bundle/julia-plugin"]
+	path = bundle/julia-plugin
+	url = https://github.com/JuliaLang/julia-vim.git
