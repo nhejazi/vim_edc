@@ -22,3 +22,6 @@
 [submodule "bundle/sensible"]
 	path = bundle/sensible
 	url = https://github.com/tpope/vim-sensible.git
+[submodule "bundle/sleuth"]
+	path = bundle/sleuth
+	url = https://github.com/tpope/vim-sleuth.git
