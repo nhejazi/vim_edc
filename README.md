@@ -2,7 +2,7 @@
 
 Setup, package manager, and plugins for my [Vim editor](http://www.vim.org/index.php).
 
-_Caveat emptor_ - using this configuration is slightly unintuitive, see the directions.
+_Caveat emptor_ - using this configuration is slightly unintuitive, see the directions, else risk hours of displeasure.
 
 _**Directions/Guide**_ (modified from [this excellent article/post](http://vimcasts.org/episodes/synchronizing-plugins-with-git-submodules-and-pathogen/))
 
@@ -23,7 +23,7 @@ git commit -m "Install Fugitive.vim bundle as a submodule."
 ```bash
 cd ~
 git clone http://github.com/nhejazi/myvimconfig.git ~/.vim
-ln -s ~/.vim/vimrc ~/.vimrc
+ln -s ~/.vim/.vimrc ~/.vimrc
 cd ~/.vim
 git submodule init
 git submodule update
