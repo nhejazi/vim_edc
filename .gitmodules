@@ -4,3 +4,6 @@
 [submodule "bundle/r-plugin"]
 	path = bundle/r-plugin
 	url = https://github.com/vim-scripts/Vim-R-plugin.git
+[submodule "bundle/jedi-completion"]
+	path = bundle/jedi-completion
+	url = https://github.com/davidhalter/jedi-vim.git
