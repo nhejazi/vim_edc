@@ -1,10 +1,10 @@
-## My Vim Configuration
+# My Vim Configuration
 
 Setup, package manager, and plugins for my [Vim editor](http://www.vim.org/index.php).
 
 _Caveat emptor_ - using this configuration is slightly unintuitive, see the directions, else risk hours of displeasure.
 
-_**Directions/Guide**_ (modified from [this excellent article/post](http://vimcasts.org/episodes/synchronizing-plugins-with-git-submodules-and-pathogen/))
+## _**Directions/Guide**_ (modified from [this excellent article/post](http://vimcasts.org/episodes/synchronizing-plugins-with-git-submodules-and-pathogen/))
 
 + To update submodules, simply use `sh _update.sh`, or:
 ```bash
