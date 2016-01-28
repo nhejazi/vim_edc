@@ -1,5 +1,4 @@
-cd
-git clone http://github.com/nhejazi/myvimconfig.git ~/.vim
+# set up Vim customization files
 
 if [ -e ~/.vimrc]; then
 	echo "vimrc dotfile exists - will be removed.";
