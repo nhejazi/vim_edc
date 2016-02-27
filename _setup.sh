@@ -1,5 +1,6 @@
-# set up Vim customization files
+#!/usr/bin/bash
 
+# set up Vim customization files
 if [ -e ~/.vimrc]; then
 	echo "vimrc dotfile exists - will be removed.";
 	rm ~/.vimrc;
