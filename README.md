@@ -8,9 +8,8 @@ _Caveat emptor_ - using this configuration is slightly unintuitive, see the dire
 
 + To obtain the configuration in this repo:
 ```bash
-cd
 git clone http://github.com/nhejazi/myvimconfig.git ~/.vim
-sh _setup.sh
+sh ~/.vim/_setup.sh
 ```
 
 + To update submodules, simply use `sh _update.sh`, or:
