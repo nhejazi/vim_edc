@@ -10,11 +10,6 @@ else
 	set background=dark  "or (light)
 endif
 
-if has('macunix')  "only for OS X
-	let g:solarized_termcolors=256
-	colorscheme solarized
-endif
-
 " Set line numbers to appear in all files
 set number
 
