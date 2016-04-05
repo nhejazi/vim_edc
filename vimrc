@@ -11,8 +11,11 @@ if has('gui_running')	"not different backgrounds
 else
 	set background=dark  "or (light)
 endif
-"let g:solarized_termcolors=256	"only for OS X
-"colorscheme solarized	"only for OS X
+
+if has('macunix')  "only for OS X
+	let g:solarized_termcolors=256
+	colorscheme solarized
+endif
 
 " Set line numbers to appear in all files
 set number
