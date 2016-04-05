@@ -1,4 +1,4 @@
-" basic configurations
+" elementary additions
 syntax on
 filetype plugin indent on
 
