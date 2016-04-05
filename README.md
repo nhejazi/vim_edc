@@ -12,7 +12,7 @@ git clone http://github.com/nhejazi/myvimconfig.git ~/.vim
 sh ~/.vim/_setup.sh
 ```
 
-+ To update submodules, simply use `sh _update.sh`, or:
++ To update submodules, simply use `sh ~/.vim/_update.sh`, or:
 ```bash
 cd ~/.vim
 git submodule foreach git pull origin master
