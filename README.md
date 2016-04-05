@@ -1,10 +1,12 @@
 # My Vim Configuration
 
-Setup, package manager, and plugins for my [Vim editor](http://www.vim.org/index.php).
+Setup, package manager, and plugins for my [Vim 
+editor](http://www.vim.org/index.php).
 
-_Caveat emptor_ - using this configuration is slightly unintuitive, see the directions, else risk hours of displeasure.
+_Caveat emptor_ - using this configuration is quite unintuitive at first, see 
+the directions below.
 
-## _**Directions/Guide**_ (modified from [this excellent article/post](http://vimcasts.org/episodes/synchronizing-plugins-with-git-submodules-and-pathogen/))
+## _**Directions/Guide**_ (modified from [this excellent article](http://vimcasts.org/episodes/synchronizing-plugins-with-git-submodules-and-pathogen/))
 
 + To obtain the configuration in this repo:
 ```bash
