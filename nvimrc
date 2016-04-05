@@ -1,6 +1,4 @@
-" Set up pathogen for vim
-call pathogen#infect() 
-call pathogen#helptags()
+" basic configurations
 syntax on
 filetype plugin indent on
 
