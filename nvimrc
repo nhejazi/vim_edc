@@ -19,11 +19,13 @@ set colorcolumn=80   "set bounds for 80-column rule
 " Highlighting columns after specific types
 highlight ColorColumn ctermbg=DarkRed guibg=Red
 highlight Comment cterm=none gui=italic
-highlight Constant cterm=underline gui=underline
+highlight Constant cterm=none gui=none
 highlight Normal cterm=none gui=none
 highlight NonText cterm=none gui=none
 highlight Special ctermbg=DarkMagenta guibg=DarkMagenta
 highlight Cursor ctermbg=Cyan guibg=Cyan
+highlight clear SpellBad
+highlight SpellBad cterm=underline guibg=underline
 
 " Set auto-wrap at 80 characters for file types
 au BufRead,BufNewFile *.md setlocal textwidth=80
