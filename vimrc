@@ -31,8 +31,6 @@ highlight Normal cterm=none gui=none
 highlight NonText cterm=none gui=none
 highlight Special ctermbg=DarkMagenta guibg=DarkMagenta
 highlight Cursor ctermbg=Cyan guibg=Cyan
-highlight clear SpellBad
-highlight SpellBad cterm=underline guibg=underline
 
 " Set auto-wrap at 80 characters for file types
 au BufRead,BufNewFile *.md setlocal textwidth=80
