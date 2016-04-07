@@ -27,3 +27,11 @@ git submodule add http://github.com/tpope/vim-fugitive.git bundle/fugitive
 git add .
 git commit -m "Install Fugitive.vim bundle as a submodule."
 ```
+
+---
+
+## License
+
+&copy; 2016 Nima Hejazi
+
+This repository is licensed under the MIT license. See `LICENSE` for details.
