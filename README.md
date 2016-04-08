@@ -10,7 +10,7 @@ the directions below.
 
 + To obtain the configuration in this repo:
 ```bash
-git clone http://github.com/nhejazi/myvimconfig.git ~/.vim
+git clone https://github.com/nhejazi/myvimconfig.git ~/.vim
 sh ~/.vim/_setup.sh
 ```
 
