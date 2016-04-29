@@ -1,12 +1,15 @@
 # My Vim Configuration
 
-Setup, package manager, and plugins for my [Vim 
-editor](http://www.vim.org/index.php).
+> Setup, package manager, and various plugins for my configuration of the
+> [Vim](http://www.vim.org/index.php) and [Neovim](https://neovim.io/) editors.
 
-_Caveat emptor_ - using this configuration is quite unintuitive at first, see 
-the directions below.
+_Caveat emptor_ - using this configuration can be unintuitive at first (esp. to
+those new to Vim), see the directions below.
 
-## _**Directions/Guide**_ (modified from [this excellent article](http://vimcasts.org/episodes/synchronizing-plugins-with-git-submodules-and-pathogen/))
+## _**Directions/Guide**_
+
+For less terse directions, see [this excellent
+article](http://vimcasts.org/episodes/synchronizing-plugins-with-git-submodules-and-pathogen/), on which this guide is based.
 
 + To obtain the configuration in this repo:
 ```bash
@@ -23,7 +26,7 @@ git submodule foreach git pull origin master
 + To add Vim plugins as submodules (as **example only**):
 ```bash
 cd ~/.vim
-git submodule add http://github.com/tpope/vim-fugitive.git bundle/fugitive
+git submodule add -f http://github.com/tpope/vim-fugitive.git bundle/fugitive
 git add .
 git commit -m "Install Fugitive.vim bundle as a submodule."
 ```

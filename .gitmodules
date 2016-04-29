@@ -28,3 +28,6 @@
 [submodule "bundle/git-support"]
 	path = bundle/git-support
 	url = https://github.com/tpope/vim-git.git
+[submodule "bundle/airline"]
+	path = bundle/airline
+	url = http://github.com/vim-airline/vim-airline.git
