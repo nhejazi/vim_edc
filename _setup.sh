@@ -1,6 +1,8 @@
-# set up NeoVim customization file
-if [ -e ~/.config/nvim/init.vim ]; then
-	echo "nvim init file exists - will be removed.";
-	rm ~/.config/nvim/init.vim;
+# set up vim-plug manager for Neovim
+if [ -e ~/.config/nvim/autoload/plug.vim ]; then
+	echo "vim-plug exists - will be removed.";
+	rm -f ~/.config/nvim/autoload/plug.vim;
 fi
-ln -s ~/.vim/nvimrc ~/.config/nvim/init.vim
+
+curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
+    	https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
