@@ -14,8 +14,8 @@ Note that this assumes familiarity with Vim.
 
 + To obtain the configuration in this repo:
 ```bash
-git clone https://github.com/nhejazi/myneovimconfig.git ~/.nvim
-sh ~/.nvim/_setup.sh
+git clone http://github.com/nhejazi/myneovimconfig.git ~/.config/nvim
+sh ~/.config/nvim/_setup.sh
 ```
 
 ---
