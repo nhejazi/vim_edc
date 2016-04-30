@@ -36,9 +36,12 @@ set esckeys             " Cursor keys in insert mode.
 set linespace=0         " Set line-spacing to minimum.
 set number              " Set line numbers for all files.
 set colorcolumn=80      " Set colored bar for 80-column rule.
-nnoremap ; :            " Remap colon operator to easier key.
 
-" Set preferences for splitting buffers
+" Remap colon operater to semicolon for easier use.
+nnoremap ; :
+tnoremap <Esc> <C-\><C-n>  " Set escape key from terminal mode.
+
+" Set preferences for remapping splits
 set splitbelow
 set splitright
 nnoremap <C-J> <C-W><C-J>
