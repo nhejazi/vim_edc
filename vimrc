@@ -36,6 +36,7 @@ highlight Cursor ctermbg=Cyan guibg=Cyan
 au BufRead,BufNewFile *.md setlocal textwidth=80
 au BufRead,BufNewFile *.txt setlocal textwidth=80
 au BufREAD,BufNewFile *.tex setlocal textwidth=80
+au BufREAD,BufNewFile *.Rmd setlocal textwidth=80
 
 " Enable spellchecking for various file types
 setlocal spell spelllang=en_us
@@ -54,4 +55,3 @@ let g:airline_left_sep = ' '
 let g:airline_left_alt_sep = '|'
 let g:airline_right_sep = ' '
 let g:airline_right_alt_sep = '|'
-let g:airline_theme= 'serene'

@@ -31,6 +31,7 @@ highlight SpellBad cterm=underline guibg=underline
 au BufRead,BufNewFile *.md setlocal textwidth=80
 au BufRead,BufNewFile *.txt setlocal textwidth=80
 au BufREAD,BufNewFile *.tex setlocal textwidth=80
+au BufREAD,BufNewFile *.Rmd setlocal textwidth=80
 
 " Enable spellchecking for various file types
 "setlocal spell spelllang=en_us  " does not work with NeoVim
@@ -49,4 +50,3 @@ let g:airline_left_sep = ' '
 let g:airline_left_alt_sep = '|'
 let g:airline_right_sep = ' '
 let g:airline_right_alt_sep = '|'
-let g:airline_theme= 'serene'
