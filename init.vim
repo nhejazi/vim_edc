@@ -12,6 +12,7 @@ Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'JuliaLang/julia-vim'
 Plug 'jalvesaq/Nvim-R'
+Plug 'ctrlpvim/ctrlp.vim'
 call plug#end()
 
 " elementary additions
