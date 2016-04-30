@@ -7,13 +7,6 @@ if [ -e ~/.vimrc ]; then
 fi
 ln -s ~/.vim/vimrc ~/.vimrc
 
-# set up NeoVim customization file
-if [ -e ~/.config/nvim/init.vim ]; then
-	echo "nvim init file exists - will be removed.";
-	rm ~/.config/nvim/init.vim;
-fi
-ln -s ~/.vim/nvimrc ~/.config/nvim/init.vim
-
 cd ~/.vim
 git submodule init
 git submodule update

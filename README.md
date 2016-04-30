@@ -1,7 +1,7 @@
 # My Vim Configuration
 
 > Setup, package manager, and various plugins for my configuration of the
-> [Vim](http://www.vim.org/index.php) and [Neovim](https://neovim.io/) editors.
+> [Vim](http://www.vim.org/index.php) editor.
 
 _Caveat emptor_ - using this configuration can be unintuitive at first (esp. to
 those new to Vim), see the directions below.
@@ -9,7 +9,8 @@ those new to Vim), see the directions below.
 ## _**Directions/Guide**_
 
 For less terse directions, see [this excellent
-article](http://vimcasts.org/episodes/synchronizing-plugins-with-git-submodules-and-pathogen/), on which this guide is based.
+article](http://vimcasts.org/episodes/synchronizing-plugins-with-git-submodules-and-pathogen/),
+on which this guide is based.
 
 + To obtain the configuration in this repo:
 ```bash
