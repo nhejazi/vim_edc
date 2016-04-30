@@ -12,13 +12,14 @@ For less terse directions, see [this ~~excellent~~ decent
 post](https://jacky.wtf/weblog/moving-to-neovim/), on which this guide is
 partially based. Note that this assumes familiarity with Vim.
 
-+ To obtain the configuration in this repo:
++ To obtain the configuration in this repository:
 ```bash
 git clone https://github.com/nhejazi/myneovimconfig.git ~/.config/nvim
 sh ~/.config/nvim/_setup.sh
 ```
 
-+ To install plugins using the vim-plug tool:
++ To install plugins with the [vim-plug](https://github.com/junegunn/vim-plug)
++ manager:
 ```vim
 :PlugInstall
 ```
