@@ -34,6 +34,17 @@ set noerrorbells        " No beeps.
 set modeline            " Enable modeline.
 set esckeys             " Cursor keys in insert mode.
 set linespace=0         " Set line-spacing to minimum.
+set number              " Set line numbers for all files.
+set colorcolumn=80      " Set colored bar for 80-column rule.
+nnoremap ; :            " Remap colon operator to easier key.
+
+" Set preferences for splitting buffers
+set splitbelow
+set splitright
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
 " Set color theme and background
 syntax enable
@@ -42,12 +53,6 @@ if has('gui_running')	"not different backgrounds
 else
 	set background=dark  "or (light)
 endif
-
-" Set line numbers to appear in all files
-set number
-
-" Set colored bar denoting column width of 80 characters
-set colorcolumn=80   "set bounds for 80-column rule
 
 " Highlighting columns after specific types
 highlight ColorColumn ctermbg=DarkRed guibg=Red
@@ -61,7 +66,7 @@ highlight clear SpellBad
 highlight SpellBad cterm=underline guibg=underline
 highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
 
-" Set auto-wrap at 80 characters for file types
+" Set auto-wrap at 80 characters for certain file types
 au BufRead,BufNewFile *.md setlocal textwidth=80
 au BufRead,BufNewFile *.txt setlocal textwidth=80
 au BufREAD,BufNewFile *.tex setlocal textwidth=80
