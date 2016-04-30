@@ -19,7 +19,7 @@ sh ~/.config/nvim/_setup.sh
 ```
 
 + To install plugins with the [vim-plug](https://github.com/junegunn/vim-plug)
-+ manager:
+manager:
 ```vim
 :PlugInstall
 ```
