@@ -27,8 +27,8 @@ manager:
 
 ### _Known Problem(s)_
 
-- There is a known issue in mapping the <Ctrl-H> key in Neovim's terminal mode.
-  I have only encountered this issue on OSX, but various workarounds have been
+- There is a known issue with re-mapping Ctrl-H in Neovim's terminal mode. I
+  have only encountered this issue on OSX, but various workarounds have been
   proposed [here](https://github.com/neovim/neovim/issues/2048).
 
 ---
