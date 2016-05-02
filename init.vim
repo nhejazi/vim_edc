@@ -73,10 +73,10 @@ endif
 
 " Set color theme and background
 syntax enable
-if has('gui_running')	"not different backgrounds
-	set background=dark  "or (light)
+if has('gui_running')   "not different backgrounds
+  set background=dark   "or (light)
 else
-	set background=dark  "or (light)
+  set background=dark   "or (light)
 endif
 
 " Highlighting columns after specific types
@@ -92,7 +92,7 @@ highlight SpellBad cterm=underline guibg=underline
 highlight TermCursor ctermfg=red guifg=red
 
 " Highlight all tabs and trailing whitespace characters
-highlight ExtraWhitespace ctermbg=green guibg=green
+highlight ExtraWhitespace ctermbg=DarkGreen guibg=DarkGreen
 match ExtraWhitespace /\s\+$\|\t/
 
 " Basic behaviors for scrolling

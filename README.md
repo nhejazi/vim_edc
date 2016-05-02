@@ -3,31 +3,33 @@
 > Setup, package manager, and various plugins for my configuration of the
 > [Neovim](https://neovim.io/) editor.
 
-__Todo:__ mapping behavior for navigation out of terminal does not work on OSX
-but is functional on Ubuntu.
-
 _Caveat emptor_ - using this configuration can be unintuitive at first (esp. to
 those new to Vim), see the directions below.
 
-## _**Directions/Guide**_
+## _Directions/Guide_
 
-
-For less terse directions, see [this ~~excellent~~ decent
-post](https://jacky.wtf/weblog/moving-to-neovim/). Note that this assumes
+For less terse directions, see [this ~~excellent~~ decent blog
+post](https://jacky.wtf/weblog/moving-to-neovim/). Note that this assumes some
 familiarity with Vim.
 
-+ To obtain the configuration in this repository:
+- To obtain the configuration in this repository:
 ```bash
 git clone https://github.com/nhejazi/myneovimconfig.git ~/.config/nvim
 sh ~/.config/nvim/_setup.sh
 ```
 
-+ To install plugins with the [vim-plug](https://github.com/junegunn/vim-plug)
+- To install plugins with the [vim-plug](https://github.com/junegunn/vim-plug)
 manager:
 ```vim
 :PlugInstall
 
 ```
+
+### _Known Problem(s)_
+
+- There is a known issue in mapping the <Ctrl-H> key in Neovim's terminal mode.
+  I have only encountered this issue on OSX, but various workarounds have been
+  proposed [here](https://github.com/neovim/neovim/issues/2048).
 
 ---
 
