@@ -3,14 +3,18 @@
 > Setup, package manager, and various plugins for my configuration of the
 > [Neovim](https://neovim.io/) editor.
 
+__Todo:__ mapping behavior for navigation out of terminal does not work on OSX
+but is functional on Ubuntu.
+
 _Caveat emptor_ - using this configuration can be unintuitive at first (esp. to
 those new to Vim), see the directions below.
 
 ## _**Directions/Guide**_
 
+
 For less terse directions, see [this ~~excellent~~ decent
-post](https://jacky.wtf/weblog/moving-to-neovim/), on which this guide is
-partially based. Note that this assumes familiarity with Vim.
+post](https://jacky.wtf/weblog/moving-to-neovim/). Note that this assumes
+familiarity with Vim.
 
 + To obtain the configuration in this repository:
 ```bash
@@ -22,6 +26,7 @@ sh ~/.config/nvim/_setup.sh
 manager:
 ```vim
 :PlugInstall
+
 ```
 
 ---
