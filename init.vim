@@ -34,20 +34,42 @@ set noerrorbells        " No beeps.
 set modeline            " Enable modeline.
 set esckeys             " Cursor keys in insert mode.
 set linespace=0         " Set line-spacing to minimum.
-set number              " Set line numbers for all files.
 set colorcolumn=80      " Set colored bar for 80-column rule.
 
 " Remap colon operater to semicolon for easier use.
 nnoremap ; :
-tnoremap <Esc> <C-\><C-n>  " Set escape key from terminal mode.
 
-" Set preferences for remapping splits
+" Map SPACE to the leader key
+let mapleader="\<SPACE>"
+
+" Set preferences for navigation between editor and terminal modes
 set splitbelow
 set splitright
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+tnoremap <Leader><Esc> <C-\><C-n>
+tnoremap <C-h> <C-\><C-n><C-w><C-h>
+tnoremap <C-j> <C-\><C-n><C-w><C-j>
+tnoremap <C-k> <C-\><C-n><C-w><C-k>
+tnoremap <C-l> <C-\><C-n><C-w><C-l>
+nnoremap <C-h> <C-w><C-h>
+nnoremap <C-j> <C-w><C-j>
+nnoremap <C-k> <C-w><C-k>
+nnoremap <C-l> <C-w><C-l>
+
+" Automatically enter insert mode when buffer is a terminal
+au BufEnter * if &buftype == 'terminal' | :startinsert | endif
+
+" Sensible default behaviors for searching
+set hlsearch        " Highlight search results
+set ignorecase      " Make searching insensitive to case
+set smartcase       " ...unless query has capital letters
+set incsearch       " Search incrementally
+set gdefault        " Use 'g' flag by default with :s/foo/bar/
+set magic           " Use 'magic' patterns (extended regular expressions)
+
+" Use <C-L> to clear the highlighting of :set hlsearch
+if maparg('<C-L>', 'n') ==# ''
+  nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
+endif
 
 " Set color theme and background
 syntax enable
@@ -67,7 +89,19 @@ highlight Special ctermbg=DarkMagenta guibg=DarkMagenta
 highlight Cursor ctermbg=Cyan guibg=Cyan
 highlight clear SpellBad
 highlight SpellBad cterm=underline guibg=underline
-highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
+highlight TermCursor ctermfg=red guifg=red
+
+" Highlight all tabs and trailing whitespace characters
+highlight ExtraWhitespace ctermbg=green guibg=green
+match ExtraWhitespace /\s\+$\|\t/
+
+" Basic behaviors for scrolling
+if !&scrolloff
+  set scrolloff=3       " Show next 3 lines while scrolling
+endif
+if !&sidescrolloff
+  set sidescrolloff=5   " Show next 5 columns while side-scrolling
+endif
 
 " Set auto-wrap at 80 characters for certain file types
 au BufRead,BufNewFile *.md setlocal textwidth=80
@@ -79,6 +113,11 @@ au BufREAD,BufNewFile *.Rmd setlocal textwidth=80
 set complete+=kspell  "word completion
 autocmd BufRead,BufNewFile *.md setlocal spell
 autocmd BufRead,BufNewFile *.txt setlocal spell
+
+" Sensible defaults for use of CtrlP plugin
+nnoremap <Leader>o :CtrlP<CR>           " Open file menu
+nnoremap <Leader>b :CtrlPBuffer<CR>     " Open buffer menu
+nnoremap <Leader>f :CtrlPMRUFiles<CR    " Open most recently used files
 
 " Add settings for Airline plugin
 let g:airline#extensions#tabline#enabled = 2
