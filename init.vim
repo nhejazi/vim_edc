@@ -13,6 +13,7 @@ Plug 'plasticboy/vim-markdown'
 Plug 'JuliaLang/julia-vim'
 Plug 'jalvesaq/Nvim-R'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'kassio/neoterm'
 call plug#end()
 
 " elementary additions
@@ -118,6 +119,25 @@ autocmd BufRead,BufNewFile *.txt setlocal spell
 nnoremap <Leader>o :CtrlP<CR>           " Open file menu
 nnoremap <Leader>b :CtrlPBuffer<CR>     " Open buffer menu
 nnoremap <Leader>f :CtrlPMRUFiles<CR    " Open most recently used files
+
+" Add custom settings for NVim-R plugin
+let R_vsplit = 1
+
+" Add settings for Neoterm plugin
+let g:neoterm_position = 'vertical'
+let g:neoterm_automap_keys = ',tt'
+nnoremap <Leader>n :TREPLSendFile<cr>
+nnoremap <Leader>m :TREPLSend<cr>
+vnoremap <Leader>m :TREPLSend<cr>
+" run set test lib
+nnoremap <silent> ,rt :call neoterm#test#run('all')<cr>
+nnoremap <silent> ,rf :call neoterm#test#run('file')<cr>
+nnoremap <silent> ,rn :call neoterm#test#run('current')<cr>
+nnoremap <silent> ,rr :call neoterm#test#rerun()<cr>
+" Useful maps
+nnoremap <silent> ,th :call neoterm#close()<cr>  "hide/close terminal
+nnoremap <silent> ,tl :call neoterm#clear()<cr>  "clear terminal
+nnoremap <silent> ,tc :call neoterm#kill()<cr>   "kill current job <Ctrl-c>
 
 " Add settings for Airline plugin
 let g:airline#extensions#tabline#enabled = 2
