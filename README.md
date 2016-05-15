@@ -31,7 +31,8 @@ manager:
 
 - There is a known issue with re-mapping Ctrl-H in Neovim's terminal mode. I
   have only encountered this issue on OSX, but various workarounds have been
-  proposed [here](https://github.com/neovim/neovim/issues/2048).
+  proposed [here](https://github.com/neovim/neovim/issues/2048). This issue
+  has been resolved by a fix as of May 15, 2016.
 
 ---
 
