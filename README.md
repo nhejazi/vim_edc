@@ -3,6 +3,8 @@
 > Setup, package manager, and various plugins for my configuration of the
 > [Neovim](https://neovim.io/) editor.
 
+[![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
+
 _Caveat emptor_ - using this configuration can be unintuitive at first (esp. to
 those new to Vim), see the directions below.
 
