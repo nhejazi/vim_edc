@@ -30,4 +30,4 @@
 	url = https://github.com/tpope/vim-git.git
 [submodule "bundle/airline"]
 	path = bundle/airline
-	url = http://github.com/vim-airline/vim-airline.git
+	url = https://github.com/vim-airline/vim-airline.git
