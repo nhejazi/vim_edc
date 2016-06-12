@@ -1,4 +1,4 @@
-# My Vim Configuration
+# myVimConfig
 
 > Setup, package manager, and various plugins for my configuration of the
 > [Vim](http://www.vim.org/index.php) editor.
