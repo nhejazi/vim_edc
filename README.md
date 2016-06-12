@@ -1,4 +1,4 @@
-# My Neovim Configuration
+# myNeovimConfig
 
 > Setup, package manager, and various plugins for my configuration of the
 > [Neovim](https://neovim.io/) editor.
