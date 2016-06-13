@@ -20,14 +20,14 @@ set colorcolumn=80   "set bounds for 80-column rule
 
 " Highlighting columns after specific types
 highlight ColorColumn ctermbg=DarkRed guibg=Red
-highlight Comment cterm=none gui=italic
+highlight Comment cterm=Green gui=Green
 highlight Constant cterm=none gui=none
 highlight Normal cterm=none gui=none
 highlight NonText cterm=none gui=none
 highlight Special ctermbg=DarkMagenta guibg=DarkMagenta
 highlight Cursor ctermbg=Cyan guibg=Cyan
 highlight clear SpellBad
-highlight SpellBad cterm=underline guibg=underline
+highlight SpellBad cterm=Blue guibg=Blue
 
 " Highlight all tabs and trailing whitespace characters
 highlight ExtraWhitespace ctermbg=DarkGreen guibg=DarkGreen
