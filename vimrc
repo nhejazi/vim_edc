@@ -4,18 +4,13 @@ call pathogen#helptags()
 syntax on
 filetype plugin indent on
 
-" Set color theme and background
+" Set colorscheme/theme to Solarized Dark
 syntax enable
-if has('gui_running')	"not different backgrounds
-	set background=dark  "or (light)
-else
-	set background=dark  "or (light)
-endif
-
 if has('macunix')  "only for OS X
 	let g:solarized_termcolors=256
-	colorscheme solarized
 endif
+set background=dark
+colorscheme solarized
 
 " Set line numbers to appear in all files
 set number
@@ -31,6 +26,12 @@ highlight Normal cterm=none gui=none
 highlight NonText cterm=none gui=none
 highlight Special ctermbg=DarkMagenta guibg=DarkMagenta
 highlight Cursor ctermbg=Cyan guibg=Cyan
+highlight clear SpellBad
+highlight SpellBad cterm=underline guibg=underline
+
+" Highlight all tabs and trailing whitespace characters
+highlight ExtraWhitespace ctermbg=DarkGreen guibg=DarkGreen
+match ExtraWhitespace /\s\+$\|\t/
 
 " Set auto-wrap at 80 characters for file types
 au BufRead,BufNewFile *.md setlocal textwidth=80
