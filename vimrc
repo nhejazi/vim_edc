@@ -6,9 +6,7 @@ filetype plugin indent on
 
 " Set colorscheme/theme to Solarized Dark
 syntax enable
-if has('macunix')  "only for OS X
-	let g:solarized_termcolors=256
-endif
+let g:solarized_termcolors=256   "use "degraded" colors
 set background=dark
 colorscheme solarized
 
@@ -19,15 +17,15 @@ set number
 set colorcolumn=80   "set bounds for 80-column rule
 
 " Highlighting columns after specific types
-highlight ColorColumn ctermbg=DarkRed guibg=Red
-highlight Comment cterm=Green gui=Green
-highlight Constant cterm=none gui=none
+highlight ColorColumn ctermbg=DarkRed guibg=DarkRed
+highlight Comment cterm=LightSeaGreen gui=LightSeaGreen
+highlight Constant cterm=italics gui=italics
 highlight Normal cterm=none gui=none
 highlight NonText cterm=none gui=none
-highlight Special ctermbg=DarkMagenta guibg=DarkMagenta
-highlight Cursor ctermbg=Cyan guibg=Cyan
+highlight Special ctermbg=LightSteelBlue1 guibg=LightSteelBlue1
+highlight Cursor ctermbg=DarkCyan guibg=DarkCyan
 highlight clear SpellBad
-highlight SpellBad cterm=Blue guibg=Blue
+highlight SpellBad cterm=PaleVioletRed guibg=PaleVioletRed
 
 " Highlight all tabs and trailing whitespace characters
 highlight ExtraWhitespace ctermbg=DarkGreen guibg=DarkGreen
