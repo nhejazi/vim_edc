@@ -14,6 +14,7 @@ Plug 'JuliaLang/julia-vim'
 Plug 'jalvesaq/Nvim-R'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'kassio/neoterm'
+Plug 'junegunn/vim-easy-align'
 call plug#end()
 
 " elementary additions
@@ -72,13 +73,10 @@ if maparg('<C-L>', 'n') ==# ''
   nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
 endif
 
-" Set color theme and background
+" Set colorscheme/theme to Solarized Dark
 syntax enable
-if has('gui_running')   "not different backgrounds
-  set background=dark   "or (light)
-else
-  set background=dark   "or (light)
-endif
+set background=dark
+colorscheme solarized
 
 " Highlighting columns after specific types
 highlight ColorColumn ctermbg=DarkRed guibg=Red
