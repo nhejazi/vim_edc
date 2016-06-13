@@ -76,20 +76,20 @@ endif
 " Set colorscheme/theme to Solarized Dark
 syntax enable
 set background=dark
-let g:solarized_termcolors=256   "use "degraded" colors
+let g:solarized_termcolors=256   "use  'degraded' colors
 colorscheme solarized
 
 " Highlighting columns after specific types
 highlight ColorColumn ctermbg=DarkRed guibg=DarkRed
-highlight Comment cterm=LightGreen gui=LightGreen
-highlight Constant cterm=DarkBlue gui=DarkBlue
+highlight Comment ctermbg=LightGreen guibg=LightGreen
+highlight Constant ctermbg=Blue guibg=Blue
 highlight Normal cterm=none gui=none
 highlight NonText cterm=none gui=none
 highlight Special ctermbg=DarkGray guibg=DarkGray
-highlight Cursor ctermbg=DarkCyan guibg=DarkCyan
+highlight Cursor ctermbg=LightCyan guibg=none
 highlight clear SpellBad
 highlight SpellBad cterm=underline guibg=underline
-highlight TermCursor ctermfg=red guifg=red
+highlight TermCursor ctermfg=none guifg=DarkRed
 
 " Highlight all tabs and trailing whitespace characters
 highlight ExtraWhitespace ctermbg=DarkGreen guibg=DarkGreen
