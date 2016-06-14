@@ -82,17 +82,17 @@ colorscheme solarized
 " Highlighting columns after specific types
 highlight ColorColumn ctermbg=DarkRed guibg=DarkRed
 highlight Comment ctermbg=LightGreen guibg=LightGreen
-highlight Constant ctermbg=DarkBlue guibg=DarkBlue
+highlight Constant ctermbg=DarkGreen guibg=DarkGreen
 highlight Normal cterm=none gui=none
 highlight NonText cterm=none gui=none
 highlight Special ctermbg=DarkGray guibg=DarkGray
-highlight Cursor ctermbg=LightCyan guibg=none
+highlight Cursor ctermbg=LightCyan guibg=DarkRed
 highlight clear SpellBad
 highlight SpellBad cterm=underline guibg=underline
-highlight TermCursor ctermfg=none guifg=DarkRed
+highlight TermCursor ctermfg=LightCyan guifg=DarkRed
 
 " Highlight all tabs and trailing whitespace characters
-highlight ExtraWhitespace ctermbg=DarkGreen guibg=DarkGreen
+highlight ExtraWhitespace ctermbg=DarkMagenta guibg=DarkMagenta
 match ExtraWhitespace /\s\+$\|\t/
 
 " Basic behaviors for scrolling
