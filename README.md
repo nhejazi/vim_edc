@@ -5,10 +5,10 @@
 
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 
-_Caveat emptor_ - using this configuration can be unintuitive at first (esp. to
-those new to Vim), see the directions below.
+_Caveat emptor_ - using this configuration can be unintuitive at first
+(especially for those new to Vim). See the directions below.
 
-## _Directions/Guide_
+## _Directions/Roadmap_
 
 For less terse directions, see [this ~~excellent~~ decent blog
 post](https://jacky.wtf/weblog/moving-to-neovim/). Note that this assumes some
@@ -30,9 +30,9 @@ manager:
 ### _Known Problem(s)_
 
 - There is a known issue with re-mapping Ctrl-H in Neovim's terminal mode. I
-  have only encountered this issue on OSX, but various workarounds have been
+  have only encountered this issue in OSX, but various workarounds have been
   proposed [here](https://github.com/neovim/neovim/issues/2048). This issue
-  has been resolved by a fix as of May 15, 2016.
+  has been resolved (for this _init.vim_ script) by a fix as of 15 May 2016.
 
 ---
 
