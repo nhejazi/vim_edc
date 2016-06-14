@@ -22,10 +22,10 @@ highlight Comment ctermbg=LightGreen guibg=LightGreen
 highlight Constant ctermbg=Blue guibg=Blue
 highlight Normal cterm=none gui=none
 highlight NonText cterm=none gui=none
-highlight Special ctermbg=none guibg=none
-highlight Cursor ctermbg=DarkCyan guibg=none
+highlight Special cterm=none gui=none
+highlight Cursor ctermbg=DarkCyan gui=none
 highlight clear SpellBad
-highlight SpellBad cterm=blue guibg=blue
+highlight SpellBad ctermbg=Red guibg=Red
 
 " Highlight all tabs and trailing whitespace characters
 highlight ExtraWhitespace ctermbg=DarkGreen guibg=DarkGreen
