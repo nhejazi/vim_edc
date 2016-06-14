@@ -38,7 +38,7 @@ set esckeys             " Cursor keys in insert mode.
 set linespace=0         " Set line-spacing to minimum.
 set colorcolumn=80      " Set colored bar for 80-column rule.
 
-" Remap colon operater to semicolon for easier use.
+" Remap colon operator to semicolon for easier use.
 nnoremap ; :
 
 " Map SPACE to the leader key
@@ -82,14 +82,14 @@ colorscheme solarized
 " Highlighting columns after specific types
 highlight ColorColumn ctermbg=DarkRed guibg=DarkRed
 highlight Comment ctermbg=LightGreen guibg=LightGreen
-highlight Constant ctermbg=DarkGreen guibg=DarkGreen
+highlight Constant cterm=underline guibg=underline
 highlight Normal cterm=none gui=none
 highlight NonText cterm=none gui=none
 highlight Special ctermbg=DarkGray guibg=DarkGray
-highlight Cursor ctermbg=LightCyan guibg=DarkRed
+highlight Cursor ctermbg=Cyan guibg=Cyan
 highlight clear SpellBad
-highlight SpellBad cterm=underline guibg=underline
-highlight TermCursor ctermfg=LightCyan guifg=DarkRed
+highlight SpellBad ctermbg=Red guibg=Red
+highlight TermCursor ctermfg=Cyan guifg=Cyan
 
 " Highlight all tabs and trailing whitespace characters
 highlight ExtraWhitespace ctermbg=DarkMagenta guibg=DarkMagenta
@@ -106,10 +106,11 @@ endif
 " Set auto-wrap at 80 characters for certain file types
 au BufRead,BufNewFile *.md setlocal textwidth=80
 au BufRead,BufNewFile *.txt setlocal textwidth=80
-au BufREAD,BufNewFile *.tex setlocal textwidth=80
-au BufREAD,BufNewFile *.Rmd setlocal textwidth=80
+au BufRead,BufNewFile *.tex setlocal textwidth=80
+au BufRead,BufNewFile *.Rmd setlocal textwidth=80
 
 " Enable spellchecking for various file types
+setlocal spell spelllang=en_us
 set complete+=kspell  "word completion
 autocmd BufRead,BufNewFile *.md setlocal spell
 autocmd BufRead,BufNewFile *.txt setlocal spell
