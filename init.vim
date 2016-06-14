@@ -82,7 +82,7 @@ colorscheme solarized
 " Highlighting columns after specific types
 highlight ColorColumn ctermbg=DarkRed guibg=DarkRed
 highlight Comment ctermbg=LightGreen guibg=LightGreen
-highlight Constant ctermbg=Blue guibg=Blue
+highlight Constant ctermbg=DarkBlue guibg=DarkBlue
 highlight Normal cterm=none gui=none
 highlight NonText cterm=none gui=none
 highlight Special ctermbg=DarkGray guibg=DarkGray
