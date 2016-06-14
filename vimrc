@@ -4,11 +4,13 @@ call pathogen#helptags()
 syntax on
 filetype plugin indent on
 
-" Set colorscheme/theme to Solarized Dark
-syntax enable
-let g:solarized_termcolors=256   "use 'degraded' colors
-set background=dark
-colorscheme solarized
+" Set colorscheme/theme to Solarized Dark (NOT Xfce friendly)
+if has('mac') || has('macunix') || has('gui_mac')
+  syntax enable
+  let g:solarized_termcolors=256   "use 'degraded' colors
+  set background=dark
+  colorscheme solarized
+endif
 
 " Set line numbers to appear in all files
 set number
