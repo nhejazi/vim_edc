@@ -6,7 +6,7 @@ filetype plugin indent on
 
 " Set colorscheme/theme to Solarized Dark
 syntax enable
-let g:solarized_termcolors=256   "use "degraded" colors
+let g:solarized_termcolors=256   "use 'degraded' colors
 set background=dark
 colorscheme solarized
 
@@ -18,14 +18,14 @@ set colorcolumn=80   "set bounds for 80-column rule
 
 " Highlighting columns after specific types
 highlight ColorColumn ctermbg=DarkRed guibg=DarkRed
-highlight Comment cterm=LightGreen gui=LightGreen
-highlight Constant cterm=DarkGray gui=DarkGray
+highlight Comment cterm=gray gui=gray
+highlight Constant cterm=none gui=italics
 highlight Normal cterm=none gui=none
 highlight NonText cterm=none gui=none
 highlight Special ctermbg=none guibg=none
 highlight Cursor ctermbg=DarkCyan guibg=DarkCyan
 highlight clear SpellBad
-highlight SpellBad cterm=DarkBlue guibg=DarkBlue
+highlight SpellBad cterm=blue guibg=blue
 
 " Highlight all tabs and trailing whitespace characters
 highlight ExtraWhitespace ctermbg=DarkGreen guibg=DarkGreen
