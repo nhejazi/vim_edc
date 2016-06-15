@@ -15,17 +15,20 @@ Plug 'jalvesaq/Nvim-R'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'kassio/neoterm'
 Plug 'junegunn/vim-easy-align'
+Plug 'zenbro/mirror.vim'
+Plug 'bfredl/nvim-ipy'
+Plug 'Shougo/deoplete.nvim'
 call plug#end()
 
 " elementary additions
-syntax on
-filetype plugin indent on
+syntax on               " Check syntax.
+filetype plugin on      " Enable plugins.
 set autoread            " If file updates, load automatically.
 set autochdir           " Switch to current file's parent directory.
 set showcmd             " Show (partial) command in status line.
 set showmatch           " Show matching brackets.
 set showmode            " Show current mode.
-set ruler               " Show the line and column numbers of the cursor
+set ruler               " Show the line and column numbers of cursor.
 set number              " Show the line numbers on the left side.
 set formatoptions+=o    " Continue comment marker in new lines.
 set textwidth=0         " Hard-wrap long lines as you type them.
@@ -37,6 +40,7 @@ set modeline            " Enable modeline.
 set esckeys             " Cursor keys in insert mode.
 set linespace=0         " Set line-spacing to minimum.
 set colorcolumn=80      " Set colored bar for 80-column rule.
+set nocompatible        " Disable backward compatibility with Vi.
 
 " Remap colon operator to semicolon for easier use.
 nnoremap ; :
@@ -121,7 +125,10 @@ nnoremap <Leader>b :CtrlPBuffer<CR>     " Open buffer menu
 nnoremap <Leader>f :CtrlPMRUFiles<CR    " Open most recently used files
 
 " Add custom settings for NVim-R plugin
-let R_vsplit = 1
+let R_vsplit = 1  "use vertical terminal split
+
+" Use deoplete plugin
+let g:deoplete#enable_at_startup = 1
 
 " Add settings for Neoterm plugin
 let g:neoterm_position = 'vertical'
@@ -138,6 +145,8 @@ nnoremap <silent> ,rr :call neoterm#test#rerun()<cr>
 nnoremap <silent> ,th :call neoterm#close()<cr>  "hide/close terminal
 nnoremap <silent> ,tl :call neoterm#clear()<cr>  "clear terminal
 nnoremap <silent> ,tc :call neoterm#kill()<cr>   "kill current job <Ctrl-c>
+" Git commands
+command! -nargs=+ Tg :T git <args>
 
 " Add settings for Airline plugin
 let g:airline#extensions#tabline#enabled = 2
