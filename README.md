@@ -20,11 +20,16 @@ git clone https://github.com/nhejazi/myneovimconfig.git ~/.config/nvim
 sh ~/.config/nvim/_setup.sh
 ```
 
-- To install plugins with the [vim-plug](https://github.com/junegunn/vim-plug)
-manager:
+- To __install plugins__ with the
+[vim-plug](https://github.com/junegunn/vim-plug) manager:
 ```vim
 :PlugInstall
+```
 
+- To __update plugins__ with the
+[vim-plug](https://github.com/junegunn/vim-plug) manager:
+```vim
+:PlugUpdate
 ```
 
 ### _Known Problem(s)_
