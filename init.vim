@@ -46,7 +46,8 @@ set nocompatible        " Disable backward compatibility with Vi.
 nnoremap ; :
 
 " Map SPACE to the leader key
-let mapleader="\<SPACE>"
+let mapleader="<SPACE>"
+let maplocalleader = ","
 
 " Set preferences for navigation between editor and terminal modes
 set splitbelow
@@ -128,6 +129,8 @@ nnoremap <Leader>f :CtrlPMRUFiles<CR    " Open most recently used files
 let R_vsplit = 1  "use vertical terminal split
 autocmd FileType r if string(g:SendCmdToR) == "function('SendCmdToR_fake')" | call StartR("R") | endif
 autocmd FileType rmd if string(g:SendCmdToR) == "function('SendCmdToR_fake')" | call StartR("R") | endif
+vmap <LocalLeader>. <Plug>RDSendSelection
+nmap <LocalLeader>. <Plug>RDSendLine
 
 " Use deoplete plugin
 let g:deoplete#enable_at_startup = 1
