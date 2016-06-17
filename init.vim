@@ -124,8 +124,10 @@ nnoremap <Leader>o :CtrlP<CR>           " Open file menu
 nnoremap <Leader>b :CtrlPBuffer<CR>     " Open buffer menu
 nnoremap <Leader>f :CtrlPMRUFiles<CR    " Open most recently used files
 
-" Add custom settings for NVim-R plugin
+" Add settings for NVim-R plugin (auto-start with .R and .Rmd files)
 let R_vsplit = 1  "use vertical terminal split
+autocmd FileType r if string(g:SendCmdToR) == "function('SendCmdToR_fake')" | call StartR("R") | endif
+autocmd FileType rmd if string(g:SendCmdToR) == "function('SendCmdToR_fake')" | call StartR("R") | endif
 
 " Use deoplete plugin
 let g:deoplete#enable_at_startup = 1
