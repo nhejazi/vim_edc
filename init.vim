@@ -18,6 +18,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'zenbro/mirror.vim'
 Plug 'bfredl/nvim-ipy'
 Plug 'Shougo/deoplete.nvim'
+Plug 'kshenoy/vim-signature'
 call plug#end()
 
 " elementary additions
