@@ -63,8 +63,11 @@ nnoremap <C-j> <C-w><C-j>
 nnoremap <C-k> <C-w><C-k>
 nnoremap <C-l> <C-w><C-l>
 
-" Automatically enter insert mode when buffer is a terminal
-au BufEnter * if &buftype == 'terminal' | :startinsert | endif
+" Automatically enter Insert when buffer is a terminal (and Normal when not)
+"au BufEnter * if &buftype == 'terminal' | :startinsert | endif
+autocmd BufWinEnter,WinEnter term://* startinsert
+autocmd BufLeave term://* stopinsert
+
 
 " Sensible default behaviors for searching
 set hlsearch        " Highlight search results
@@ -128,6 +131,7 @@ nnoremap <Leader>f :CtrlPMRUFiles<CR    " Open most recently used files
 
 " Add settings for NVim-R plugin (auto-start with .R and .Rmd files)
 let R_vsplit = 1  "use vertical terminal split
+let R_source_args = "echo=TRUE, print.eval=TRUE"
 autocmd FileType r if string(g:SendCmdToR) == "function('SendCmdToR_fake')" | call StartR("R") | endif
 autocmd FileType rmd if string(g:SendCmdToR) == "function('SendCmdToR_fake')" | call StartR("R") | endif
 vmap <LocalLeader>. <Plug>RDSendSelection
