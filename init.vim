@@ -130,7 +130,7 @@ nnoremap <Leader>b :CtrlPBuffer<CR>     " Open buffer menu
 nnoremap <Leader>f :CtrlPMRUFiles<CR    " Open most recently used files
 
 " Add settings for NVim-R plugin (auto-start with .R and .Rmd files)
-let R_vsplit = 1  "use vertical terminal split
+let R_vsplit = 0   "use horizontal split for terminal (make =1 for vertical)
 let R_source_args = "echo=TRUE, print.eval=TRUE"
 autocmd FileType r if string(g:SendCmdToR) == "function('SendCmdToR_fake')" | call StartR("R") | endif
 autocmd FileType rmd if string(g:SendCmdToR) == "function('SendCmdToR_fake')" | call StartR("R") | endif
@@ -141,7 +141,7 @@ nmap <LocalLeader>. <Plug>RDSendLine
 let g:deoplete#enable_at_startup = 1
 
 " Add settings for Neoterm plugin
-let g:neoterm_position = 'vertical'
+let g:neoterm_position = 'horizontal'  "this could also just be 'vertical'
 let g:neoterm_automap_keys = ',tt'
 nnoremap <Leader>n :TREPLSendFile<cr>
 nnoremap <Leader>m :TREPLSend<cr>
