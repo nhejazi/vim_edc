@@ -43,6 +43,6 @@ sh ~/.config/nvim/_setup.sh
 
 ## License
 
-&copy; 2016 Nima Hejazi
+&copy; 2016 [Nima Hejazi](http://nimahejazi.org)
 
 This repository is licensed under the MIT license. See `LICENSE` for details.
