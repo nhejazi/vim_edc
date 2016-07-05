@@ -31,3 +31,9 @@
 [submodule "bundle/airline"]
 	path = bundle/airline
 	url = https://github.com/vim-airline/vim-airline.git
+[submodule "Nvim-R"]
+	path = Nvim-R
+	url = https://github.com/jalvesaq/Nvim-R.git
+[submodule "bundle/Nvim-R"]
+	path = bundle/Nvim-R
+	url = https://github.com/jalvesaq/Nvim-R.git
