@@ -1,9 +1,6 @@
 [submodule "bundle/fugitive"]
 	path = bundle/fugitive
 	url = https://github.com/tpope/vim-fugitive.git
-[submodule "bundle/r-plugin"]
-	path = bundle/r-plugin
-	url = https://github.com/vim-scripts/Vim-R-plugin.git
 [submodule "bundle/jedi-completion"]
 	path = bundle/jedi-completion
 	url = https://github.com/davidhalter/jedi-vim.git
@@ -31,9 +28,6 @@
 [submodule "bundle/airline"]
 	path = bundle/airline
 	url = https://github.com/vim-airline/vim-airline.git
-[submodule "Nvim-R"]
-	path = Nvim-R
-	url = https://github.com/jalvesaq/Nvim-R.git
 [submodule "bundle/Nvim-R"]
 	path = bundle/Nvim-R
 	url = https://github.com/jalvesaq/Nvim-R.git
