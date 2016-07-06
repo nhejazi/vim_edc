@@ -62,8 +62,8 @@ autocmd BufRead,BufNewFile *.txt setlocal spell
 " Add settings for NVim-R plugin (No auto-start with .R and .Rmd files)
 let R_vsplit = 0   "use horizontal split for terminal (make =1 for vertical)
 let R_source_args = "echo=TRUE, print.eval=TRUE"
-#autocmd FileType r if string(g:SendCmdToR) == "function('SendCmdToR_fake')" | call StartR("R") | endif
-#autocmd FileType rmd if string(g:SendCmdToR) == "function('SendCmdToR_fake')" | call StartR("R") | endif
+"autocmd FileType r if string(g:SendCmdToR) == "function('SendCmdToR_fake')" | call StartR("R") | endif
+"autocmd FileType rmd if string(g:SendCmdToR) == "function('SendCmdToR_fake')" | call StartR("R") | endif
 
 " Add settings for Airline plugin
 let g:airline#extensions#tabline#enabled = 2
