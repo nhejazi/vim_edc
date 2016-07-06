@@ -16,7 +16,7 @@ on which this guide is based.
 
 + To obtain the configuration in this repo:
 ```bash
-git clone https://github.com/nhejazi/myvimconfig.git ~/.vim
+git clone --recursive https://github.com/nhejazi/myvimconfig.git ~/.vim
 sh ~/.vim/_setup.sh
 ```
 
