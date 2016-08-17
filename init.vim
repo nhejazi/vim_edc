@@ -19,6 +19,7 @@ Plug 'zenbro/mirror.vim'
 Plug 'bfredl/nvim-ipy'
 Plug 'Shougo/deoplete.nvim'
 Plug 'kshenoy/vim-signature'
+Plug 'metakirby5/codi.vim'
 call plug#end()
 
 " elementary additions
@@ -67,7 +68,6 @@ nnoremap <C-l> <C-w><C-l>
 "au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 autocmd BufWinEnter,WinEnter term://* startinsert
 autocmd BufLeave term://* stopinsert
-
 
 " Sensible default behaviors for searching
 set hlsearch        " Highlight search results
