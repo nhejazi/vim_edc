@@ -6,15 +6,11 @@
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 
 _Caveat emptor_ - using this configuration can be unintuitive at first
-(especially for those new to Vim). See the directions below.
+(especially for those new to Vim/Neovim).
 
 ---
 
 ## _Directions/Roadmap_
-
-For less terse directions, see [this ~~excellent~~ decent blog
-post](https://jacky.wtf/weblog/moving-to-neovim/). Note that this assumes some
-familiarity with Vim.
 
 - To clone the configuration in this repo:
 ```bash
@@ -23,10 +19,8 @@ sh ~/.config/nvim/_setup.sh
 ```
 
 - To __install plugins__ with the
-[vim-plug](https://github.com/junegunn/vim-plug) manager:
-```vim
-:PlugInstall
-```
+[vim-plug](https://github.com/junegunn/vim-plug) manager, see the directions
+provided in the `README.md` of that project.
 
 - To __update plugins__ with the
 [vim-plug](https://github.com/junegunn/vim-plug) manager:
