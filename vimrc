@@ -1,6 +1,22 @@
-" using Pathogen package manager
-call pathogen#infect() 
-call pathogen#helptags()
+" using the vim-plug manager for plug-ins
+call plug#begin()
+Plug 'tpope/vim-sensible'
+Plug 'davidhalter/jedi-vim'
+Plug 'vim-airline/vim-airline'
+Plug 'altercation/vim-colors-solarized'
+Plug 'tpope/vim-git'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-sensible'
+Plug 'ervandew/screen'
+Plug 'airblade/vim-gitgutter'
+Plug 'scrooloose/nerdtree'
+Plug 'JuliaLang/julia-vim'
+Plug 'jalvesaq/Nvim-R'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'zenbro/mirror.vim'
+Plug 'metakirby5/codi.vim'
+call plug#end()
 
 " elementary additions
 syntax on               " Check syntax.

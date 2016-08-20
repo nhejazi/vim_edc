@@ -1,37 +1,29 @@
 # myVimConfig
 
-> Setup, package manager, and various plugins for my configuration of the
+> Setup, package manager, and various plug-ins for my configuration of the
 > [Vim](http://www.vim.org/index.php) editor.
 
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 
 _Caveat emptor_ - using this configuration can be unintuitive at first (esp. to
-those new to Vim), see the directions below.
+those new to Vim).
 
 ## _**Directions/Guide**_
 
-For less terse directions, see [this excellent
-article](http://vimcasts.org/episodes/synchronizing-plugins-with-git-submodules-and-pathogen/),
-on which this guide is based.
-
-+ To obtain the configuration in this repo:
++ To clone the configuration in this repo:
 ```bash
-git clone --recursive https://github.com/nhejazi/myvimconfig.git ~/.vim
+git clone https://github.com/nhejazi/myvimconfig.git ~/.vim
 sh ~/.vim/_setup.sh
 ```
 
-+ To update submodules, simply use `cd ~/.vim; sh _update.sh`, or:
-```bash
-cd ~/.vim
-git submodule foreach git pull origin master
-```
++ To __install plugins__ with the
+[vim-plug]((https://github.com/junegunn/vim-plug)) manager, see the directions
+provided in the `README.md` of that project.
 
-+ To add Vim plugins as submodules (as **example only**):
-```bash
-cd ~/.vim
-git submodule add -f http://github.com/tpope/vim-fugitive.git bundle/fugitive
-git add .
-git commit -m "Install Fugitive.vim bundle as a submodule."
++ To __update plugins__ with the
+[vim-plug](https://github.com/junegunn/vim-plug) manager:
+```vim
+:PlugUpdate
 ```
 
 ---
