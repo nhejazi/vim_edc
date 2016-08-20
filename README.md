@@ -17,7 +17,7 @@ sh ~/.vim/_setup.sh
 ```
 
 + To __install plugins__ with the
-[vim-plug]((https://github.com/junegunn/vim-plug)) manager, see the directions
+[vim-plug](https://github.com/junegunn/vim-plug) manager, see the directions
 provided in the `README.md` of that project.
 
 + To __update plugins__ with the
