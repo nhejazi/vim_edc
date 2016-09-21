@@ -1,5 +1,6 @@
 " using the vim-plug manager for plug-ins
 call plug#begin()
+" the below shared by Vim and Neovim
 Plug 'tpope/vim-sensible'
 Plug 'davidhalter/jedi-vim'
 Plug 'vim-airline/vim-airline'
@@ -8,14 +9,18 @@ Plug 'tpope/vim-git'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-sensible'
-Plug 'ervandew/screen'
 Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/nerdtree'
-Plug 'JuliaLang/julia-vim'
-Plug 'jalvesaq/Nvim-R'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'zenbro/mirror.vim'
 Plug 'metakirby5/codi.vim'
+Plug 'junegunn/vim-easy-align'
+Plug 'JuliaLang/julia-vim'
+Plug 'jalvesaq/Nvim-R'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+" the below used by Vim only
+Plug 'ervandew/screen'
 call plug#end()
 
 " elementary additions
@@ -40,7 +45,7 @@ set linespace=0         " Set line-spacing to minimum.
 set colorcolumn=80      " Set colored bar for 80-column rule.
 set nocompatible        " Disable backward compatibility with Vi.
 
-" Set colorscheme to Solarized Dark for OSX (NOT Xfce friendly)
+" Set colorscheme to Solarized Dark for macOS (NOT Xfce friendly)
 if has('mac') || has('macunix') || has('gui_mac')
   syntax enable
   let g:solarized_termcolors=256   "use 'degraded' colors
@@ -58,6 +63,7 @@ highlight Special cterm=none gui=none
 highlight Cursor ctermbg=DarkCyan guibg=DarkCyan
 highlight clear SpellBad
 highlight SpellBad ctermbg=Red guibg=Red
+highlight TermCursor ctermbg=DarkCyan guibg=DarkCyan
 
 " Highlight all tabs and trailing whitespace characters
 highlight ExtraWhitespace ctermbg=DarkMagenta guibg=DarkMagenta
@@ -92,3 +98,12 @@ let g:airline_left_sep = ' '
 let g:airline_left_alt_sep = '|'
 let g:airline_right_sep = ' '
 let g:airline_right_alt_sep = '|'
+
+" for vim-easy-align: shortcuts
+"interactive EasyAlign in visual mode (e.g., vipga)
+xmap ga <Plug>(EasyAlign)
+"interactive EasyAlign for a motion/text (e.g., gaip)
+nmap ga <Plug>(EasyAlign)
+
+" for vim-markdown: disable folding
+let g:vim_markdown_folding_disabled = 1
