@@ -1,25 +1,28 @@
-" using the vim-plug manager for plugins
+" using the vim-plug manager for plug-ins
 call plug#begin()
+" the below shared by Vim and Neovim
 Plug 'tpope/vim-sensible'
 Plug 'davidhalter/jedi-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'altercation/vim-colors-solarized'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-sensible'
 Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/nerdtree'
-Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'zenbro/mirror.vim'
+Plug 'metakirby5/codi.vim'
+Plug 'junegunn/vim-easy-align'
 Plug 'JuliaLang/julia-vim'
 Plug 'jalvesaq/Nvim-R'
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+" the below used by Neovim only
 Plug 'kassio/neoterm'
-Plug 'junegunn/vim-easy-align'
-Plug 'zenbro/mirror.vim'
 Plug 'bfredl/nvim-ipy'
 Plug 'Shougo/deoplete.nvim'
-Plug 'kshenoy/vim-signature'
-Plug 'metakirby5/codi.vim'
 call plug#end()
 
 " elementary additions
@@ -169,3 +172,12 @@ let g:airline_left_sep = ' '
 let g:airline_left_alt_sep = '|'
 let g:airline_right_sep = ' '
 let g:airline_right_alt_sep = '|'
+
+" for vim-easy-align: shortcuts
+"interactive EasyAlign in visual mode (e.g., vipga)
+xmap ga <Plug>(EasyAlign)
+"interactive EasyAlign for motion/text (e.g., gaip)
+nmap ga <Plug>(EasyAlign)
+
+" for vim-markdown: disable folding
+let g:vim_markdown_folding_disabled = 1
