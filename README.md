@@ -33,10 +33,10 @@ provided in the `README.md` of that project.
 ## _Known Problem(s)_
 
 - There is a known issue with re-mapping Ctrl-H in Neovim's terminal mode. I
-  have only encountered this issue in macOS, and various workarounds have been
-  proposed [here](https://github.com/neovim/neovim/issues/2048). This issue has
-  been resolved (for the `init.vim` script in this repo) by a fix implemented on
-  15 May 2016.
+  have only encountered this issue when running macOS; various workarounds have
+  been proposed [here](https://github.com/neovim/neovim/issues/2048).
+  __Update:__ This issue has been resolved (for the `init.vim` script in this
+  repo) by a fix implemented 15 May 2016.
 
 ---
 
