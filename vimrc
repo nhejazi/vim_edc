@@ -16,7 +16,7 @@ Plug 'zenbro/mirror.vim'
 Plug 'metakirby5/codi.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'JuliaLang/julia-vim'
-Plug 'jalvesaq/Nvim-R'
+"Plug 'jalvesaq/Nvim-R'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 " the below used by Vim only
@@ -81,9 +81,9 @@ set complete+=kspell  "word completion
 autocmd BufRead,BufNewFile *.md setlocal spell
 autocmd BufRead,BufNewFile *.txt setlocal spell
 
-" Add settings for NVim-R plugin (No auto-start with .R and .Rmd files)
-let R_vsplit = 0   "use horizontal split for terminal (make =1 for vertical)
-let R_source_args = "echo=TRUE, print.eval=TRUE"
+" Add NVim-R plugin settings -- requires Vim 8.0+
+"let R_vsplit = 0   "use horizontal split for terminal (make =1 for vertical)
+"let R_source_args = "echo=TRUE, print.eval=TRUE"
 "autocmd FileType r if string(g:SendCmdToR) == "function('SendCmdToR_fake')" | call StartR("R") | endif
 "autocmd FileType rmd if string(g:SendCmdToR) == "function('SendCmdToR_fake')" | call StartR("R") | endif
 
