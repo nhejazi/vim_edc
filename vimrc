@@ -1,5 +1,5 @@
 " Nima Hejazi's vimrc
-" vim-plug + plugins{{{
+" vim-plug + plugins {{{
 call plug#begin()
 Plug 'tpope/vim-sensible'
 Plug 'davidhalter/jedi-vim'
@@ -11,6 +11,7 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-sensible'
 Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'rking/ag.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'zenbro/mirror.vim'
@@ -50,9 +51,18 @@ set wildmenu            " Visual autocomplete for command menu.
 set nocompatible        " Disable backward compatibility with Vi.
 " }}}
 " leaders/re-mappings {{{
-nnoremap ; :                   " remap colon to semicolon for ease of use
-let mapleader = ","            " leader is comma
-let maplocalleader = "\\"      " localleader is double backslash
+" Remap colon operator semicolon for ease of use
+nnoremap ; :
+let mapleader = ","            " The leader is comma
+let maplocalleader = "\\"      " The localleader is double backslash
+" }}}
+" backups {{{
+" Save Vim backup files to a (hidden) tmp directory
+set backup
+set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set backupskip=/tmp/*,/private/tmp/*
+set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set writebackup
 " }}}
 " searching {{{
 " basic searching behavior mods
@@ -63,11 +73,11 @@ set incsearch           " Search incrementally
 set gdefault            " Use 'g' flag by default with :s/foo/bar/
 set magic               " Use 'magic' patterns (extended regular expressions)
 
-" use The Silver Searcher in Vim via ag.vim
+" use The Silver Searcher via ag.vim
 nnoremap <leader>a :Ag
 " }}}
 " colorscheme {{{
-" (NOT Xfce friendly)
+" Note: this is NOT Xfce friendly
 if has('mac') || has('macunix') || has('gui_mac')
   syntax enable
   let g:solarized_termcolors=256   "use 'degraded' colors
@@ -98,28 +108,29 @@ au BufRead,BufNewFile *.Rmd setlocal textwidth=80
 " }}}
 " spellchecking {{{
 setlocal spell spelllang=en_us
-set complete+=kspell  "word completion
+set complete+=kspell
 autocmd BufRead,BufNewFile *.md setlocal spell
 autocmd BufRead,BufNewFile *.txt setlocal spell
 " }}}
-" backups {{{
-" Save Vim backup files to a (hidden) tmp directory
-set backup
-set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-set backupskip=/tmp/*,/private/tmp/*
-set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-set writebackup
-" }}}
 " CtrlP {{{
-" Sensible defaults for use of CtrlP plugin
 let g:ctrlp_match_window = 'bottom,order:ttb'
 let g:ctrlp_switch_buffer = 0
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-nnoremap <leader>o :CtrlP<CR>           " Open file menu
-nnoremap <leader>b :CtrlPBuffer<CR>     " Open buffer menu
-nnoremap <leader>f :CtrlPMRUFiles<CR    " Open most recently used files
+" Open file menu
+nnoremap <leader>o :CtrlP<CR>
+" Open buffer menu
+nnoremap <leader>b :CtrlPBuffer<CR>
+" Open most recently used files
+nnoremap <leader>f :CtrlPMRUFiles<CR
+" }}}
+" NERDTree {{{
+" Open a NERDTree automatically when Vim starts up if no files were specified
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" Close Vim if the only window left open is a NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " }}}
 " Airline {{{
 let g:airline#extensions#tabline#enabled = 2
@@ -134,17 +145,17 @@ let g:airline_right_sep = ' '
 let g:airline_right_alt_sep = '|'
 " }}}
 " NVim-R {{{
-" does NOT autostart R REPL
+" do NOT autostart R REPL with .R and .Rmd files
 let R_vsplit = 0    "horizontal split for terminal (make 1 for vertical)
 let R_source_args = "echo=TRUE, print.eval=TRUE"
-"autocmd FileType r if string(g:SendCmdToR) == "function('SendCmdToR_fake')" | call StartR("R") | endif
-"autocmd FileType rmd if string(g:SendCmdToR) == "function('SendCmdToR_fake')" | call StartR("R") | endif
-" }}}
-" vim-easy-align {{{
-xmap ga <Plug>(EasyAlign)   "interactive EasyAlign in visual mode (e.g., vipga)
-nmap ga <Plug>(EasyAlign)   "interactive EasyAlign for motion/text (e.g., gaip)
 " }}}
 " vim-markdown {{{
 let g:vim_markdown_folding_disabled = 1   "disable folding
+" }}}
+" vim-easy-align {{{
+" Interactive EasyAlign in visual mode (e.g., vipga)
+xmap ga <Plug>(EasyAlign)
+" Interactive EasyAlign for motion/text (e.g., gaip)
+nmap ga <Plug>(EasyAlign)
 " }}}
 " vim:foldmethod=marker:foldlevel=0
