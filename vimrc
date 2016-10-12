@@ -123,7 +123,7 @@ nnoremap <leader>o :CtrlP<CR>
 " Open buffer menu
 nnoremap <leader>b :CtrlPBuffer<CR>
 " Open most recently used files
-nnoremap <leader>f :CtrlPMRUFiles<CR
+nnoremap <leader>f :CtrlPMRUFiles<CR>
 " }}}
 " NERDTree {{{
 " Open a NERDTree automatically when Vim starts up if no files were specified
