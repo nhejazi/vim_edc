@@ -44,4 +44,5 @@ provided in the `README.md` of that project.
 
 &copy; 2016 [Nima Hejazi](http://nimahejazi.org)
 
-This repository is licensed under the MIT license. See `LICENSE` for details.
+The contents of this repository are distributed under the MIT license. See file
+`LICENSE` for details.
