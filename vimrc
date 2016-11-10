@@ -48,6 +48,8 @@ set esckeys             " Cursor keys in insert mode.
 set linespace=0         " Set line-spacing to minimum.
 set colorcolumn=80      " Set colored bar for 80-column rule.
 set wildmenu            " Visual autocomplete for command menu.
+set encoding=utf-8      " Manually set encoding to be used.
+set shell=bash          " Manually set shell to be used to Bash.
 set nocompatible        " Disable backward compatibility with Vi.
 " }}}
 " leaders/re-mappings {{{
@@ -131,6 +133,8 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " Close Vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" stop NERDTree from using fancy arrow characters
+let g:NERDTreeDirArrows=0
 " }}}
 " Airline {{{
 let g:airline#extensions#tabline#enabled = 2
