@@ -1,14 +1,16 @@
-" Nima Hejazi's init.vim
+" Nima's Neovim Config
 " vim-plug + plugins {{{
 call plug#begin()
 Plug 'tpope/vim-sensible'
 Plug 'davidhalter/jedi-vim'
+Plug 'maralla/completor.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'altercation/vim-colors-solarized'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-sensible'
+Plug 'mhinz/vim-signify'
 Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -17,6 +19,8 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'zenbro/mirror.vim'
 Plug 'metakirby5/codi.vim'
 Plug 'junegunn/vim-easy-align'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
 Plug 'JuliaLang/julia-vim'
 Plug 'jalvesaq/Nvim-R'
 Plug 'godlygeek/tabular'
@@ -175,6 +179,10 @@ let g:airline_left_sep = ' '
 let g:airline_left_alt_sep = '|'
 let g:airline_right_sep = ' '
 let g:airline_right_alt_sep = '|'
+" }}}
+" Goyo+Limelight {{{
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
 " }}}
 " NVim-R {{{
 " auto-start R REPL with  .R and .Rmd files
