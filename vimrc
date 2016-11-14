@@ -152,6 +152,15 @@ let g:airline_left_alt_sep = '|'
 let g:airline_right_sep = ' '
 let g:airline_right_alt_sep = '|'
 " }}}
+" Completor {{{
+if has('mac') || has('macunix')
+  " intended as link to homebrew Python3 on macOS
+  let g:completor_python_binary = 'usr/local/bin/python3'
+else
+  " intended as link to non-system Python3 on Ubuntu
+  let g:completor_python_binary = 'usr/bin/python3.5'
+endif
+" }}}
 " Goyo+Limelight {{{
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
