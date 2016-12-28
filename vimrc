@@ -5,6 +5,7 @@ Plug 'tpope/vim-sensible'
 Plug 'davidhalter/jedi-vim'
 Plug 'maralla/completor.vim'
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'altercation/vim-colors-solarized'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-fugitive'
@@ -29,7 +30,7 @@ Plug 'ervandew/screen'  "used by Vim only (NOT in Neovim init.vim)
 call plug#end()
 " }}}
 " core customizations {{{
-syntax on               " Check syntax.
+syntax on               " Autostart syntax checking.
 filetype plugin on      " Enable plugins.
 filetype indent on      " Load type-specific indent files.
 set autoread            " If file updates, load automatically.
@@ -83,13 +84,10 @@ set magic               " Use 'magic' patterns (extended regular expressions)
 nnoremap <leader>a :Ag
 " }}}
 " colorscheme {{{
-" Note: this is NOT Xfce friendly
-if has('mac') || has('macunix') || has('gui_mac')
-  syntax enable
-  let g:solarized_termcolors=256   "use 'degraded' colors
-  set background=dark
-  colorscheme solarized
-endif
+let g:solarized_termcolors=256   "use 'degraded' colors
+set t_Co=256
+set background=dark
+colorscheme solarized
 " }}}
 " highlighting {{{
 highlight ColorColumn ctermbg=DarkRed guibg=DarkRed
@@ -151,14 +149,17 @@ let g:airline_left_sep = ' '
 let g:airline_left_alt_sep = '|'
 let g:airline_right_sep = ' '
 let g:airline_right_alt_sep = '|'
+let g:airline_theme = 'solarized'
 " }}}
 " Completor {{{
+let g:completor_auto_trigger = 0
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<C-x>\<C-u>\<C-p>"
 if has('mac') || has('macunix')
   " intended as link to homebrew Python3 on macOS
   let g:completor_python_binary = 'usr/local/bin/python3'
-"else
-  " intended as link to non-system Python3 on Ubuntu
-"  let g:completor_python_binary = 'usr/bin/python3.5'
+else
+  " intended as link to non-system Python3 on Ubuntu Linux
+  let g:completor_python_binary = 'usr/bin/env python'
 endif
 " }}}
 " Goyo+Limelight {{{
