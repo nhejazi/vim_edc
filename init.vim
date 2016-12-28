@@ -3,8 +3,9 @@
 call plug#begin()
 Plug 'tpope/vim-sensible'
 Plug 'davidhalter/jedi-vim'
-"Plug 'maralla/completor.vim'
+Plug 'maralla/completor.vim'
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'altercation/vim-colors-solarized'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-fugitive'
@@ -89,9 +90,9 @@ endif
 nnoremap <Leader>a :Ag
 " }}}
 " colorscheme {{{
-syntax enable
-set background=dark
 let g:solarized_termcolors=256   "use  'degraded' colors
+set t_Co=256
+set background=dark
 colorscheme solarized
 " }}}
 " highlighting {{{
@@ -179,26 +180,29 @@ let g:airline_left_sep = ' '
 let g:airline_left_alt_sep = '|'
 let g:airline_right_sep = ' '
 let g:airline_right_alt_sep = '|'
+let g:airline_theme = 'solarized'
 " }}}
 " Completor {{{
-"if has('mac') || has('macunix')
-  " intended as link to homebrew Python3 on macOS
-"  let g:completor_python_binary = 'usr/local/bin/python3'
-"else
-  " intended as link to non-system Python3 on Ubuntu
-"  let g:completor_python_binary = 'usr/bin/python3.5'
-"endif
+let g:completor_auto_trigger = 0
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<C-x>\<C-u>\<C-p>"
+if has('mac') || has('macunix')
+ " intended as link to homebrew Python3 on macOS
+  let g:completor_python_binary = 'usr/local/bin/python3'
+else
+ " intended as link to non-system Python3 on Ubuntu
+  let g:completor_python_binary = 'usr/bin/env python'
+endif
 " }}}
 " Goyo+Limelight {{{
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
 " }}}
 " NVim-R {{{
-" auto-start R REPL with  .R and .Rmd files
 let R_vsplit = 0   "use horizontal split for terminal (make =1 for vertical)
 let R_source_args = "echo=TRUE, print.eval=TRUE"
-autocmd FileType r if string(g:SendCmdToR) == "function('SendCmdToR_fake')" | call StartR("R") | endif
-autocmd FileType rmd if string(g:SendCmdToR) == "function('SendCmdToR_fake')" | call StartR("R") | endif
+" do NOT auto-start R REPL with  .R and .Rmd files
+"autocmd FileType r if string(g:SendCmdToR) == "function('SendCmdToR_fake')" | call StartR("R") | endif
+"autocmd FileType rmd if string(g:SendCmdToR) == "function('SendCmdToR_fake')" | call StartR("R") | endif
 vmap <LocalLeader>. <Plug>RDSendSelection
 nmap <LocalLeader>. <Plug>RDSendLine
 " }}}
