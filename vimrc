@@ -1,32 +1,44 @@
 " Nima's Vim Config
+" convenience functions {{{
+
+" required to correctly build YCM plugin
+function! BuildYCM(info)
+  if a:info.status == 'installed' || a:info.force
+    ~/.vim/plugged/YouCompleteMe/install.py
+  endif
+endfunction
+
+" }}}
 " vim-plug + plugins {{{
 call plug#begin()
-Plug 'tpope/vim-sensible'
-Plug 'davidhalter/jedi-vim'
-Plug 'maralla/completor.vim'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'davidhalter/jedi-vim'
+Plug 'ervandew/screen' "Vim only (NOT for Neovim)
+Plug 'godlygeek/tabular'
+Plug 'jalvesaq/Nvim-R'
+Plug 'JuliaLang/julia-vim'
+Plug 'junegunn/vim-easy-align'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
+Plug 'metakirby5/codi.vim'
+Plug 'mhinz/vim-signify'
+Plug 'plasticboy/vim-markdown'
+Plug 'rking/ag.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-sensible'
-Plug 'mhinz/vim-signify'
-Plug 'airblade/vim-gitgutter'
-Plug 'scrooloose/nerdtree'
+Plug 'Valloric/YouCompleteMe', {'do' : '~/.vim/plugged/YouCompleteMe/install.py' }
+"Plug 'Valloric/YouCompleteMe', {'do' : function('BuildYCM') }
+Plug 'vim-syntastic/syntastic'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'rking/ag.vim'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'zenbro/mirror.vim'
-Plug 'metakirby5/codi.vim'
-Plug 'junegunn/vim-easy-align'
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
-Plug 'JuliaLang/julia-vim'
-Plug 'jalvesaq/Nvim-R'
-Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
-Plug 'ervandew/screen'  "used by Vim only (NOT in Neovim init.vim)
 call plug#end()
 " }}}
 " core customizations {{{
@@ -58,20 +70,34 @@ set shell=bash          " Manually set shell to be used to Bash.
 set nocompatible        " Disable backward compatibility with Vi.
 " }}}
 " leaders/re-mappings {{{
+
 " Remap colon operator semicolon for ease of use
 nnoremap ; :
 let mapleader = ","            " The leader is comma
 let maplocalleader = "\\"      " The localleader is double backslash
+
+" }}}
+" colorscheme {{{
+
+" using Solarized colorscheme
+let g:solarized_termcolors=256   "use 'degraded' colors
+set t_Co=256
+set background=dark
+colorscheme solarized
+
 " }}}
 " backups {{{
+
 " Save Vim backup files to a (hidden) tmp directory
 set backup
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set backupskip=/tmp/*,/private/tmp/*
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set writebackup
+
 " }}}
 " searching {{{
+
 " basic searching behavior mods
 set hlsearch            " Highlight search results
 set ignorecase          " Make searching insensitive to case
@@ -82,14 +108,10 @@ set magic               " Use 'magic' patterns (extended regular expressions)
 
 " use The Silver Searcher via ag.vim
 nnoremap <leader>a :Ag
-" }}}
-" colorscheme {{{
-let g:solarized_termcolors=256   "use 'degraded' colors
-set t_Co=256
-set background=dark
-colorscheme solarized
+
 " }}}
 " highlighting {{{
+
 highlight ColorColumn ctermbg=DarkRed guibg=DarkRed
 highlight Comment ctermbg=LightGreen guibg=LightGreen
 highlight Constant cterm=underline gui=underline
@@ -100,45 +122,61 @@ highlight Cursor ctermbg=DarkCyan guibg=DarkCyan
 highlight clear SpellBad
 highlight SpellBad ctermbg=Red guibg=Red
 highlight TermCursor ctermbg=DarkCyan guibg=DarkCyan
+
 " Highlight all tabs and trailing whitespace characters
 highlight ExtraWhitespace ctermbg=DarkMagenta guibg=DarkMagenta
 match ExtraWhitespace /\s\+$\|\t/
+
 " }}}
 " auto-wrapping {{{
+
 au BufRead,BufNewFile *.md setlocal textwidth=80
 au BufRead,BufNewFile *.txt setlocal textwidth=80
 au BufRead,BufNewFile *.tex setlocal textwidth=80
 au BufRead,BufNewFile *.Rmd setlocal textwidth=80
+
 " }}}
 " spellchecking {{{
+
 setlocal spell spelllang=en_us
 set complete+=kspell
 autocmd BufRead,BufNewFile *.md setlocal spell
 autocmd BufRead,BufNewFile *.txt setlocal spell
+
 " }}}
 " CtrlP {{{
+
 let g:ctrlp_match_window = 'bottom,order:ttb'
 let g:ctrlp_switch_buffer = 0
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
 " Open file menu
 nnoremap <leader>o :CtrlP<CR>
+
 " Open buffer menu
 nnoremap <leader>b :CtrlPBuffer<CR>
+
 " Open most recently used files
 nnoremap <leader>f :CtrlPMRUFiles<CR>
+
 " }}}
 " NERDTree {{{
+
 " Open a NERDTree automatically when Vim starts up if no files were specified
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
 " Close Vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
 " stop NERDTree from using fancy arrow characters
 let g:NERDTreeDirArrows=0
+
 " }}}
 " Airline {{{
+
 let g:airline#extensions#tabline#enabled = 2
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#left_sep = ' '
@@ -150,34 +188,46 @@ let g:airline_left_alt_sep = '|'
 let g:airline_right_sep = ' '
 let g:airline_right_alt_sep = '|'
 let g:airline_theme = 'solarized'
+
 " }}}
-" Completor {{{
+" Syntastic {{{
+
+" recommended beginner settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 let g:completor_auto_trigger = 0
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<C-x>\<C-u>\<C-p>"
-if has('mac') || has('macunix')
-  " intended as link to homebrew Python3 on macOS
-  let g:completor_python_binary = 'usr/local/bin/python3'
-else
-  " intended as link to non-system Python3 on Ubuntu Linux
-  let g:completor_python_binary = 'usr/bin/env python'
-endif
+
 " }}}
 " Goyo+Limelight {{{
+
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
+
+" }}}
+" vim-markdown {{{
+
+let g:vim_markdown_folding_disabled = 1 "disable folding
+
+" }}}
+" vim-easy-align {{{
+
+" Interactive EasyAlign in visual mode (e.g., vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Interactive EasyAlign for motion/text (e.g., gaip)
+nmap ga <Plug>(EasyAlign)
+
 " }}}
 " NVim-R {{{
+
 " do NOT autostart R REPL with .R and .Rmd files
 let R_vsplit = 0    "horizontal split for terminal (make 1 for vertical)
 let R_source_args = "echo=TRUE, print.eval=TRUE"
-" }}}
-" vim-markdown {{{
-let g:vim_markdown_folding_disabled = 1   "disable folding
-" }}}
-" vim-easy-align {{{
-" Interactive EasyAlign in visual mode (e.g., vipga)
-xmap ga <Plug>(EasyAlign)
-" Interactive EasyAlign for motion/text (e.g., gaip)
-nmap ga <Plug>(EasyAlign)
+
 " }}}
 " vim:foldmethod=marker:foldlevel=0
