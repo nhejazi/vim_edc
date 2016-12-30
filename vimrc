@@ -1,5 +1,6 @@
 " Nima's Vim Config
 " vim-plug + plugins {{{
+
 call plug#begin()
 Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
@@ -22,15 +23,17 @@ Plug 'tpope/vim-git'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-sensible'
-Plug 'Valloric/YouCompleteMe', {'do' : '~/.vim/plugged/YouCompleteMe/install.py'}
+Plug 'Valloric/YouCompleteMe', {'do' : '~/.vim/plugged/YouCompleteMe/install.py'} "Vim only (NOT for Neovim)
 Plug 'vim-syntastic/syntastic'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'zenbro/mirror.vim'
 call plug#end()
+
 " }}}
 " core customizations {{{
+
 syntax on               " Autostart syntax checking.
 filetype plugin on      " Enable plugins.
 filetype indent on      " Load type-specific indent files.
@@ -57,19 +60,20 @@ set wildmenu            " Visual autocomplete for command menu.
 set encoding=utf-8      " Manually set encoding to be used.
 set shell=bash          " Manually set shell to be used to Bash.
 set nocompatible        " Disable backward compatibility with Vi.
+
 " }}}
 " leaders/re-mappings {{{
 
 " Remap colon operator semicolon for ease of use
 nnoremap ; :
-let mapleader = ","            " The leader is comma
-let maplocalleader = "\\"      " The localleader is double backslash
+let mapleader = "," " The leader is comma
+let maplocalleader = "\\" " The localleader is double backslash
 
 " }}}
 " colorscheme {{{
 
 " using Solarized colorscheme
-let g:solarized_termcolors=256   "use 'degraded' colors
+let g:solarized_termcolors=256 "use 'degraded' colors
 set t_Co=256
 set background=dark
 colorscheme solarized
@@ -160,7 +164,7 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " Close Vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-" stop NERDTree from using fancy arrow characters
+" stop NERDTree from using fancy arrows
 let g:NERDTreeDirArrows=0
 
 " }}}
@@ -189,7 +193,6 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-let g:completor_auto_trigger = 0
 
 " }}}
 " Goyo+Limelight {{{
@@ -215,7 +218,7 @@ nmap ga <Plug>(EasyAlign)
 " NVim-R {{{
 
 " do NOT autostart R REPL with .R and .Rmd files
-let R_vsplit = 0    "horizontal split for terminal (make 1 for vertical)
+let R_vsplit = 0 "horizontal split for terminal (make 1 for vertical)
 let R_source_args = "echo=TRUE, print.eval=TRUE"
 
 " }}}
