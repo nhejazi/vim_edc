@@ -1,14 +1,4 @@
 " Nima's Vim Config
-" convenience functions {{{
-
-" required to correctly build YCM plugin
-function! BuildYCM(info)
-  if a:info.status == 'installed' || a:info.force
-    ~/.vim/plugged/YouCompleteMe/install.py
-  endif
-endfunction
-
-" }}}
 " vim-plug + plugins {{{
 call plug#begin()
 Plug 'airblade/vim-gitgutter'
@@ -32,8 +22,7 @@ Plug 'tpope/vim-git'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-sensible'
-Plug 'Valloric/YouCompleteMe', {'do' : '~/.vim/plugged/YouCompleteMe/install.py' }
-"Plug 'Valloric/YouCompleteMe', {'do' : function('BuildYCM') }
+Plug 'Valloric/YouCompleteMe', {'do' : '~/.vim/plugged/YouCompleteMe/install.py'}
 Plug 'vim-syntastic/syntastic'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
