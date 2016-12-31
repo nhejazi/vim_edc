@@ -4,32 +4,31 @@
 call plug#begin()
 Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
-Plug 'bfredl/nvim-ipy' "Neovim only (NOT for Vim)
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'davidhalter/jedi-vim'
 Plug 'godlygeek/tabular'
 Plug 'jalvesaq/Nvim-R'
-Plug 'JuliaLang/julia-vim'
+Plug 'JuliaEditorSupport/julia-vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
-Plug 'kassio/neoterm' "Neovim only (NOT for Vim)
+Plug 'kassio/neoterm' "Neovim only
 Plug 'metakirby5/codi.vim'
 Plug 'mhinz/vim-signify'
 Plug 'plasticboy/vim-markdown'
 Plug 'rking/ag.vim'
 Plug 'scrooloose/nerdtree'
-Plug 'Shougo/deoplete.nvim' "Neovim only (NOT for Vim)
+Plug 'Shougo/deoplete.nvim', { 'do' : 'UpdateRemotePlugins' } "Neovim only
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-sensible'
-Plug 'vim-syntastic/syntastic'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-syntastic/syntastic'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'zenbro/mirror.vim'
+Plug 'yuttie/comfortable-motion.vim'
 call plug#end()
 
 " }}}
@@ -177,6 +176,29 @@ autocmd BufWinEnter,WinEnter term://* startinsert
 autocmd BufLeave term://* stopinsert
 
 " }}}
+" Neoterm {{{
+
+let g:neoterm_position = 'horizontal' "could also be 'vertical'
+let g:neoterm_automap_keys = ',tt'
+nnoremap <Leader>n :TREPLSendFile<cr>
+nnoremap <Leader>m :TREPLSend<cr>
+vnoremap <Leader>m :TREPLSend<cr>
+
+" run set test lib
+nnoremap <silent> ,rt :call neoterm#test#run('all')<cr>
+nnoremap <silent> ,rf :call neoterm#test#run('file')<cr>
+nnoremap <silent> ,rn :call neoterm#test#run('current')<cr>
+nnoremap <silent> ,rr :call neoterm#test#rerun()<cr>
+
+" useful (re)-maps
+nnoremap <silent> ,th :call neoterm#close()<cr>  "hide/close terminal
+nnoremap <silent> ,tl :call neoterm#clear()<cr>  "clear terminal
+nnoremap <silent> ,tc :call neoterm#kill()<cr>   "kill current job <Ctrl-c>
+
+" Git commands
+command! -nargs=+ Tg :T git <args>
+
+" }}}
 " CtrlP {{{
 
 let g:ctrlp_match_window = 'bottom,order:ttb'
@@ -235,6 +257,11 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 " }}}
+" Deoplete {{{
+
+let g:deoplete#enable_at_startup = 1
+
+" }}}
 " Goyo+Limelight {{{
 
 autocmd! User GoyoEnter Limelight
@@ -255,6 +282,20 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 " }}}
+" comfortable-motion {{{
+
+" default mappings
+nnoremap <silent> <C-d> :call comfortable_motion#flick(100)<CR>
+nnoremap <silent> <C-u> :call comfortable_motion#flick(-100)<CR>
+nnoremap <silent> <C-f> :call comfortable_motion#flick(400)<CR>
+nnoremap <silent> <C-b> :call comfortable_motion#flick(-400)<CR>
+
+" configurable scrolling parameters
+let g:comfortable_motion_interval = 1000.0/60.0
+let g:comfortable_motion_friction = 80.0
+let g:comfortable_motion_air_drag = 2.0
+
+" }}}
 " NVim-R {{{
 
 let R_vsplit = 0 "use horizontal split for terminal (make =1 for vertical)
@@ -267,34 +308,6 @@ autocmd FileType rmd if string(g:SendCmdToR) == "function('SendCmdToR_fake')" | 
 " re-mappings to send code selections to R console
 vmap <LocalLeader>. <Plug>RDSendSelection
 nmap <LocalLeader>. <Plug>RDSendLine
-
-" }}}
-" Neoterm {{{
-
-let g:neoterm_position = 'horizontal' "could also be 'vertical'
-let g:neoterm_automap_keys = ',tt'
-nnoremap <Leader>n :TREPLSendFile<cr>
-nnoremap <Leader>m :TREPLSend<cr>
-vnoremap <Leader>m :TREPLSend<cr>
-
-" run set test lib
-nnoremap <silent> ,rt :call neoterm#test#run('all')<cr>
-nnoremap <silent> ,rf :call neoterm#test#run('file')<cr>
-nnoremap <silent> ,rn :call neoterm#test#run('current')<cr>
-nnoremap <silent> ,rr :call neoterm#test#rerun()<cr>
-
-" useful (re)-maps
-nnoremap <silent> ,th :call neoterm#close()<cr>  "hide/close terminal
-nnoremap <silent> ,tl :call neoterm#clear()<cr>  "clear terminal
-nnoremap <silent> ,tc :call neoterm#kill()<cr>   "kill current job <Ctrl-c>
-
-" Git commands
-command! -nargs=+ Tg :T git <args>
-
-" }}}
-" Deoplete {{{
-
-let g:deoplete#enable_at_startup = 1
 
 " }}}
 " vim:foldmethod=marker:foldlevel=0
