@@ -17,17 +17,18 @@ Plug 'mhinz/vim-signify'
 Plug 'plasticboy/vim-markdown'
 Plug 'rking/ag.vim'
 Plug 'scrooloose/nerdtree'
-Plug 'Shougo/neocomplete.vim' "Vim only (NOT for Neovim)
+Plug 'Shougo/neocomplete.vim' "Vim only
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-sensible'
-"Plug 'Valloric/YouCompleteMe', {'do' : '~/.vim/plugged/YouCompleteMe/install.py'} "Vim only (NOT for Neovim)
+"Plug 'Valloric/YouCompleteMe', {'do' : '~/.vim/plugged/YouCompleteMe/install.py'} "Vim only
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-syntastic/syntastic'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'yuttie/comfortable-motion.vim'
 call plug#end()
 
 " }}}
@@ -248,6 +249,20 @@ xmap ga <Plug>(EasyAlign)
 
 " Interactive EasyAlign for motion/text (e.g., gaip)
 nmap ga <Plug>(EasyAlign)
+
+" }}}
+" comfortable-motion {{{
+
+" default mappings
+nnoremap <silent> <C-d> :call comfortable_motion#flick(100)<CR>
+nnoremap <silent> <C-u> :call comfortable_motion#flick(-100)<CR>
+nnoremap <silent> <C-f> :call comfortable_motion#flick(400)<CR>
+nnoremap <silent> <C-b> :call comfortable_motion#flick(-400)<CR>
+
+" configurable scrolling parameters
+let g:comfortable_motion_interval = 1000.0/60.0
+let g:comfortable_motion_friction = 80.0
+let g:comfortable_motion_air_drag = 2.0
 
 " }}}
 " NVim-R {{{
