@@ -18,7 +18,7 @@ Plug 'mhinz/vim-signify'
 Plug 'plasticboy/vim-markdown'
 Plug 'rking/ag.vim'
 Plug 'scrooloose/nerdtree'
-Plug 'Shougo/deoplete.nvim', { 'do' : 'UpdateRemotePlugins' } "Neovim only
+Plug 'Shougo/deoplete.nvim', { 'do' : ':UpdateRemotePlugins' } "Neovim only
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-fugitive'
