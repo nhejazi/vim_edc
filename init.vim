@@ -62,12 +62,12 @@ set shell=bash          " Manually set shell to be used to Bash.
 set nocompatible        " Disable backward compatibility with Vi.
 
 " }}}
-" leaders/re-mappings {{{
+" leaders and re-mappings {{{
 
 " Remap colon operator semicolon for ease of use
 nnoremap ; :
-let mapleader="," " The leader is comma
-let maplocalleader = "\\" " The localleader is double backslash
+let mapleader="," " The leader is the comma
+let maplocalleader = "'" " The local leader is the apostrophe
 
 " }}}
 " colorscheme {{{
@@ -176,7 +176,7 @@ autocmd BufWinEnter,WinEnter term://* startinsert
 autocmd BufLeave term://* stopinsert
 
 " }}}
-" Neoterm {{{
+" plug-in: Neoterm {{{
 
 let g:neoterm_position = 'horizontal' "could also be 'vertical'
 let g:neoterm_automap_keys = ',tt'
@@ -199,7 +199,7 @@ nnoremap <silent> ,tc :call neoterm#kill()<cr>   "kill current job <Ctrl-c>
 command! -nargs=+ Tg :T git <args>
 
 " }}}
-" CtrlP {{{
+" plug-in: CtrlP {{{
 
 let g:ctrlp_match_window = 'bottom,order:ttb'
 let g:ctrlp_switch_buffer = 0
@@ -217,7 +217,7 @@ nnoremap <Leader>b :CtrlPBuffer<CR>
 nnoremap <Leader>f :CtrlPMRUFiles<CR>
 
 " }}}
-" NERDTree {{{
+" plug-in: NERDTree {{{
 
 " Open a NERDTree automatically when Vim starts up if no files were specified
 autocmd StdinReadPre * let s:std_in=1
@@ -230,7 +230,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 let g:NERDTreeDirArrows=0
 
 " }}}
-" Airline {{{
+" plug-in: Airline {{{
 
 let g:airline#extensions#tabline#enabled = 2
 let g:airline#extensions#tabline#fnamemod = ':t'
@@ -245,7 +245,7 @@ let g:airline_right_alt_sep = '|'
 let g:airline_theme = 'solarized'
 
 " }}}
-" Syntastic {{{
+" plug-in: Syntastic {{{
 
 " recommended beginner settings
 set statusline+=%#warningmsg#
@@ -257,23 +257,23 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 " }}}
-" Deoplete {{{
+" plug-in: Deoplete {{{
 
 let g:deoplete#enable_at_startup = 1
 
 " }}}
-" Goyo+Limelight {{{
+" plug-in: Goyo and Limelight {{{
 
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
 
 " }}}
-" vim-markdown {{{
+" plug-in: vim-markdown {{{
 
 let g:vim_markdown_folding_disabled = 1
 
 " }}}
-" vim-easy-align {{{
+" plug-in: vim-easy-align {{{
 
 " Interactive EasyAlign in visual mode (e.g., vipga)
 xmap ga <Plug>(EasyAlign)
@@ -282,7 +282,7 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 " }}}
-" comfortable-motion {{{
+" plug-in: comfortable-motion {{{
 
 " default mappings
 nnoremap <silent> <C-d> :call comfortable_motion#flick(100)<CR>
@@ -296,7 +296,7 @@ let g:comfortable_motion_friction = 80.0
 let g:comfortable_motion_air_drag = 2.0
 
 " }}}
-" NVim-R {{{
+" plug-in: NVim-R {{{
 
 let R_vsplit = 0 "use horizontal split for terminal (make =1 for vertical)
 let R_source_args = "echo=TRUE, print.eval=TRUE"
