@@ -62,12 +62,12 @@ set shell=bash          " Manually set shell to be used to Bash.
 set nocompatible        " Disable backward compatibility with Vi.
 
 " }}}
-" leaders/re-mappings {{{
+" leaders and re-mappings {{{
 
 " Remap colon operator semicolon for ease of use
 nnoremap ; :
-let mapleader = "," " The leader is comma
-let maplocalleader = "\\" " The localleader is double backslash
+let mapleader = "," " The leader is the comma
+let maplocalleader = "'" " The local leader is the apostrophe
 
 " }}}
 " colorscheme {{{
@@ -137,7 +137,7 @@ autocmd BufRead,BufNewFile *.md setlocal spell
 autocmd BufRead,BufNewFile *.txt setlocal spell
 
 " }}}
-" CtrlP {{{
+" plug-in: CtrlP {{{
 
 let g:ctrlp_match_window = 'bottom,order:ttb'
 let g:ctrlp_switch_buffer = 0
@@ -155,7 +155,7 @@ nnoremap <leader>b :CtrlPBuffer<CR>
 nnoremap <leader>f :CtrlPMRUFiles<CR>
 
 " }}}
-" NERDTree {{{
+" plug-in: NERDTree {{{
 
 " Open a NERDTree automatically when Vim starts up if no files were specified
 autocmd StdinReadPre * let s:std_in=1
@@ -168,7 +168,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 let g:NERDTreeDirArrows=0
 
 " }}}
-" Airline {{{
+" plug-in: Airline {{{
 
 let g:airline#extensions#tabline#enabled = 2
 let g:airline#extensions#tabline#fnamemod = ':t'
@@ -183,7 +183,7 @@ let g:airline_right_alt_sep = '|'
 let g:airline_theme = 'solarized'
 
 " }}}
-" Syntastic {{{
+" plug-in: Syntastic {{{
 
 " recommended beginner settings
 set statusline+=%#warningmsg#
@@ -195,7 +195,7 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 " }}}
-" Neocomplete {{{
+" plug-in: Neocomplete {{{
 
 " Disable AutoComplPop.
 let g:acp_enableAtStartup = 0
@@ -231,18 +231,18 @@ autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 " }}}
-" Goyo+Limelight {{{
+" plug-in: Goyo and Limelight {{{
 
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
 
 " }}}
-" vim-markdown {{{
+" plug-in: vim-markdown {{{
 
 let g:vim_markdown_folding_disabled = 1 "disable folding
 
 " }}}
-" vim-easy-align {{{
+" plug-in: vim-easy-align {{{
 
 " Interactive EasyAlign in visual mode (e.g., vipga)
 xmap ga <Plug>(EasyAlign)
@@ -251,7 +251,7 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 " }}}
-" comfortable-motion {{{
+" plug-in: comfortable-motion {{{
 
 " default mappings
 nnoremap <silent> <C-d> :call comfortable_motion#flick(100)<CR>
@@ -265,11 +265,15 @@ let g:comfortable_motion_friction = 80.0
 let g:comfortable_motion_air_drag = 2.0
 
 " }}}
-" NVim-R {{{
+" plug-in: NVim-R {{{
 
 " do NOT autostart R REPL with .R and .Rmd files
 let R_vsplit = 0 "horizontal split for terminal (make 1 for vertical)
 let R_source_args = "echo=TRUE, print.eval=TRUE"
+
+" re-mappings to send code selections to R console
+vmap <LocalLeader>. <Plug>RDSendSelection
+nmap <LocalLeader>. <Plug>RDSendLine
 
 " }}}
 " vim:foldmethod=marker:foldlevel=0
