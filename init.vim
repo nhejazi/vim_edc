@@ -4,10 +4,12 @@
 call plug#begin()
 Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
+Plug 'chrisbra/csv.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'davidhalter/jedi-vim'
 Plug 'godlygeek/tabular'
 Plug 'jalvesaq/Nvim-R'
+Plug 'jnurmine/Zenburn'
 Plug 'JuliaEditorSupport/julia-vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/goyo.vim'
@@ -19,6 +21,7 @@ Plug 'plasticboy/vim-markdown'
 Plug 'rking/ag.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'Shougo/deoplete.nvim', { 'do' : ':UpdateRemotePlugins' } "Neovim only
+Plug 'sjl/gundo.vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-fugitive'
@@ -59,10 +62,11 @@ set colorcolumn=80      " Set colored bar for 80-column rule.
 set wildmenu            " Visual autocomplete for command menu.
 set encoding=utf-8      " Manually set encoding to be used.
 set shell=bash          " Manually set shell to be used to Bash.
+set clipboard=unnamed   " Use system clipboard over Vim clipboard.
 set nocompatible        " Disable backward compatibility with Vi.
 
 " }}}
-" leaders and re-mappings {{{
+" leader mappings {{{
 
 " Remap colon operator semicolon for ease of use
 nnoremap ; :
@@ -70,13 +74,17 @@ let mapleader="," " The leader is the comma
 let maplocalleader = "'" " The local leader is the apostrophe
 
 " }}}
-" colorscheme {{{
+" colorschemes {{{
 
-" using Solarized colorscheme
-let g:solarized_termcolors=256 "use  'degraded' colors
-set t_Co=256
-set background=dark
-colorscheme solarized
+" Solarized in GUI, Zenburn when not
+if has('gui_running')
+  let g:solarized_termcolors=256
+  set t_Co=256
+  set background=dark
+  colorscheme solarized
+else
+  colorscheme zenburn
+endif
 
 " }}}
 " backups {{{
@@ -106,6 +114,15 @@ endif
 
 " Use the Silver Searcher via ag.vim
 nnoremap <Leader>a :Ag
+
+" }}}
+" navigation {{{
+
+" standard split re-mappings
+nnoremap <C-h> <C-w><C-h>
+nnoremap <C-j> <C-w><C-j>
+nnoremap <C-k> <C-w><C-k>
+nnoremap <C-l> <C-w><C-l>
 
 " }}}
 " highlighting {{{
@@ -165,10 +182,6 @@ tnoremap <C-h> <C-\><C-n><C-w><C-h>
 tnoremap <C-j> <C-\><C-n><C-w><C-j>
 tnoremap <C-k> <C-\><C-n><C-w><C-k>
 tnoremap <C-l> <C-\><C-n><C-w><C-l>
-nnoremap <C-h> <C-w><C-h>
-nnoremap <C-j> <C-w><C-j>
-nnoremap <C-k> <C-w><C-k>
-nnoremap <C-l> <C-w><C-l>
 
 " Automatically enter Insert when buffer is a terminal (and Normal when not)
 "au BufEnter * if &buftype == 'terminal' | :startinsert | endif
@@ -234,15 +247,7 @@ let g:NERDTreeDirArrows=0
 
 let g:airline#extensions#tabline#enabled = 2
 let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline#extensions#tabline#right_sep = ' '
-let g:airline#extensions#tabline#right_alt_sep = '|'
-let g:airline_left_sep = ' '
-let g:airline_left_alt_sep = '|'
-let g:airline_right_sep = ' '
-let g:airline_right_alt_sep = '|'
-let g:airline_theme = 'solarized'
+let g:airline_theme = 'murmur'
 
 " }}}
 " plug-in: Syntastic {{{
@@ -262,12 +267,6 @@ let g:syntastic_check_on_wq = 0
 let g:deoplete#enable_at_startup = 1
 
 " }}}
-" plug-in: Goyo and Limelight {{{
-
-autocmd! User GoyoEnter Limelight
-autocmd! User GoyoLeave Limelight!
-
-" }}}
 " plug-in: vim-markdown {{{
 
 let g:vim_markdown_folding_disabled = 1
@@ -280,6 +279,12 @@ xmap ga <Plug>(EasyAlign)
 
 " Interactive EasyAlign for motion/text (e.g., gaip)
 nmap ga <Plug>(EasyAlign)
+
+" }}}
+" plug-in: Goyo + Limelight {{{
+
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
 
 " }}}
 " plug-in: comfortable-motion {{{

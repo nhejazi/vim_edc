@@ -1,6 +1,4 @@
-# myNeovimConfig
-
-[![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
+# myNeovimConfig [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 
 > Setup, package manager, and various plug-ins for my configuration of the
 > [Neovim](https://neovim.io/) editor.
@@ -36,13 +34,13 @@ provided in the `README.md` of that project.
   have only encountered this issue when running macOS; various workarounds have
   been proposed [here](https://github.com/neovim/neovim/issues/2048).
   __Update:__ This issue has been resolved (for the `init.vim` script in this
-  repo) by a fix implemented 15 May 2016.
+  repo) as of 15 May 2016.
 
 ---
 
 ## License
 
-&copy; 2016 [Nima Hejazi](http://nimahejazi.org)
+&copy; 2016-2017 [Nima Hejazi](http://nimahejazi.org)
 
 The contents of this repository are distributed under the MIT license. See file
 `LICENSE` for details.
