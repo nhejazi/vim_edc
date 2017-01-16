@@ -275,11 +275,12 @@ let g:comfortable_motion_air_drag = 2.0
 " }}}
 " plug-in: NVim-R {{{
 
-" do NOT autostart R REPL with .R and .Rmd files
 let R_vsplit = 0 "horizontal split for terminal (make 1 for vertical)
 let R_source_args = "echo=TRUE, print.eval=TRUE"
 
-"
+" auto-start R REPL with  .R and .Rmd files
+autocmd FileType r if string(g:SendCmdToR) == "function('SendCmdToR_fake')" | call StartR("R") | endif
+autocmd FileType rmd if string(g:SendCmdToR) == "function('SendCmdToR_fake')" | call StartR("R") | endif
 
 " re-mappings to send code selections to R console
 vmap <LocalLeader>. <Plug>RDSendSelection
