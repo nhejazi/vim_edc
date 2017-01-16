@@ -4,10 +4,12 @@
 call plug#begin()
 Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
+Plug 'chrisbra/csv.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'davidhalter/jedi-vim'
 Plug 'godlygeek/tabular'
 Plug 'jalvesaq/Nvim-R'
+Plug 'jnurmine/Zenburn'
 Plug 'JuliaEditorSupport/julia-vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/goyo.vim'
@@ -18,12 +20,12 @@ Plug 'plasticboy/vim-markdown'
 Plug 'rking/ag.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'Shougo/neocomplete.vim' "Vim only
+Plug 'sjl/gundo.vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-sensible'
-"Plug 'Valloric/YouCompleteMe', {'do' : '~/.vim/plugged/YouCompleteMe/install.py'} "Vim only
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-syntastic/syntastic'
@@ -59,10 +61,11 @@ set colorcolumn=80      " Set colored bar for 80-column rule.
 set wildmenu            " Visual autocomplete for command menu.
 set encoding=utf-8      " Manually set encoding to be used.
 set shell=bash          " Manually set shell to be used to Bash.
+set clipboard=unnamed   " Use system clipboard over Vim clipboard.
 set nocompatible        " Disable backward compatibility with Vi.
 
 " }}}
-" leaders and re-mappings {{{
+" leader mappings {{{
 
 " Remap colon operator semicolon for ease of use
 nnoremap ; :
@@ -70,13 +73,17 @@ let mapleader = "," " The leader is the comma
 let maplocalleader = "'" " The local leader is the apostrophe
 
 " }}}
-" colorscheme {{{
+" colorschemes {{{
 
-" using Solarized colorscheme
-let g:solarized_termcolors=256 "use 'degraded' colors
-set t_Co=256
-set background=dark
-colorscheme solarized
+" Solarized in GUI, Zenburn when not
+if has('gui_running')
+  let g:solarized_termcolors=256
+  set t_Co=256
+  set background=dark
+  colorscheme solarized
+else
+  colorscheme zenburn
+endif
 
 " }}}
 " backups {{{
@@ -101,6 +108,15 @@ set magic               " Use 'magic' patterns (extended regular expressions)
 
 " use The Silver Searcher via ag.vim
 nnoremap <leader>a :Ag
+
+" }}}
+" navigation {{{
+
+" standard split re-mappings
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
 " }}}
 " highlighting {{{
@@ -172,15 +188,7 @@ let g:NERDTreeDirArrows=0
 
 let g:airline#extensions#tabline#enabled = 2
 let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline#extensions#tabline#right_sep = ' '
-let g:airline#extensions#tabline#right_alt_sep = '|'
-let g:airline_left_sep = ' '
-let g:airline_left_alt_sep = '|'
-let g:airline_right_sep = ' '
-let g:airline_right_alt_sep = '|'
-let g:airline_theme = 'solarized'
+let g:airline_theme = 'murmur'
 
 " }}}
 " plug-in: Syntastic {{{
@@ -231,12 +239,6 @@ autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 " }}}
-" plug-in: Goyo and Limelight {{{
-
-autocmd! User GoyoEnter Limelight
-autocmd! User GoyoLeave Limelight!
-
-" }}}
 " plug-in: vim-markdown {{{
 
 let g:vim_markdown_folding_disabled = 1 "disable folding
@@ -249,6 +251,12 @@ xmap ga <Plug>(EasyAlign)
 
 " Interactive EasyAlign for motion/text (e.g., gaip)
 nmap ga <Plug>(EasyAlign)
+
+" }}}
+" plug-in: Goyo + Limelight {{{
+
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
 
 " }}}
 " plug-in: comfortable-motion {{{
@@ -270,6 +278,8 @@ let g:comfortable_motion_air_drag = 2.0
 " do NOT autostart R REPL with .R and .Rmd files
 let R_vsplit = 0 "horizontal split for terminal (make 1 for vertical)
 let R_source_args = "echo=TRUE, print.eval=TRUE"
+
+"
 
 " re-mappings to send code selections to R console
 vmap <LocalLeader>. <Plug>RDSendSelection
