@@ -83,6 +83,7 @@ if has('gui_running')
   set background=dark
   colorscheme solarized
 else
+  set t_Co=256
   colorscheme zenburn
 endif
 
