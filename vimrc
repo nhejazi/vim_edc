@@ -17,12 +17,11 @@ Plug 'junegunn/limelight.vim'
 Plug 'metakirby5/codi.vim'
 Plug 'mhinz/vim-signify'
 Plug 'plasticboy/vim-markdown'
-Plug 'rking/ag.vim'
+Plug 'mileszs/ack.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'Shougo/neocomplete.vim' "Vim only
 Plug 'sjl/gundo.vim'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'tpope/vim-git'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-sensible'
@@ -107,8 +106,10 @@ set incsearch           " Search incrementally
 set gdefault            " Use 'g' flag by default with :s/foo/bar/
 set magic               " Use 'magic' patterns (extended regular expressions)
 
-" use The Silver Searcher via ag.vim
-nnoremap <leader>a :Ag
+" use The Silver Searcher via ack.vim backend
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
 
 " }}}
 " navigation {{{
