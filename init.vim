@@ -18,12 +18,11 @@ Plug 'kassio/neoterm' "Neovim only
 Plug 'metakirby5/codi.vim'
 Plug 'mhinz/vim-signify'
 Plug 'plasticboy/vim-markdown'
-Plug 'rking/ag.vim'
+Plug 'mileszs/ack.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'Shougo/deoplete.nvim', { 'do' : ':UpdateRemotePlugins' } "Neovim only
 Plug 'sjl/gundo.vim'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'tpope/vim-git'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-sensible'
@@ -113,8 +112,10 @@ if maparg('<C-L>', 'n') ==# ''
   nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
 endif
 
-" Use the Silver Searcher via ag.vim
-nnoremap <Leader>a :Ag
+" use The Silver Searcher via ack.vim backend
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
 
 " }}}
 " navigation {{{
