@@ -28,7 +28,7 @@ provided in the `README.md` of that project.
 
 ---
 
-## Plugins
+## Plug-ins
 
 _Here is a list of plug-ins currently integrated into this configuration:_
 
@@ -36,8 +36,8 @@ _Here is a list of plug-ins currently integrated into this configuration:_
 * [`ale`](https://github.com/w0rp/ale)
 * [`codi.vim`](https://github.com/metakirby5/codi.vim)
 * [`comfortable-motion.vim`](https://github.com/yuttie/comfortable-motion.vim)
-* [`ctrlp.vim`](https://github.com/ctrlpvim/ctrlp.vim)
 * [`csv.vim`](https://github.com/chrisbra/csv.vim)
+* [`ctrlp.vim`](https://github.com/ctrlpvim/ctrlp.vim)
 * [`goyo.vim`](https://github.com/junegunn/goyo.vim)
 * [`gundo.vim`](https://github.com/sjl/gundo.vim)
 * [`indentLine`](https://github.com/Yggdroot/indentLine)
@@ -49,7 +49,6 @@ _Here is a list of plug-ins currently integrated into this configuration:_
 * [`NERDTree`](https://github.com/scrooloose/nerdtree)
 * [`Nvim-R`](https://github.com/jalvesaq/Nvim-R)
 * [`syntastic`](https://github.com/vim-syntastic/syntastic)
-* [`vim-multiple-cursors`](https://github.com/terryma/vim-multiple-cursors)
 * [`vim-airline`](https://github.com/vim-airline/vim-airline)
 * [`vim-airline-themes`](https://github.com/vim-airline/vim-airline-themes)
 * [`vim-autoformat`](https://github.com/Chiel92/vim-autoformat)
@@ -57,6 +56,7 @@ _Here is a list of plug-ins currently integrated into this configuration:_
 * [`vim-fugitive`](https://github.com/tpope/vim-fugitive)
 * [`vim-gitgutter`](https://github.com/airblade/vim-gitgutter)
 * [`vim-markdown`](https://github.com/plasticboy/vim-markdown)
+* [`vim-multiple-cursors`](https://github.com/terryma/vim-multiple-cursors)
 * [`vim-sensible`](https://github.com/tpope/vim-sensible)
 * [`vim-signify`](https://github.com/mhinz/vim-signify)
 * [`vim-sleuth`](https://github.com/tpope/vim-sleuth)
