@@ -4,21 +4,22 @@
 call plug#begin()
 Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
+Plug 'Chiel92/vim-autoformat'
 Plug 'chrisbra/csv.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'davidhalter/jedi-vim'
-Plug 'godlygeek/tabular'
 Plug 'jalvesaq/Nvim-R'
 Plug 'jnurmine/Zenburn'
 Plug 'JuliaEditorSupport/julia-vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
-Plug 'kassio/neoterm' "Neovim only
 Plug 'metakirby5/codi.vim'
 Plug 'mhinz/vim-signify'
+Plug 'neomake/neomake'
 Plug 'plasticboy/vim-markdown'
 Plug 'mileszs/ack.vim'
+Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'Shougo/deoplete.nvim', { 'do' : ':UpdateRemotePlugins' } "Neovim only
 Plug 'sjl/gundo.vim'
@@ -29,7 +30,8 @@ Plug 'tpope/vim-sensible'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-syntastic/syntastic'
-Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'w0rp/ale'
+Plug 'Yggdroot/indentLine'
 Plug 'yuttie/comfortable-motion.vim'
 call plug#end()
 
@@ -267,6 +269,11 @@ let g:syntastic_check_on_wq = 0
 " plug-in: Deoplete {{{
 
 let g:deoplete#enable_at_startup = 1
+
+" }}}
+" plug-in: vim-autoformat {{{
+
+let g:formatter_yapf_style = 'pep8'
 
 " }}}
 " plug-in: vim-markdown {{{
