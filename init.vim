@@ -32,7 +32,9 @@ Plug 'plasticboy/vim-markdown'
 Plug 'mileszs/ack.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
-Plug 'Shougo/deoplete.nvim', has('nvim') ? {} : {'do' : ':UpdateRemotePlugins'}
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', {'do' : ':UpdateRemotePlugins'}
+endif
 Plug 'sjl/gundo.vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-fugitive'
