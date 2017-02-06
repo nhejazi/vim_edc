@@ -1,13 +1,24 @@
 " Nima's Neovim Config
-" vim-plug + plugins {{{
+" auto-install vim-plug {{{
+
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+   \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+" }}}
+" vim-plug + plug-ins {{{
 
 call plug#begin()
 Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
 Plug 'Chiel92/vim-autoformat'
 Plug 'chrisbra/csv.vim'
+Plug 'christoomey/vim-tmux-navigator', !has('nvim') ? {} : {'on' : []}
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'davidhalter/jedi-vim'
+Plug 'ervandew/supertab'
 Plug 'jalvesaq/Nvim-R'
 Plug 'jnurmine/Zenburn'
 Plug 'JuliaEditorSupport/julia-vim'
@@ -21,7 +32,7 @@ Plug 'plasticboy/vim-markdown'
 Plug 'mileszs/ack.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
-Plug 'Shougo/deoplete.nvim', { 'do' : ':UpdateRemotePlugins' } "Neovim only
+Plug 'Shougo/deoplete.nvim', has('nvim') ? {} : {'do' : ':UpdateRemotePlugins'}
 Plug 'sjl/gundo.vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-fugitive'
@@ -295,6 +306,30 @@ nmap ga <Plug>(EasyAlign)
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
 
+" Color name (:help cterm-colors) or ANSI code
+let g:limelight_conceal_ctermfg = 'gray'
+let g:limelight_conceal_ctermfg = 240
+
+" Color name (:help gui-colors) or RGB color
+let g:limelight_conceal_guifg = 'DarkGray'
+let g:limelight_conceal_guifg = '#777777'
+
+" Default: 0.5
+let g:limelight_default_coefficient = 0.7
+
+" Number of preceding/following paragraphs to include (default: 0)
+let g:limelight_paragraph_span = 1
+
+" Beginning/end of paragraph
+"   When there's no empty line between the paragraphs
+"   and each paragraph starts with indentation
+let g:limelight_bop = '^\s'
+let g:limelight_eop = '\ze\n^\s'
+
+" Highlighting priority (default: 10)
+"   Set it to -1 not to overrule hlsearch
+let g:limelight_priority = -1
+
 " }}}
 " plug-in: comfortable-motion {{{
 
@@ -315,9 +350,11 @@ let g:comfortable_motion_air_drag = 2.0
 let R_vsplit = 0 "use horizontal split for terminal (make =1 for vertical)
 let R_source_args = "echo=TRUE, print.eval=TRUE"
 
-" auto-start R REPL with  .R and .Rmd files
-autocmd FileType r if string(g:SendCmdToR) == "function('SendCmdToR_fake')" | call StartR("R") | endif
-autocmd FileType rmd if string(g:SendCmdToR) == "function('SendCmdToR_fake')" | call StartR("R") | endif
+" auto-start R REPL with  .R and .Rmd files only with Neovim
+if has('nvim')
+  autocmd FileType r if string(g:SendCmdToR) == "function('SendCmdToR_fake')" | call StartR("R") | endif
+  autocmd FileType rmd if string(g:SendCmdToR) == "function('SendCmdToR_fake')" | call StartR("R") | endif
+endif
 
 " re-mappings to send code selections to R console
 vmap <LocalLeader>. <Plug>RDSendSelection

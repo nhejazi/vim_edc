@@ -13,7 +13,7 @@ _Caveat emptor_ - using this configuration can be unintuitive at first
 - To clone the configuration in this repo:
   ```bash
   git clone https://github.com/nhejazi/myneovimconfig.git ~/.config/nvim
-  sh ~/.config/nvim/_setup.sh
+  sh ~/.config/nvim/_setupNeovim.sh
   ```
 
 - To __install plugins__ with the
@@ -43,12 +43,12 @@ provided in the `README.md` of that project.
 _Here is a list of plug-ins currently integrated into this configuration:_
 
 * [`ack.vim`](https://github.com/mileszs/ack.vim)
-* [`ale`](https://github.com/w0rp/ale)
+* [`ale`](https://github.com/w0rp/ale) (with Vim 8.0+)
 * [`codi.vim`](https://github.com/metakirby5/codi.vim)
 * [`comfortable-motion.vim`](https://github.com/yuttie/comfortable-motion.vim)
 * [`csv.vim`](https://github.com/chrisbra/csv.vim)
 * [`ctrlp.vim`](https://github.com/ctrlpvim/ctrlp.vim)
-* [`deoplete.nvim`](https://github.com/Shougo/deoplete.nvim)
+* [`deoplete.nvim`](https://github.com/Shougo/deoplete.nvim) (Neovim only)
 * [`goyo.vim`](https://github.com/junegunn/goyo.vim)
 * [`gundo.vim`](https://github.com/sjl/gundo.vim)
 * [`indentLine`](https://github.com/Yggdroot/indentLine)
@@ -59,6 +59,7 @@ _Here is a list of plug-ins currently integrated into this configuration:_
 * [`nerdcommenter`](https://github.com/scrooloose/nerdcommenter)
 * [`NERDTree`](https://github.com/scrooloose/nerdtree)
 * [`Nvim-R`](https://github.com/jalvesaq/Nvim-R)
+* [`supertab`](https://github.com/ervandew/supertab)
 * [`syntastic`](https://github.com/vim-syntastic/syntastic)
 * [`vim-airline`](https://github.com/vim-airline/vim-airline)
 * [`vim-airline-themes`](https://github.com/vim-airline/vim-airline-themes)
@@ -71,6 +72,8 @@ _Here is a list of plug-ins currently integrated into this configuration:_
 * [`vim-sensible`](https://github.com/tpope/vim-sensible)
 * [`vim-signify`](https://github.com/mhinz/vim-signify)
 * [`vim-sleuth`](https://github.com/tpope/vim-sleuth)
+* [`vim-tmux-navigator`](https://github.com/christoomey/vim-tmux-navigator)
+    (Vim only)
 
 ---
 
