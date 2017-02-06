@@ -32,7 +32,9 @@ Plug 'plasticboy/vim-markdown'
 Plug 'mileszs/ack.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
-Plug 'Shougo/deoplete.nvim', has('nvim') ? {} : {'do' : ':UpdateRemotePlugins'}
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', {'do' : ':UpdateRemotePlugins'}
+endif
 Plug 'sjl/gundo.vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-fugitive'
@@ -41,7 +43,7 @@ Plug 'tpope/vim-sensible'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-syntastic/syntastic'
-if v:version > 800
+if v:version >= 800
   Plug 'w0rp/ale'
 endif
 Plug 'Yggdroot/indentLine'
