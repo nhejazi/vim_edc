@@ -27,9 +27,10 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'metakirby5/codi.vim'
 Plug 'mhinz/vim-signify'
+Plug 'mileszs/ack.vim'
 Plug 'neomake/neomake'
 Plug 'plasticboy/vim-markdown'
-Plug 'mileszs/ack.vim'
+Plug 'reedes/vim-wordy'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 if has('nvim')
@@ -292,6 +293,7 @@ let g:formatter_yapf_style = 'pep8'
 " plug-in: vim-markdown {{{
 
 let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_conceal = 0
 
 " }}}
 " plug-in: vim-easy-align {{{
