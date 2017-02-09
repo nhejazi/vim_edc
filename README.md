@@ -74,7 +74,7 @@ _Here is a list of plug-ins currently integrated into this configuration:_
 * [`vim-sleuth`](https://github.com/tpope/vim-sleuth)
 * [`vim-tmux-navigator`](https://github.com/christoomey/vim-tmux-navigator)
     (Vim only)
-* [`vim-wordy`](https://github.com/reeves/vim-wordy)
+* [`vim-wordy`](https://github.com/reedes/vim-wordy)
 
 ---
 
