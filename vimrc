@@ -27,9 +27,10 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'metakirby5/codi.vim'
 Plug 'mhinz/vim-signify'
+Plug 'mileszs/ack.vim'
 Plug 'neomake/neomake'
 Plug 'plasticboy/vim-markdown'
-Plug 'mileszs/ack.vim'
+Plug 'reedes/vim-wordy'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 if has('nvim')
@@ -122,7 +123,7 @@ set ignorecase          " Make searching insensitive to case
 set smartcase           " ...unless query has capital letters
 set incsearch           " Search incrementally
 set gdefault            " Use 'g' flag by default with :s/foo/bar/
-set magic               " Use 'magic' patterns (extended regular expressions)
+set magic               " Use 'magic' patterns (extended RegEx)
 
 " use The Silver Searcher via ack.vim backend
 if executable('ag')
@@ -231,6 +232,7 @@ let g:formatter_yapf_style = 'pep8'
 " plug-in: vim-markdown {{{
 
 let g:vim_markdown_folding_disabled = 1 "disable folding
+let g:vim_markdown_conceal = 0 "do NOT hide/conceal syntax
 
 " }}}
 " plug-in: vim-easy-align {{{
