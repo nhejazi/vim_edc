@@ -7,9 +7,11 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+" ALE and syntastic plugins conflict
+let g:ale_emit_conflict_warnings = 0
+
 " }}}
 " vim-plug + plugins {{{
-
 call plug#begin()
 Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
@@ -81,6 +83,7 @@ set encoding=utf-8      " Manually set encoding to be used.
 set shell=bash          " Manually set shell to be used to Bash.
 set clipboard=unnamed   " Use system clipboard over Vim clipboard.
 set nocompatible        " Disable backward compatibility with Vi.
+let g:tex_conceal = ""  " Disable syntax concealing for LaTeX.
 
 " }}}
 " leader mappings {{{
