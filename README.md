@@ -6,6 +6,9 @@
 _Caveat emptor_ - using this configuration can be unintuitive at first
 (especially for those new to Vim/Neovim).
 
+You might also want to check out my nearly equivalent [configuration for the
+Vim editor](https://github.com/nhejazi/myvimconfig).
+
 ---
 
 ## _Directions_
