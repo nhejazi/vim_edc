@@ -351,7 +351,6 @@ let g:comfortable_motion_air_drag = 2.0
 " }}}
 " plug-in: NVim-R {{{
 
-let R_vsplit = 0 "use horizontal split for terminal (make =1 for vertical)
 let R_source_args = "echo=TRUE, print.eval=TRUE"
 
 " auto-start R REPL with  .R and .Rmd files only with Neovim
