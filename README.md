@@ -1,4 +1,4 @@
-# Vim.for.life. [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
+# Vim - for life. [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 
 > Setup, package manager, and various plug-ins for my configuration of the
 > [Vim](http://www.vim.org/index.php) and [Neovim](https://neovim.io/) editors.
@@ -12,13 +12,13 @@ _Caveat emptor_ - using this configuration can be unintuitive at first
 
 * For use with _Vim_, clone the configuration in this repo using the following:
   ```bash
-  git clone https://github.com/nhejazi/myvimconfig.git ~/.vim
+  git clone https://github.com/nhejazi/vimForLife.git ~/.vim
   sh ~/.vim/_setupVim.sh
   ```
 
 - For use with _Neovim_, instead clone the configuration in this repo like so:
   ```bash
-  git clone https://github.com/nhejazi/myneovimconfig.git ~/.config/nvim
+  git clone https://github.com/nhejazi/vimForLife.git ~/.config/nvim
   sh ~/.config/nvim/_setupNeovim.sh
   ```
 
