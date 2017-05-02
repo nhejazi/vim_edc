@@ -1,19 +1,22 @@
 # myNeovimConfig [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 
 > Setup, package manager, and various plug-ins for my configuration of the
-> [Neovim](https://neovim.io/) editor.
+> [Vim](http://www.vim.org/index.php) and [Neovim](https://neovim.io/) editors.
 
 _Caveat emptor_ - using this configuration can be unintuitive at first
-(especially for those new to Vim/Neovim).
-
-You might also want to check out my nearly equivalent [configuration for the
-Vim editor](https://github.com/nhejazi/myvimconfig).
+(especially for those new to Vim and/or Neovim).
 
 ---
 
 ## _Directions_
 
-- To clone the configuration in this repo:
+* For use with _Vim_, clone the configuration in this repo using the following:
+  ```bash
+  git clone https://github.com/nhejazi/myvimconfig.git ~/.vim
+  sh ~/.vim/_setupVim.sh
+  ```
+
+- For use with _Neovim_, instead clone the configuration in this repo like so:
   ```bash
   git clone https://github.com/nhejazi/myneovimconfig.git ~/.config/nvim
   sh ~/.config/nvim/_setupNeovim.sh
@@ -25,6 +28,7 @@ provided in the `README.md` of that project.
 
 - To __update plugins__ with the
 [vim-plug](https://github.com/junegunn/vim-plug) manager:
+  ```
   ```vim
   :PlugUpdate
   ```
