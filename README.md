@@ -1,4 +1,4 @@
-# myNeovimConfig [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
+# Vim.for.life. [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 
 > Setup, package manager, and various plug-ins for my configuration of the
 > [Vim](http://www.vim.org/index.php) and [Neovim](https://neovim.io/) editors.
@@ -24,11 +24,10 @@ _Caveat emptor_ - using this configuration can be unintuitive at first
 
 - To __install plugins__ with the
 [vim-plug](https://github.com/junegunn/vim-plug) manager, see the directions
-provided in the `README.md` of that project.
+provided in the `README` of that project.
 
 - To __update plugins__ with the
 [vim-plug](https://github.com/junegunn/vim-plug) manager:
-  ```
   ```vim
   :PlugUpdate
   ```
@@ -37,11 +36,10 @@ provided in the `README.md` of that project.
 
 ## _Known Problem(s)_
 
-- There is a known issue with re-mapping Ctrl-H in Neovim's terminal mode. I
+- There is a known issue with re-mapping `Ctrl-H` in Neovim's terminal mode. I
   have only encountered this issue when running macOS; various workarounds have
   been proposed [here](https://github.com/neovim/neovim/issues/2048).
-  __Update:__ This issue has been resolved (for the `init.vim` script in this
-  repo) as of 15 May 2016.
+  (__update:__ This issue has been resolved as of 15 May 2016.)
 
 ---
 
