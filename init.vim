@@ -1,11 +1,14 @@
 " Nima's Neovim Config
 " auto-install vim-plug {{{
 
-if empty(glob('~/.vim/autoload/plug.vim'))
+if empty(glob('~/.config/nvim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
+
+" ALE and syntastic plugins conflict
+let g:ale_emit_conflict_warnings = 0
 
 " }}}
 " vim-plug + plug-ins {{{
@@ -52,7 +55,7 @@ call plug#end()
 " }}}
 " core customizations {{{
 
-syntax on               " Check syntax.
+syntax on               " Autostart syntax checking.
 filetype plugin on      " Enable plugins.
 filetype indent on      " Load type-specific indent files.
 set autoread            " If file updates, load automatically.
@@ -79,13 +82,14 @@ set encoding=utf-8      " Manually set encoding to be used.
 set shell=bash          " Manually set shell to be used to Bash.
 set clipboard=unnamed   " Use system clipboard over Vim clipboard.
 set nocompatible        " Disable backward compatibility with Vi.
+let g:tex_conceal = ""  " Disable syntax concealing for LaTeX.
 
 " }}}
 " leader mappings {{{
 
 " Remap colon operator semicolon for ease of use
 nnoremap ; :
-let mapleader="," " The leader is the comma
+let mapleader = "," " The leader is the comma
 let maplocalleader = "'" " The local leader is the apostrophe
 
 " }}}
@@ -137,10 +141,10 @@ endif
 " navigation {{{
 
 " standard split re-mappings
-nnoremap <C-h> <C-w><C-h>
-nnoremap <C-j> <C-w><C-j>
-nnoremap <C-k> <C-w><C-k>
-nnoremap <C-l> <C-w><C-l>
+nnoremap <C-H> <C-W><C-H>
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
 
 " }}}
 " highlighting {{{
@@ -239,13 +243,13 @@ let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
 " Open file menu
-nnoremap <Leader>o :CtrlP<CR>
+nnoremap <leader>o :CtrlP<CR>
 
 " Open buffer menu
-nnoremap <Leader>b :CtrlPBuffer<CR>
+nnoremap <leader>b :CtrlPBuffer<CR>
 
 " Open most recently used files
-nnoremap <Leader>f :CtrlPMRUFiles<CR>
+nnoremap <leader>f :CtrlPMRUFiles<CR>
 
 " }}}
 " plug-in: NERDTree {{{
@@ -257,7 +261,7 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " Close Vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-" Stop NERDTree from using fancy arrows
+" stop NERDTree from using fancy arrows
 let g:NERDTreeDirArrows=0
 
 " }}}
@@ -292,8 +296,8 @@ let g:formatter_yapf_style = 'pep8'
 " }}}
 " plug-in: vim-markdown {{{
 
-let g:vim_markdown_folding_disabled = 1
-let g:vim_markdown_conceal = 0
+let g:vim_markdown_folding_disabled = 1 "disable folding
+let g:vim_markdown_conceal = 0 "do NOT hide/conceal syntax
 
 " }}}
 " plug-in: vim-easy-align {{{
@@ -353,7 +357,7 @@ let g:comfortable_motion_air_drag = 2.0
 
 let R_source_args = "echo=TRUE, print.eval=TRUE"
 
-" auto-start R REPL with  .R and .Rmd files only with Neovim
+" auto-start R REPL with  .R and .Rmd files only in Neovim
 if has('nvim')
   autocmd FileType r if string(g:SendCmdToR) == "function('SendCmdToR_fake')" | call StartR("R") | endif
   autocmd FileType rmd if string(g:SendCmdToR) == "function('SendCmdToR_fake')" | call StartR("R") | endif
