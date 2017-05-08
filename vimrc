@@ -294,6 +294,7 @@ let g:comfortable_motion_air_drag = 2.0
 " plug-in: NVim-R {{{
 
 let R_source_args = "echo=TRUE, print.eval=TRUE"
+"let R_term_cmd="hyper"
 
 " auto-start R REPL with  .R and .Rmd files only in Neovim
 if has('nvim')
