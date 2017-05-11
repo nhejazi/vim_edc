@@ -74,7 +74,6 @@ set shiftwidth=2        " Indentation amount for < and > commands.
 set noerrorbells        " No beeps.
 set modeline            " Enable modeline.
 set modelines=1         " For high-level section view via folding.
-set esckeys             " Cursor keys in insert mode.
 set linespace=0         " Set line-spacing to minimum.
 set colorcolumn=80      " Set colored bar for 80-column rule.
 set wildmenu            " Visual autocomplete for command menu.
