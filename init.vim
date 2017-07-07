@@ -44,6 +44,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-sensible'
+Plug 'tpope/tpope-vim-abolish'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-syntastic/syntastic'
@@ -76,9 +77,14 @@ set modeline            " Enable modeline.
 set modelines=1         " For high-level section view via folding.
 set linespace=0         " Set line-spacing to minimum.
 set colorcolumn=80      " Set colored bar for 80-column rule.
-set wildmenu            " Visual autocomplete for command menu.
+set cursorline          " Set horizontal line at where cursor is/was.
+set wildmenu            " Visual auto-complete for command menu.
+set wildmode=full       " Enhanced auto-completions via use of TAB.
+set lazyredraw          " Only redraw the screen when absolutely necessary.
+set gdefault            " Use global replacements by default with :s/foo/bar.
+set synmaxcol=100       " Highlight only 1st 100 chars of line for performance.
 set encoding=utf-8      " Manually set encoding to be used.
-set shell=bash          " Manually set shell to be used to Bash.
+set shell=zsh           " Manually set shell to be used to Zsh.
 set clipboard=unnamed   " Use system clipboard over Vim clipboard.
 set nocompatible        " Disable backward compatibility with Vi.
 let g:tex_conceal = ""  " Disable syntax concealing for LaTeX.
@@ -116,14 +122,19 @@ set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set writebackup
 
 " }}}
+" windows {{{
+
+" split equalization after resizing events
+autocmd VimResized * wincmd =
+
+
+" }}}
 " searching {{{
 
 " basic searching behavior mods
 set hlsearch " Highlight search results
-set ignorecase " Make searching insensitive to case
-set smartcase " ...unless query has capital letters
+set infercase " Make searching infer case smartly
 set incsearch " Search incrementally
-set gdefault " Use 'g' flag by default with :s/foo/bar/
 set magic " Use 'magic' patterns (extended regular expressions)
 
 " Use <C-L> to clear the highlighting of :set hlsearch
@@ -135,6 +146,9 @@ endif
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
+
+" shortcut to more easily search via ack.vim
+nnoremap <leader>a :Ack
 
 " }}}
 " navigation {{{
@@ -238,7 +252,6 @@ command! -nargs=+ Tg :T git <args>
 let g:ctrlp_match_window = 'bottom,order:ttb'
 let g:ctrlp_switch_buffer = 0
 let g:ctrlp_working_path_mode = 0
-let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
 " Open file menu
@@ -249,6 +262,12 @@ nnoremap <leader>b :CtrlPBuffer<CR>
 
 " Open most recently used files
 nnoremap <leader>f :CtrlPMRUFiles<CR>
+
+" }}}
+" plug-in: Gundo {{{
+
+" 'Super Undo' via Gundo's visual undo tree
+nnoremap <leader>u :GundoToggle<CR>
 
 " }}}
 " plug-in: NERDTree {{{

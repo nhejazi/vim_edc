@@ -84,7 +84,7 @@ set wildmenu            " Visual auto-complete for command menu.
 set wildmode=full       " Enhanced auto-completions via use of TAB.
 set lazyredraw          " Only redraw the screen when absolutely necessary.
 set gdefault            " Use global replacements by default with :s/foo/bar
-set synmaxcol=80        " Highlight only first 80 chars of line for performance.
+set synmaxcol=100       " Highlight only 1st 100 chars of line for performance.
 set encoding=utf-8      " Manually set encoding to be used.
 set shell=zsh           " Manually set shell to be used to Zsh.
 set clipboard=unnamed   " Use system clipboard over Vim clipboard.
@@ -135,8 +135,7 @@ autocmd VimResized * wincmd =
 
 " basic searching behavior mods
 set hlsearch            " Highlight search results
-set infercase          " Make searching insensitive to case
-set smartcase           " ...unless query has capital letters
+set infercase " Make searching infer case smartly
 set incsearch           " Search incrementally
 set magic               " Use 'magic' patterns (extended RegEx)
 
