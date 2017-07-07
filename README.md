@@ -1,7 +1,8 @@
-# Vim - for life. [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
+# Vim - one text editor for life.
 
 > Setup, package manager, and various plug-ins for my configuration of the
-> [Vim](http://www.vim.org/index.php) and [Neovim](https://neovim.io/) editors.
+> [Vim](http://www.vim.org/index.php) and [Neovim](https://neovim.io/)
+> editors. [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 
 _Caveat emptor_ - using this configuration can be unintuitive at first
 (especially for those new to Vim and/or Neovim).
@@ -66,6 +67,7 @@ _Here is a list of plug-ins currently integrated into this configuration:_
 * [`Nvim-R`](https://github.com/jalvesaq/Nvim-R)
 * [`supertab`](https://github.com/ervandew/supertab)
 * [`syntastic`](https://github.com/vim-syntastic/syntastic)
+* [`vim-abolish`](https://github.com/tpope/tpope-vim-abolish)
 * [`vim-airline`](https://github.com/vim-airline/vim-airline)
 * [`vim-airline-themes`](https://github.com/vim-airline/vim-airline-themes)
 * [`vim-autoformat`](https://github.com/Chiel92/vim-autoformat)

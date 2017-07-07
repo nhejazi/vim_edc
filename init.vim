@@ -374,13 +374,12 @@ let g:comfortable_motion_air_drag = 2.0
 " plug-in: NVim-R {{{
 
 let R_source_args = "echo=TRUE, print.eval=TRUE"
-"let R_term_cmd="hyper"
 
 " auto-start R REPL with  .R and .Rmd files only in Neovim
-if has('nvim')
-  autocmd FileType r if string(g:SendCmdToR) == "function('SendCmdToR_fake')" | call StartR("R") | endif
-  autocmd FileType rmd if string(g:SendCmdToR) == "function('SendCmdToR_fake')" | call StartR("R") | endif
-endif
+"if has('nvim')
+"  autocmd FileType r if string(g:SendCmdToR) == "function('SendCmdToR_fake')" | call StartR("R") | endif
+"  autocmd FileType rmd if string(g:SendCmdToR) == "function('SendCmdToR_fake')" | call StartR("R") | endif
+"endif
 
 " re-mappings to send code selections to R console
 vmap <LocalLeader>. <Plug>RDSendSelection
