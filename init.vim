@@ -84,6 +84,7 @@ set lazyredraw          " Only redraw the screen when absolutely necessary.
 set gdefault            " Use global replacements by default with :s/foo/bar.
 set synmaxcol=100       " Highlight only 1st 100 chars of line for performance.
 set encoding=utf-8      " Manually set encoding to be used.
+"set shell=bash          " Manually set shell to be used to Bash.
 set shell=zsh           " Manually set shell to be used to Zsh.
 set clipboard=unnamed   " Use system clipboard over Vim clipboard.
 set nocompatible        " Disable backward compatibility with Vi.
@@ -373,7 +374,12 @@ let g:comfortable_motion_air_drag = 2.0
 " }}}
 " plug-in: NVim-R {{{
 
+" print code sent to R console, truncating only when absolutely necessary
 let R_source_args = "echo=TRUE, print.eval=TRUE"
+
+" try to use a vertical split always
+let R_rconsole_width = 70
+let R_min_editor_width = 80
 
 " auto-start R REPL with  .R and .Rmd files only in Neovim
 "if has('nvim')
