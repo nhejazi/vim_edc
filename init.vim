@@ -303,8 +303,8 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 " add support for R's tidyverse style
-let g:syntastic_enable_r_lintr_checker = 1
-let g:syntastic_r_checkers = ['lintr']
+"let g:syntastic_enable_r_lintr_checker = 1
+"let g:syntastic_r_checkers = ['lintr']
 
 " }}}
 " plug-in: Deoplete {{{
