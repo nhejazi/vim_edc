@@ -7,11 +7,9 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-" ALE and syntastic plugins conflict
-let g:ale_emit_conflict_warnings = 0
-
 " }}}
-" vim-plug + plugins {{{
+" vim-plug + plug-ins {{{
+
 call plug#begin()
 Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
@@ -20,6 +18,7 @@ Plug 'chrisbra/csv.vim'
 Plug 'christoomey/vim-tmux-navigator', !has('nvim') ? {} : {'on' : []}
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'davidhalter/jedi-vim'
+Plug 'easymotion/vim-easymotion'
 Plug 'ervandew/supertab'
 Plug 'jalvesaq/Nvim-R'
 Plug 'jnurmine/Zenburn'
@@ -28,7 +27,6 @@ Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'metakirby5/codi.vim'
-Plug 'mhinz/vim-signify'
 Plug 'mileszs/ack.vim'
 Plug 'neomake/neomake'
 Plug 'plasticboy/vim-markdown'
@@ -38,11 +36,15 @@ Plug 'scrooloose/nerdtree'
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', {'do' : ':UpdateRemotePlugins'}
 endif
+if !has('nvim')
+  Plug 'Shougo/neocomplete.vim'
+endif
 Plug 'sjl/gundo.vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-surround'
 Plug 'tpope/tpope-vim-abolish'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -51,7 +53,6 @@ if v:version >= 800
   Plug 'w0rp/ale'
 endif
 Plug 'Yggdroot/indentLine'
-Plug 'yuttie/comfortable-motion.vim'
 call plug#end()
 
 " }}}
@@ -190,6 +191,17 @@ setlocal spell spelllang=en_us
 set complete+=kspell
 autocmd BufRead,BufNewFile *.md setlocal spell
 autocmd BufRead,BufNewFile *.txt setlocal spell
+
+" }}}
+" plug-in: ALE {{{
+
+if v:version >= 800
+  " ALE and syntastic plugins conflict
+  let g:ale_emit_conflict_warnings = 0
+
+  " delays running of linters (default = 200)
+  let g:ale_lint_delay = 600
+endif
 
 " }}}
 " plug-in: CtrlP {{{

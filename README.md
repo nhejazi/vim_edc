@@ -9,7 +9,7 @@ _Caveat emptor_ - using this configuration can be unintuitive at first
 
 ---
 
-## _Directions_
+## _How do I use `vimForLife`?_
 
 * For use with _Vim_, clone the configuration in this repo using the following:
   ```bash
@@ -35,23 +35,13 @@ provided in the `README` of that project.
 
 ---
 
-## _Known Problem(s)_
-
-- There is a known issue with re-mapping `Ctrl-H` in Neovim's terminal mode. I
-  have only encountered this issue when running macOS; various workarounds have
-  been proposed [here](https://github.com/neovim/neovim/issues/2048).
-  (__update:__ This issue has been resolved as of 15 May 2016.)
-
----
-
 ## Plug-ins
 
 _Here is a list of plug-ins currently integrated into this configuration:_
 
 * [`ack.vim`](https://github.com/mileszs/ack.vim)
-* [`ale`](https://github.com/w0rp/ale) (with Vim 8.0+)
+* [`ale`](https://github.com/w0rp/ale) (Vim 8.0+ and Neovim)
 * [`codi.vim`](https://github.com/metakirby5/codi.vim)
-* [`comfortable-motion.vim`](https://github.com/yuttie/comfortable-motion.vim)
 * [`csv.vim`](https://github.com/chrisbra/csv.vim)
 * [`ctrlp.vim`](https://github.com/ctrlpvim/ctrlp.vim)
 * [`deoplete.nvim`](https://github.com/Shougo/deoplete.nvim) (Neovim only)
@@ -61,6 +51,7 @@ _Here is a list of plug-ins currently integrated into this configuration:_
 * [`jedi-vim`](https://github.com/davidhalter/jedi-vim)
 * [`julia-vim`](https://github.com/JuliaEditorSupport/julia-vim)
 * [`limelight.vim`](https://github.com/junegunn/limelight.vim)
+* [`neocomplete.vim`](https://github.com/Shougo/neocomplete.vim) (Vim only)
 * [`neomake`](https://github.com/neomake/neomake)
 * [`nerdcommenter`](https://github.com/scrooloose/nerdcommenter)
 * [`NERDTree`](https://github.com/scrooloose/nerdtree)
@@ -72,13 +63,14 @@ _Here is a list of plug-ins currently integrated into this configuration:_
 * [`vim-airline-themes`](https://github.com/vim-airline/vim-airline-themes)
 * [`vim-autoformat`](https://github.com/Chiel92/vim-autoformat)
 * [`vim-easy-align`](https://github.com/junegunn/vim-easy-align)
+* [`vim-easymotion`](https://github.com/easymotion/vim-easymotion)
 * [`vim-fugitive`](https://github.com/tpope/vim-fugitive)
 * [`vim-gitgutter`](https://github.com/airblade/vim-gitgutter)
 * [`vim-markdown`](https://github.com/plasticboy/vim-markdown)
 * [`vim-multiple-cursors`](https://github.com/terryma/vim-multiple-cursors)
 * [`vim-sensible`](https://github.com/tpope/vim-sensible)
-* [`vim-signify`](https://github.com/mhinz/vim-signify)
 * [`vim-sleuth`](https://github.com/tpope/vim-sleuth)
+* [`vim-surround`](https://github.com/tpope/vim-surround)
 * [`vim-tmux-navigator`](https://github.com/christoomey/vim-tmux-navigator)
     (Vim only)
 * [`vim-wordy`](https://github.com/reedes/vim-wordy)
@@ -94,9 +86,17 @@ _This configuration currently supports two colorschemes:_
 
 ---
 
+## Issues
+
+If you encounter any bugs or have any specific feature requests, please [file an
+issue](https://github.com/nhejazi/vimForLife/issues).
+
+---
+
 ## License
 
 &copy; 2016-2017 [Nima Hejazi](http://nimahejazi.org)
 
 The contents of this repository are distributed under the MIT license. See file
 `LICENSE` for details.
+
