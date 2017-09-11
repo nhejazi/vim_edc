@@ -371,20 +371,6 @@ let g:limelight_eop = '\ze\n^\s'
 let g:limelight_priority = -1
 
 " }}}
-" plug-in: comfortable-motion {{{
-
-" default mappings
-nnoremap <silent> <C-d> :call comfortable_motion#flick(100)<CR>
-nnoremap <silent> <C-u> :call comfortable_motion#flick(-100)<CR>
-nnoremap <silent> <C-f> :call comfortable_motion#flick(400)<CR>
-nnoremap <silent> <C-b> :call comfortable_motion#flick(-400)<CR>
-
-" configurable scrolling parameters
-let g:comfortable_motion_interval = 1000.0/60.0
-let g:comfortable_motion_friction = 80.0
-let g:comfortable_motion_air_drag = 2.0
-
-" }}}
 " plug-in: NVim-R {{{
 
 " print code sent to R console, truncating only when absolutely necessary
