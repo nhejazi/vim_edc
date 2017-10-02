@@ -1,4 +1,4 @@
-" Nima's Neovim Config
+" Nima's Neovim configuration
 " auto-install vim-plug {{{
 
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
@@ -70,7 +70,7 @@ set formatoptions+=o    " Continue comment marker in new lines.
 set textwidth=0         " Hard-wrap long lines as you type them.
 set expandtab           " Insert spaces when TAB is pressed.
 set tabstop=4           " Render TABs using this many spaces.
-set softtabstop=4       " Number of spaces caused by TABs when editing.
+set softtabstop=2       " Number of spaces caused by TABs when editing.
 set shiftwidth=2        " Indentation amount for < and > commands.
 set noerrorbells        " No beeps.
 set modeline            " Enable modeline.
@@ -82,13 +82,13 @@ set wildmenu            " Visual auto-complete for command menu.
 set wildmode=full       " Enhanced auto-completions via use of TAB.
 set lazyredraw          " Only redraw the screen when absolutely necessary.
 set gdefault            " Use global replacements by default with :s/foo/bar.
-set synmaxcol=100       " Highlight only 1st 100 chars of line for performance.
+set synmaxcol=80        " Highlight only 1st 80 chars of line for performance.
 set encoding=utf-8      " Manually set encoding to be used.
-"set shell=bash          " Manually set shell to be used to Bash.
 set shell=zsh           " Manually set shell to be used to Zsh.
 set clipboard=unnamed   " Use system clipboard over Vim clipboard.
 set nocompatible        " Disable backward compatibility with Vi.
 let g:tex_conceal = ""  " Disable syntax concealing for LaTeX.
+vnoremap <C-n> :norm    " Re-map 'norm' to run arbitrary Vim commands easily.
 
 " }}}
 " leader mappings {{{
@@ -128,6 +128,18 @@ set writebackup
 " split equalization after resizing events
 autocmd VimResized * wincmd =
 
+" }}}
+" comments {{{
+
+" commenting blocks of code
+autocmd FileType c,cpp,java,scala       let b:comment_leader = '// '
+autocmd FileType sh,ruby,python,r,rmd   let b:comment_leader = '# '
+autocmd FileType tex                    let b:comment_leader = '% '
+autocmd FileType vim                    let b:comment_leader = '" '
+
+" re-map shortcuts to use 'cc' for commenting and 'cu' for uncommenting
+noremap <silent> ,cc :<C-B>silent <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:nohlsearch<CR>
+noremap <silent> ,cu :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:nohlsearch<CR>
 
 " }}}
 " searching {{{
