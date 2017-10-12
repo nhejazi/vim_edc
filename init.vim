@@ -385,6 +385,11 @@ let g:limelight_priority = -1
 " }}}
 " plug-in: NVim-R {{{
 
+" use rice command line interface instead of classical R REPL
+let g:R_app = "rice"
+let g:R_cmd = "R"
+let g:R_hl_term = 0
+
 " print code sent to R console, truncating only when absolutely necessary
 let R_source_args = "echo=TRUE, print.eval=TRUE"
 
