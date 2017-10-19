@@ -245,10 +245,48 @@ let g:ale_lint_delay = 600
 let g:deoplete#enable_at_startup = 1
 
 " }}}
+" plug-in: fzf {{{
+
+nmap <Leader>b :Buffers<CR>
+nmap <Leader>t :Files<CR>
+nmap <Leader>r :Tags<CR>
+
+" }}}
+" plug-in: Goyo {{{
+
+function! ProseMode()
+  call goyo#execute(0, [])
+  set spell noci nosi noai nolist noshowmode noshowcmd
+  set complete+=s
+  set bg=light
+  if !has('gui_running')
+    let g:solarized_termcolors=256
+  endif
+  colors solarized
+endfunction
+
+command! ProseMode call ProseMode()
+nmap \p :ProseMode<CR>
+
+" }}}
 " plug-in: Gundo {{{
 
 " 'Super Undo' via Gundo's visual undo tree
 nnoremap <leader>u :GundoToggle<CR>
+
+" }}}
+" plug-in: Lightline {{{
+
+let g:lightline = {
+      \ 'colorscheme': 'one',
+     \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'fugitive#head'
+      \ },
+      \ }
 
 " }}}
 " plug-in: Neoterm {{{
@@ -310,6 +348,11 @@ let R_min_editor_width = 80
 " re-mappings to send code selections to R console
 vmap <LocalLeader>. <Plug>RDSendSelection
 nmap <LocalLeader>. <Plug>RDSendLine
+
+" }}}
+" plug-in: sneak {{{
+
+let g:sneak#label = 1
 
 " }}}
 " plug-in: vim-markdown {{{
