@@ -46,6 +46,7 @@ _Here is a list of plug-ins currently integrated into this configuration:_
 * [`ctrlp.vim`](https://github.com/ctrlpvim/ctrlp.vim)
 * [`deoplete.nvim`](https://github.com/Shougo/deoplete.nvim) (Neovim only)
 * [`fzf`](https://github.com/junegunn/fzf)
+* [`fzf.vim`](https://github.com/junegunn/fzf.vim)
 * [`goyo.vim`](https://github.com/junegunn/goyo.vim)
 * [`gundo.vim`](https://github.com/sjl/gundo.vim)
 * [`indentLine`](https://github.com/Yggdroot/indentLine)

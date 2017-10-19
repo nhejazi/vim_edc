@@ -13,20 +13,15 @@ endif
 call plug#begin()
 Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
-Plug 'Chiel92/vim-autoformat'
-Plug 'chrisbra/csv.vim'
-Plug 'christoomey/vim-tmux-navigator', !has('nvim') ? {} : {'on' : []}
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'davidhalter/jedi-vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'ervandew/supertab'
+Plug 'itchyny/lightline.vim'
 Plug 'jalvesaq/Nvim-R'
 Plug 'jnurmine/Zenburn'
 Plug 'JuliaEditorSupport/julia-vim'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
-Plug 'junegunn/vim-easy-align'
 Plug 'metakirby5/codi.vim'
 Plug 'mileszs/ack.vim'
 Plug 'neomake/neomake'
@@ -34,22 +29,20 @@ Plug 'plasticboy/vim-markdown'
 Plug 'reedes/vim-wordy'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
+Plug 'sheerun/vim-polyglot'
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', {'do' : ':UpdateRemotePlugins'}
-endif
-if !has('nvim')
+else
   Plug 'Shougo/neocomplete.vim'
 endif
 Plug 'sjl/gundo.vim'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/tpope-vim-abolish'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'vim-syntastic/syntastic'
 Plug 'w0rp/ale'
 Plug 'Yggdroot/indentLine'
 call plug#end()
@@ -247,6 +240,17 @@ let g:ale_emit_conflict_warnings = 0
 let g:ale_lint_delay = 600
 
 " }}}
+" plug-in: Deoplete {{{
+
+let g:deoplete#enable_at_startup = 1
+
+" }}}
+" plug-in: Gundo {{{
+
+" 'Super Undo' via Gundo's visual undo tree
+nnoremap <leader>u :GundoToggle<CR>
+
+" }}}
 " plug-in: Neoterm {{{
 
 let g:neoterm_position = 'horizontal' "could also be 'vertical'
@@ -270,30 +274,7 @@ nnoremap <silent> ,tc :call neoterm#kill()<cr>   "kill current job <Ctrl-c>
 command! -nargs=+ Tg :T git <args>
 
 " }}}
-" plug-in: CtrlP {{{
-
-let g:ctrlp_match_window = 'bottom,order:ttb'
-let g:ctrlp_switch_buffer = 0
-let g:ctrlp_working_path_mode = 0
-let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-
-" Open file menu
-nnoremap <leader>o :CtrlP<CR>
-
-" Open buffer menu
-nnoremap <leader>b :CtrlPBuffer<CR>
-
-" Open most recently used files
-nnoremap <leader>f :CtrlPMRUFiles<CR>
-
-" }}}
-" plug-in: Gundo {{{
-
-" 'Super Undo' via Gundo's visual undo tree
-nnoremap <leader>u :GundoToggle<CR>
-
-" }}}
-" plug-in: NERDTree {{{
+" plug-in: NerdTree {{{
 
 " Open a NERDTree automatically when Vim starts up if no files were specified
 autocmd StdinReadPre * let s:std_in=1
@@ -304,84 +285,6 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 " stop NERDTree from using fancy arrows
 let g:NERDTreeDirArrows=0
-
-" }}}
-" plug-in: Airline {{{
-
-let g:airline#extensions#tabline#enabled = 2
-let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline_theme = 'murmur'
-
-" }}}
-" plug-in: Syntastic {{{
-
-" recommended beginner settings
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-" add support for R's tidyverse style
-"let g:syntastic_enable_r_lintr_checker = 1
-"let g:syntastic_r_checkers = ['lintr']
-
-" }}}
-" plug-in: Deoplete {{{
-
-let g:deoplete#enable_at_startup = 1
-
-" }}}
-" plug-in: vim-autoformat {{{
-
-let g:formatter_yapf_style = 'pep8'
-
-" }}}
-" plug-in: vim-markdown {{{
-
-let g:vim_markdown_folding_disabled = 1 "disable folding
-let g:vim_markdown_conceal = 0 "do NOT hide/conceal syntax
-
-" }}}
-" plug-in: vim-easy-align {{{
-
-" Interactive EasyAlign in visual mode (e.g., vipga)
-xmap ga <Plug>(EasyAlign)
-
-" Interactive EasyAlign for motion/text (e.g., gaip)
-nmap ga <Plug>(EasyAlign)
-
-" }}}
-" plug-in: Goyo + Limelight {{{
-
-autocmd! User GoyoEnter Limelight
-autocmd! User GoyoLeave Limelight!
-
-" Color name (:help cterm-colors) or ANSI code
-let g:limelight_conceal_ctermfg = 'gray'
-let g:limelight_conceal_ctermfg = 240
-
-" Color name (:help gui-colors) or RGB color
-let g:limelight_conceal_guifg = 'DarkGray'
-let g:limelight_conceal_guifg = '#777777'
-
-" Default: 0.5
-let g:limelight_default_coefficient = 0.7
-
-" Number of preceding/following paragraphs to include (default: 0)
-let g:limelight_paragraph_span = 1
-
-" Beginning/end of paragraph
-"   When there's no empty line between the paragraphs
-"   and each paragraph starts with indentation
-let g:limelight_bop = '^\s'
-let g:limelight_eop = '\ze\n^\s'
-
-" Highlighting priority (default: 10)
-"   Set it to -1 not to overrule hlsearch
-let g:limelight_priority = -1
 
 " }}}
 " plug-in: NVim-R {{{
@@ -407,6 +310,12 @@ let R_min_editor_width = 80
 " re-mappings to send code selections to R console
 vmap <LocalLeader>. <Plug>RDSendSelection
 nmap <LocalLeader>. <Plug>RDSendLine
+
+" }}}
+" plug-in: vim-markdown {{{
+
+let g:vim_markdown_folding_disabled = 1 "disable folding
+let g:vim_markdown_conceal = 0 "do NOT hide/conceal syntax
 
 " }}}
 " vim:foldmethod=marker:foldlevel=0
