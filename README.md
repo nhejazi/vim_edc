@@ -58,6 +58,7 @@ _Here is a list of plug-ins currently integrated into this configuration:_
 * [`supertab`](https://github.com/ervandew/supertab)
 * [`syntastic`](https://github.com/vim-syntastic/syntastic) (Vim < 8.0 only)
 * [`vim-abolish`](https://github.com/tpope/tpope-vim-abolish)
+* [`vim-css-color`](https://github.com/ap/vim-css-color)
 * [`vim-eunuch`](https://github.com/tpope/vim-eunuch)
 * [`vim-fugitive`](https://github.com/tpope/vim-fugitive)
 * [`vim-gitgutter`](https://github.com/airblade/vim-gitgutter)

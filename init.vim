@@ -13,6 +13,7 @@ endif
 call plug#begin()
 Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
+Plug 'ap/vim-css-color'
 Plug 'davidhalter/jedi-vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'ervandew/supertab'
