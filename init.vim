@@ -24,6 +24,7 @@ Plug 'JuliaEditorSupport/julia-vim'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
 Plug 'metakirby5/codi.vim'
 Plug 'mileszs/ack.vim'
 Plug 'neomake/neomake'
@@ -116,13 +117,12 @@ autocmd! ColorScheme zenburn call s:patch_colors()
 autocmd! ColorScheme solarized call s:patch_colors()
 
 " Solarized in GUI, Zenburn when not
+set t_Co=256
 if has('gui_running')
   let g:solarized_termcolors=256
-  set t_Co=256
   set background=dark
   colorscheme solarized
 else
-  set t_Co=256
   colorscheme zenburn
 endif
 
@@ -274,18 +274,43 @@ nmap <Leader>r :Tags<CR>
 " }}}
 " plug-in: Goyo {{{
 
-function! ProseMode()
-  call goyo#execute(0, [])
-  set spell noci nosi noai nolist noshowmode noshowcmd
-  set complete+=s
-  if !has('gui_running')
-    let g:solarized_termcolors=256
+function! s:goyo_enter()
+  set spell
+  set noshowmode
+  set noshowcmd
+  Limelight
+  set t_Co=256
+  let g:solarized_termcolors=256
+  set background=light
+  colorscheme solarized
+  if exists('$TMUX')
+    silent !tmux set status off
   endif
-  colors solarized
 endfunction
 
-command! ProseMode call ProseMode()
-nmap \p :ProseMode<CR>
+function! s:goyo_leave()
+  set nospell
+  set showmode
+  set showcmd
+  Limelight!
+  set t_Co=256
+  if !has('gui_running')
+    set background=dark
+    colorscheme zenburn
+  elseif has('gui_running')
+    let g:solarized_termcolors=256
+    set background=dark
+    colorscheme solarized
+  elseif exists('$TMUX')
+    silent !tmux set status on
+  endif
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
+
+nmap \p :Goyo<CR>
+nmap \p! :Goyo!<CR>
 
 " }}}
 " plug-in: Gundo {{{
@@ -306,6 +331,33 @@ let g:lightline = {
       \   'gitbranch': 'fugitive#head'
       \ },
       \ }
+
+" }}}
+" plug-in: Limelight {{{
+
+" Color name (:help cterm-colors) or ANSI code
+let g:limelight_conceal_ctermfg = 'gray'
+let g:limelight_conceal_ctermfg = 240
+
+" Color name (:help gui-colors) or RGB color
+let g:limelight_conceal_guifg = 'DarkGray'
+let g:limelight_conceal_guifg = '#777777'
+
+" Default: 0.5
+let g:limelight_default_coefficient = 0.7
+
+" Number of preceding/following paragraphs to include (default: 0)
+let g:limelight_paragraph_span = 1
+
+" Beginning/end of paragraph
+"   When there's no empty line between the paragraphs
+"   and each paragraph starts with indentation
+let g:limelight_bop = '^\s'
+let g:limelight_eop = '\ze\n^\s'
+
+" Highlighting priority (default: 10)
+"   Set it to -1 not to overrule hlsearch
+let g:limelight_priority = -1
 
 " }}}
 " plug-in: Neoterm {{{
