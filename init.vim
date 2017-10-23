@@ -97,6 +97,24 @@ let maplocalleader = "'" " The local leader is the apostrophe
 " }}}
 " colorschemes {{{
 
+" Automatically patch Zenburn colors for Goyo
+function! s:patch_colors()
+  highlight ColorColumn ctermbg=DarkRed guibg=DarkRed
+  highlight Comment ctermbg=LightGreen guibg=LightGreen
+  highlight Constant cterm=underline guibg=underline
+  highlight Normal cterm=none gui=none
+  highlight NonText cterm=none gui=none
+  highlight Special ctermbg=DarkGray guibg=DarkGray
+  highlight Cursor ctermbg=Cyan guibg=Cyan
+  highlight clear SpellBad
+  highlight SpellBad ctermbg=Red guibg=Red
+  highlight TermCursor ctermfg=Cyan guifg=Cyan
+  highlight ExtraWhitespace ctermbg=DarkMagenta guibg=DarkMagenta
+endfunction
+
+autocmd! ColorScheme zenburn call s:patch_colors()
+autocmd! ColorScheme solarized call s:patch_colors()
+
 " Solarized in GUI, Zenburn when not
 if has('gui_running')
   let g:solarized_termcolors=256
