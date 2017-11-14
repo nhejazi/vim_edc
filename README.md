@@ -1,14 +1,15 @@
 # Vim, for life. [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 
 > Setup, package manager, and various plug-ins for my configuration of the
-> [Vim](http://www.vim.org/index.php) and [Neovim](https://neovim.io/) editors.
+> [Vim](http://www.vim.org/index.php) and [Neovim](https://neovim.io/)
+> editors. [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 
 _Caveat emptor_ - using this configuration can be unintuitive at first
 (especially for those new to Vim and/or Neovim).
 
 ---
 
-## _Directions_
+## _How do I use `vimForLife`?_
 
 * For use with _Vim_, clone the configuration in this repo using the following:
   ```bash
@@ -34,51 +35,40 @@ provided in the `README` of that project.
 
 ---
 
-## _Known Problem(s)_
-
-- There is a known issue with re-mapping `Ctrl-H` in Neovim's terminal mode. I
-  have only encountered this issue when running macOS; various workarounds have
-  been proposed [here](https://github.com/neovim/neovim/issues/2048).
-  (__update:__ This issue has been resolved as of 15 May 2016.)
-
----
-
 ## Plug-ins
 
 _Here is a list of plug-ins currently integrated into this configuration:_
 
 * [`ack.vim`](https://github.com/mileszs/ack.vim)
-* [`ale`](https://github.com/w0rp/ale) (with Vim 8.0+)
+* [`ale`](https://github.com/w0rp/ale) (Vim 8.0+ and Neovim)
 * [`codi.vim`](https://github.com/metakirby5/codi.vim)
-* [`comfortable-motion.vim`](https://github.com/yuttie/comfortable-motion.vim)
-* [`csv.vim`](https://github.com/chrisbra/csv.vim)
-* [`ctrlp.vim`](https://github.com/ctrlpvim/ctrlp.vim)
 * [`deoplete.nvim`](https://github.com/Shougo/deoplete.nvim) (Neovim only)
+* [`fzf.vim`](https://github.com/junegunn/fzf.vim) (requires
+    [fzf](https://github.com/junegunn/fzf) installation)
 * [`goyo.vim`](https://github.com/junegunn/goyo.vim)
 * [`gundo.vim`](https://github.com/sjl/gundo.vim)
 * [`indentLine`](https://github.com/Yggdroot/indentLine)
 * [`jedi-vim`](https://github.com/davidhalter/jedi-vim)
 * [`julia-vim`](https://github.com/JuliaEditorSupport/julia-vim)
-* [`limelight.vim`](https://github.com/junegunn/limelight.vim)
+* [`lightline`](https://github.com/itchyny/lightline.vim)
+* [`neocomplete.vim`](https://github.com/Shougo/neocomplete.vim) (Vim only)
 * [`neomake`](https://github.com/neomake/neomake)
 * [`nerdcommenter`](https://github.com/scrooloose/nerdcommenter)
 * [`NERDTree`](https://github.com/scrooloose/nerdtree)
 * [`Nvim-R`](https://github.com/jalvesaq/Nvim-R)
 * [`supertab`](https://github.com/ervandew/supertab)
-* [`syntastic`](https://github.com/vim-syntastic/syntastic)
-* [`vim-airline`](https://github.com/vim-airline/vim-airline)
-* [`vim-airline-themes`](https://github.com/vim-airline/vim-airline-themes)
-* [`vim-autoformat`](https://github.com/Chiel92/vim-autoformat)
-* [`vim-easy-align`](https://github.com/junegunn/vim-easy-align)
+* [`syntastic`](https://github.com/vim-syntastic/syntastic) (Vim < 8.0 only)
+* [`vim-abolish`](https://github.com/tpope/tpope-vim-abolish)
+* [`vim-css-color`](https://github.com/ap/vim-css-color)
+* [`vim-eunuch`](https://github.com/tpope/vim-eunuch)
 * [`vim-fugitive`](https://github.com/tpope/vim-fugitive)
 * [`vim-gitgutter`](https://github.com/airblade/vim-gitgutter)
 * [`vim-markdown`](https://github.com/plasticboy/vim-markdown)
 * [`vim-multiple-cursors`](https://github.com/terryma/vim-multiple-cursors)
+* [`vim-polyglot`](https://github.com/sheerun/vim-polyglot)
 * [`vim-sensible`](https://github.com/tpope/vim-sensible)
-* [`vim-signify`](https://github.com/mhinz/vim-signify)
 * [`vim-sleuth`](https://github.com/tpope/vim-sleuth)
-* [`vim-tmux-navigator`](https://github.com/christoomey/vim-tmux-navigator)
-    (Vim only)
+* [`vim-surround`](https://github.com/tpope/vim-surround)
 * [`vim-wordy`](https://github.com/reedes/vim-wordy)
 
 ---
@@ -92,9 +82,17 @@ _This configuration currently supports two colorschemes:_
 
 ---
 
+## Issues
+
+If you encounter any bugs or have any specific feature requests, please [file an
+issue](https://github.com/nhejazi/vimForLife/issues).
+
+---
+
 ## License
 
 &copy; 2016-2017 [Nima Hejazi](http://nimahejazi.org)
 
 The contents of this repository are distributed under the MIT license. See file
 `LICENSE` for details.
+
