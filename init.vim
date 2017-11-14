@@ -21,7 +21,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'jalvesaq/Nvim-R'
 Plug 'jnurmine/Zenburn'
 Plug 'JuliaEditorSupport/julia-vim'
-Plug 'junegunn/fzf'
+Plug '/usr/local/opt/fzf'  "assume fzf installed via MacOS Homebrew
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
