@@ -48,6 +48,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/tpope-vim-abolish'
 Plug 'w0rp/ale'
 Plug 'Yggdroot/indentLine'
+Plug 'yuttie/hydrangea-vim'
 call plug#end()
 
 " }}}
@@ -115,6 +116,7 @@ endfunction
 
 autocmd! ColorScheme zenburn call s:patch_colors()
 autocmd! ColorScheme solarized call s:patch_colors()
+autocmd! ColorScheme hydrangea call s:patch_colors()
 
 " Solarized in GUI, Zenburn when not
 set t_Co=256
@@ -122,8 +124,10 @@ if has('gui_running')
   let g:solarized_termcolors=256
   set background=dark
   colorscheme solarized
-else
+elseif !has('gui_running') && !has('nvim')
   colorscheme zenburn
+else
+  colorscheme hydrangea
 endif
 
 " }}}
@@ -322,14 +326,20 @@ nnoremap <leader>u :GundoToggle<CR>
 " plug-in: Lightline {{{
 
 let g:lightline = {
-      \ 'colorscheme': 'one',
-     \ 'active': {
+      \ 'colorscheme': 'hydrangea',
+      "\ 'colorscheme': 'one',
+      \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
       \ },
       \ 'component_function': {
       \   'gitbranch': 'fugitive#head'
       \ },
+      \ 'component': {
+      \   'readonly': '%{&readonly?"":""}',
+      \ },
+      \ 'separator':    { 'left': '', 'right': '' },
+      \ 'subseparator': { 'left': '', 'right': '' },
       \ }
 
 " }}}
