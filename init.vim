@@ -327,7 +327,6 @@ nnoremap <leader>u :GundoToggle<CR>
 
 let g:lightline = {
       \ 'colorscheme': 'hydrangea',
-      "\ 'colorscheme': 'one',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
@@ -335,11 +334,6 @@ let g:lightline = {
       \ 'component_function': {
       \   'gitbranch': 'fugitive#head'
       \ },
-      \ 'component': {
-      \   'readonly': '%{&readonly?"":""}',
-      \ },
-      \ 'separator':    { 'left': '', 'right': '' },
-      \ 'subseparator': { 'left': '', 'right': '' },
       \ }
 
 " }}}
