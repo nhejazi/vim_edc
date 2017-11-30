@@ -52,6 +52,7 @@ else
   Plug 'vim-syntastic/syntastic'
 endif
 Plug 'Yggdroot/indentLine'
+Plug 'yuttie/hydrangea-vim'
 call plug#end()
 
 " }}}
@@ -127,8 +128,10 @@ if has('gui_running')
   let g:solarized_termcolors=256
   set background=dark
   colorscheme solarized
-else
+elseif !has('gui_running') && !has('nvim')
   colorscheme zenburn
+else
+  colorscheme hydrangea
 endif
 
 " }}}
@@ -289,8 +292,8 @@ nnoremap <leader>u :GundoToggle<CR>
 " plug-in: Lightline {{{
 
 let g:lightline = {
-      \ 'colorscheme': 'one',
-     \ 'active': {
+      \ 'colorscheme': 'hydrangea',
+      \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
       \ },
