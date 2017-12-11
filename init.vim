@@ -9,7 +9,6 @@ endif
 
 " }}}
 " vim-plug + plug-ins {{{
-
 call plug#begin()
 Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
@@ -17,6 +16,9 @@ Plug 'ap/vim-css-color'
 Plug 'davidhalter/jedi-vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'ervandew/supertab'
+if has('nvim')
+  Plug 'gaalcaras/ncm-R'
+endif
 Plug 'itchyny/lightline.vim'
 Plug 'jalvesaq/Nvim-R'
 Plug 'jnurmine/Zenburn'
@@ -30,6 +32,9 @@ Plug 'mileszs/ack.vim'
 Plug 'neomake/neomake'
 Plug 'plasticboy/vim-markdown'
 Plug 'reedes/vim-wordy'
+if has('nvim')
+  Plug 'roxma/nvim-completion-manager'
+endif
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
