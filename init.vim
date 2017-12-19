@@ -416,7 +416,7 @@ let g:R_hl_term = 0
 let R_source_args = "echo=TRUE, print.eval=TRUE"
 
 " try to use a vertical split always
-let R_rconsole_width = 100
+let R_rconsole_width = 90
 let R_min_editor_width = 80
 
 " auto-start R REPL with  .R and .Rmd files only in Neovim
