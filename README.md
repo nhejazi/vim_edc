@@ -41,6 +41,7 @@ _Here is a list of plug-ins currently integrated into this configuration:_
 
 * [`ack.vim`](https://github.com/mileszs/ack.vim)
 * [`ale`](https://github.com/w0rp/ale) (Vim 8.0+ and Neovim)
+* [`bioSyntax-vim`](https://github.com/bioSyntax/bioSyntax-vim)
 * [`codi.vim`](https://github.com/metakirby5/codi.vim)
 * [`deoplete.nvim`](https://github.com/Shougo/deoplete.nvim) (Neovim only)
 * [`fzf.vim`](https://github.com/junegunn/fzf.vim) (requires
@@ -80,7 +81,9 @@ _Here is a list of plug-ins currently integrated into this configuration:_
 
 _This configuration currently supports two colorschemes:_
 
-* [Zenburn](https://github.com/jnurmine/Zenburn) in terminal mode.
+* [Hydrangea](https://github.com/yuttie/hydrangea-vim) in Neovim's terminal
+    mode.
+* [Zenburn](https://github.com/jnurmine/Zenburn) in Vim's terminal mode.
 * [Solarized](https://github.com/altercation/vim-colors-solarized) in GUI mode.
 
 ---
