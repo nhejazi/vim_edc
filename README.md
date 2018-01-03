@@ -74,6 +74,7 @@ _Here is a list of plug-ins currently integrated into this configuration:_
 * [`vim-sensible`](https://github.com/tpope/vim-sensible)
 * [`vim-sleuth`](https://github.com/tpope/vim-sleuth)
 * [`vim-surround`](https://github.com/tpope/vim-surround)
+* [`vim-tmux-navigator`](https://github.com/christoomey/vim-tmux-navigator)
 * [`vim-wordy`](https://github.com/reedes/vim-wordy)
 
 ---
