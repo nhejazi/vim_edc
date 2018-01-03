@@ -16,6 +16,7 @@ Plug 'ap/vim-css-color'
 Plug 'bioSyntax/bioSyntax-vim'
 Plug 'davidhalter/jedi-vim'
 Plug 'easymotion/vim-easymotion'
+Plug 'edkolev/tmuxline.vim'
 Plug 'ervandew/supertab'
 if has('nvim')
   Plug 'gaalcaras/ncm-R'
@@ -434,6 +435,15 @@ nmap <LocalLeader>. <Plug>RDSendLine
 " plug-in: sneak {{{
 
 let g:sneak#label = 1
+
+" }}}
+" plug-in: Tmuxline {{{
+
+" disable powerline separators
+let g:tmuxline_powerline_separators = 0
+
+" choose a stock / pre-set theme
+let g:tmuxline_preset = 'nightly_fox'
 
 " }}}
 " plug-in: vim-markdown {{{

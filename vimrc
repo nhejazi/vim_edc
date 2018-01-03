@@ -17,6 +17,7 @@ Plug 'ap/vim-css-color'
 Plug 'bioSyntax/bioSyntax-vim'
 Plug 'davidhalter/jedi-vim'
 Plug 'easymotion/vim-easymotion'
+Plug 'edkolev/tmuxline.vim'
 Plug 'ervandew/supertab'
 Plug 'itchyny/lightline.vim'
 Plug 'jalvesaq/Nvim-R'
@@ -381,6 +382,15 @@ if v:version < 800
   let g:syntastic_check_on_open = 1
   let g:syntastic_check_on_wq = 0
 endif
+
+" }}}
+" plug-in: Tmuxline {{{
+
+" disable powerline separators
+let g:tmuxline_powerline_separators = 0
+
+" choose a stock / pre-set theme
+let g:tmuxline_preset = 'nightly_fox'
 
 " }}}
 " plug-in: vim-markdown {{{
