@@ -1,8 +1,8 @@
-# Vim - one editor for life.
+# Vim - one editor for life. [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 
 > Setup, package manager, and various plug-ins for my configuration of the
 > [Vim](http://www.vim.org/index.php) and [Neovim](https://neovim.io/)
-> editors. [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
+> editors.
 
 _Caveat emptor_ - using this configuration can be unintuitive at first
 (especially for those new to Vim and/or Neovim).
@@ -81,7 +81,7 @@ _Here is a list of plug-ins currently integrated into this configuration:_
 
 ## Colorschemes
 
-_This configuration currently supports two colorschemes:_
+_This configuration currently supports **three** colorschemes:_
 
 * [Hydrangea](https://github.com/yuttie/hydrangea-vim) in Neovim's terminal
     mode.
@@ -103,4 +103,3 @@ issue](https://github.com/nhejazi/vimForLife/issues).
 
 The contents of this repository are distributed under the MIT license. See file
 `LICENSE` for details.
-
