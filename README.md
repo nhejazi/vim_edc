@@ -62,6 +62,7 @@ _Here is a list of plug-ins currently integrated into this configuration:_
 * [`Nvim-R`](https://github.com/jalvesaq/Nvim-R)
 * [`supertab`](https://github.com/ervandew/supertab)
 * [`syntastic`](https://github.com/vim-syntastic/syntastic) (Vim < 8.0 only)
+* [`tmuxline.vim`](https://github.com/edkolev/tmuxline.vim)
 * [`vim-abolish`](https://github.com/tpope/tpope-vim-abolish)
 * [`vim-css-color`](https://github.com/ap/vim-css-color)
 * [`vim-eunuch`](https://github.com/tpope/vim-eunuch)
