@@ -355,6 +355,15 @@ let R_source_args = "echo=TRUE, print.eval=TRUE"
 let R_rconsole_width = 90
 let R_min_editor_width = 80
 
+" use Tmux to send communicate with the R REPL when not using Neovim
+if !has('nvim')
+  let R_in_buffer = 0
+  let R_notmuxconf = 1
+  let R_clear_line = 1
+  let R_tmux_split = 1
+  let R_applescript = 0
+endif
+
 " auto-start R REPL with  .R and .Rmd files only in Neovim
 "if has('nvim')
 "  autocmd FileType r if string(g:SendCmdToR) == "function('SendCmdToR_fake')" | call StartR("R") | endif

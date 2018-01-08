@@ -415,6 +415,15 @@ let g:R_app = "rice"
 let g:R_cmd = "R"
 let g:R_hl_term = 0
 
+" use Tmux to send communicate with the R REPL when not using Neovim
+if !has('nvim')
+  let R_in_buffer = 0
+  let R_notmuxconf = 1
+  let R_clear_line = 1
+  let R_tmux_split = 1
+  let R_applescript = 0
+endif
+
 " print code sent to R console, truncating only when absolutely necessary
 let R_source_args = "echo=TRUE, print.eval=TRUE"
 
