@@ -70,6 +70,7 @@ _Here is a list of plug-ins currently integrated into this configuration:_
 * [`vim-gitgutter`](https://github.com/airblade/vim-gitgutter)
 * [`vim-markdown`](https://github.com/plasticboy/vim-markdown)
 * [`vim-multiple-cursors`](https://github.com/terryma/vim-multiple-cursors)
+* [`vim-obsession`](https://github.com/tpope/vim-obsession)
 * [`vim-polyglot`](https://github.com/sheerun/vim-polyglot)
 * [`vim-sensible`](https://github.com/tpope/vim-sensible)
 * [`vim-sleuth`](https://github.com/tpope/vim-sleuth)
