@@ -5,7 +5,7 @@
 > editors.
 
 _Caveat emptor_ - using this configuration can be unintuitive at first
-(especially for those new to Vim and/or Neovim).
+(especially for those new to Vim/Neovim).
 
 ---
 
@@ -40,7 +40,7 @@ provided in the `README` of that project.
 _Here is a list of plug-ins currently integrated into this configuration:_
 
 * [`ack.vim`](https://github.com/mileszs/ack.vim)
-* [`ale`](https://github.com/w0rp/ale) (Vim 8.0+ and Neovim)
+* [`ale`](https://github.com/w0rp/ale) (Vim v8.0+ and Neovim)
 * [`bioSyntax-vim`](https://github.com/bioSyntax/bioSyntax-vim)
 * [`codi.vim`](https://github.com/metakirby5/codi.vim)
 * [`deoplete.nvim`](https://github.com/Shougo/deoplete.nvim) (Neovim only)
@@ -60,8 +60,9 @@ _Here is a list of plug-ins currently integrated into this configuration:_
     (Neovim only)
 * [`Ncm-R`](https://github.com/gaalcaras/ncm-R) (Neovim only)
 * [`Nvim-R`](https://github.com/jalvesaq/Nvim-R)
+* [`presenting.vim`](https://github.com/sotte/presenting.vim)
 * [`supertab`](https://github.com/ervandew/supertab)
-* [`syntastic`](https://github.com/vim-syntastic/syntastic) (Vim < 8.0 only)
+* [`syntastic`](https://github.com/vim-syntastic/syntastic) (Vim < v8.0 only)
 * [`tmuxline.vim`](https://github.com/edkolev/tmuxline.vim)
 * [`vim-abolish`](https://github.com/tpope/tpope-vim-abolish)
 * [`vim-css-color`](https://github.com/ap/vim-css-color)
@@ -100,7 +101,8 @@ issue](https://github.com/nhejazi/vimForLife/issues).
 
 ## License
 
-&copy; 2016-2017 [Nima Hejazi](http://nimahejazi.org)
+&copy; 2016-2018 [Nima Hejazi](https://nimahejazi.org)
 
 The contents of this repository are distributed under the MIT license. See file
 `LICENSE` for details.
+

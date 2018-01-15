@@ -42,6 +42,7 @@ else
   Plug 'Shougo/neocomplete.vim'
 endif
 Plug 'sjl/gundo.vim'
+Plug 'sotte/presenting.vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
