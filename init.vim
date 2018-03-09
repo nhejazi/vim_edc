@@ -412,11 +412,6 @@ let g:NERDTreeDirArrows=0
 " }}}
 " plug-in: NVim-R {{{
 
-" use rice command line interface instead of classical R REPL
-let g:R_app = "rice"
-let g:R_cmd = "R"
-let g:R_hl_term = 0
-
 " use Tmux to send communicate with the R REPL when not using Neovim
 if !has('nvim')
   let R_in_buffer = 0
@@ -433,15 +428,23 @@ let R_source_args = "echo=TRUE, print.eval=TRUE"
 let R_rconsole_width = 90
 let R_min_editor_width = 80
 
-" auto-start R REPL with  .R and .Rmd files only in Neovim
-"if has('nvim')
-"  autocmd FileType r if string(g:SendCmdToR) == "function('SendCmdToR_fake')" | call StartR("R") | endif
-"  autocmd FileType rmd if string(g:SendCmdToR) == "function('SendCmdToR_fake')" | call StartR("R") | endif
-"endif
+" auto-start R REPL with  .R and .Rmd files
+"autocmd FileType r if string(g:SendCmdToR) == "function('SendCmdToR_fake')" | call StartR("R") | endif
+"autocmd FileType rmd if string(g:SendCmdToR) == "function('SendCmdToR_fake')" | call StartR("R") | endif
 
 " re-mappings to send code selections to R console
 vmap <LocalLeader>. <Plug>RDSendSelection
 nmap <LocalLeader>. <Plug>RDSendLine
+
+" }}}
+" plug-in: Rtichoke {{{
+
+" 21st century R REPL with Nvim-R
+let R_app = "rtichoke"
+let R_cmd = "R"
+let R_hl_term = 0
+"let R_args = []  " if you had set any
+let R_bracketed_paste = 1
 
 " }}}
 " plug-in: sneak {{{
