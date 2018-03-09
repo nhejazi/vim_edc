@@ -366,6 +366,13 @@ if !has('nvim')
   let R_applescript = 0
 endif
 
+"" 21st century R REPL with Nvim-R
+"let R_app = "rtichoke"
+"let R_cmd = "R"
+"let R_hl_term = 0
+"let R_args = []  " if you had set any
+"let R_bracketed_paste = 1
+
 " auto-start R REPL with  .R and .Rmd files
 "autocmd FileType r if string(g:SendCmdToR) == "function('SendCmdToR_fake')" | call StartR("R") | endif
 "autocmd FileType rmd if string(g:SendCmdToR) == "function('SendCmdToR_fake')" | call StartR("R") | endif
@@ -373,16 +380,6 @@ endif
 " re-mappings to send code selections to R console
 vmap <LocalLeader>. <Plug>RDSendSelection
 nmap <LocalLeader>. <Plug>RDSendLine
-
-" }}}
-" plug-in: Rtichoke {{{
-
-" 21st century R REPL with Nvim-R
-let R_app = "rtichoke"
-let R_cmd = "R"
-let R_hl_term = 0
-"let R_args = []  " if you had set any
-let R_bracketed_paste = 1
 
 " }}}
 " plug-in: sneak {{{
