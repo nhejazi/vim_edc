@@ -350,6 +350,10 @@ let g:NERDTreeDirArrows=0
 " }}}
 " plug-in: NVim-R {{{
 
+" manually enable vim-tmux split for R
+" (see https://github.com/jalvesaq/Nvim-R/blob/master/R/tmux_split.md)
+let R_source = '~/.vim/misc/tmux_split.vim'
+
 " print code sent to R console, truncating only when absolutely necessary
 let R_source_args = "echo=TRUE, print.eval=TRUE"
 
@@ -362,7 +366,7 @@ if !has('nvim')
   let R_in_buffer = 0
   let R_notmuxconf = 1
   let R_clear_line = 1
-  let R_tmux_split = 1
+  "let R_tmux_split = 1
   let R_applescript = 0
 endif
 
