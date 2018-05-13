@@ -407,7 +407,7 @@ endif
 let g:tmuxline_powerline_separators = 0
 
 " choose a stock / pre-set theme
-let g:tmuxline_preset = 'nightly_fox'
+let g:tmuxline_preset = 'full'
 
 " }}}
 " plug-in: vim-markdown {{{
