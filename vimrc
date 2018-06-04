@@ -410,6 +410,9 @@ endif
 " disable powerline separators
 let g:tmuxline_powerline_separators = 0
 
+" disable vim-airline colors in tmuxline
+let g:airline#extensions#tmuxline#enabled = 0
+
 " choose a stock / pre-set theme
 let g:tmuxline_preset = 'full'
 
