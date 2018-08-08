@@ -352,7 +352,9 @@ let g:NERDTreeDirArrows=0
 
 " manually enable vim-tmux split for R
 " (see https://github.com/jalvesaq/Nvim-R/blob/master/R/tmux_split.md)
-let R_source = '~/.vim/misc/tmux_split.vim'
+if $TMUX != ''
+  let R_source = '~/.vim/misc/tmux_split.vim'
+endif
 
 " print code sent to R console, truncating only when absolutely necessary
 let R_source_args = "echo=TRUE, print.eval=TRUE"
