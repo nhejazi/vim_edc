@@ -36,7 +36,7 @@ Plug 'neomake/neomake'
 Plug 'plasticboy/vim-markdown'
 Plug 'reedes/vim-wordy'
 if has('nvim')
-  Plug 'roxma/nvim-completion-manager'
+  Plug 'ncm2/ncm2'
 endif
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
