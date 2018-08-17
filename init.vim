@@ -9,6 +9,7 @@ endif
 
 " }}}
 " vim-plug + plug-ins {{{
+
 call plug#begin()
 Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
@@ -19,33 +20,18 @@ Plug 'davidhalter/jedi-vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'edkolev/tmuxline.vim'
 Plug 'ervandew/supertab'
-if has('nvim')
-  Plug 'gaalcaras/ncm-R'
-endif
 Plug 'itchyny/lightline.vim'
-Plug 'jalvesaq/Nvim-R'
 Plug 'jnurmine/Zenburn'
 Plug 'JuliaEditorSupport/julia-vim'
-"Plug '/usr/local/opt/fzf'  "assume fzf installed via MacOS Homebrew
-"Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
-Plug 'metakirby5/codi.vim'
 Plug 'mileszs/ack.vim'
 Plug 'neomake/neomake'
 Plug 'plasticboy/vim-markdown'
 Plug 'reedes/vim-wordy'
-if has('nvim')
-  Plug 'ncm2/ncm2'
-endif
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', {'do' : ':UpdateRemotePlugins'}
-else
-  Plug 'Shougo/neocomplete.vim'
-endif
 Plug 'sjl/gundo.vim'
 Plug 'sotte/presenting.vim'
 Plug 'terryma/vim-multiple-cursors'
@@ -59,6 +45,13 @@ Plug 'tpope/tpope-vim-abolish'
 Plug 'w0rp/ale'
 Plug 'Yggdroot/indentLine'
 Plug 'yuttie/hydrangea-vim'
+Plug 'jalvesaq/Nvim-R'
+Plug 'ncm2/ncm2'
+Plug 'roxma/nvim-yarp'
+Plug 'gaalcaras/ncm-R'
+Plug 'sirver/UltiSnips'
+Plug 'lervag/vimtex'
+Plug 'Shougo/deoplete.nvim', {'do' : ':UpdateRemotePlugins'}
 call plug#end()
 
 " }}}
