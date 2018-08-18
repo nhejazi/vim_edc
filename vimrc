@@ -52,7 +52,6 @@ if v:version >= 800
   Plug 'roxma/vim-hug-neovim-rpc'
   Plug 'gaalcaras/ncm-R'
   Plug 'sirver/UltiSnips'
-  Plug 'lervag/vimtex'
   Plug 'Shougo/deoplete.nvim', {'do' : ':UpdateRemotePlugins'}
 else
   Plug 'vim-syntastic/syntastic'

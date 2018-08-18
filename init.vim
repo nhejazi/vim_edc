@@ -50,7 +50,6 @@ Plug 'ncm2/ncm2'
 Plug 'roxma/nvim-yarp'
 Plug 'gaalcaras/ncm-R'
 Plug 'sirver/UltiSnips'
-Plug 'lervag/vimtex'
 Plug 'Shougo/deoplete.nvim', {'do' : ':UpdateRemotePlugins'}
 call plug#end()
 
