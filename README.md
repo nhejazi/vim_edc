@@ -75,6 +75,7 @@ _Here is a list of plug-ins currently integrated into this configuration:_
 * [`vim-surround`](https://github.com/tpope/vim-surround)
 * [`vim-tmux-navigator`](https://github.com/christoomey/vim-tmux-navigator)
 * [`vim-wordy`](https://github.com/reedes/vim-wordy)
+* [`wandbox-vim`](https://github.com/rhysd/wandbox-vim)
 
 ---
 
