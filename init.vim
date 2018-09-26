@@ -17,6 +17,7 @@ Plug 'ap/vim-css-color'
 Plug 'bioSyntax/bioSyntax-vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'davidhalter/jedi-vim'
+Plug 'dbmrq/vim-ditto'
 Plug 'easymotion/vim-easymotion'
 Plug 'edkolev/tmuxline.vim'
 Plug 'ervandew/supertab'
@@ -273,6 +274,26 @@ let g:ale_lint_delay = 600
 let g:deoplete#enable_at_startup = 1
 
 " }}}
+" plug-in: Ditto {{{
+
+" Use autocmds to check your text automatically and keep the highlighting
+" up to date (easier):
+au FileType markdown,md,text,tex DittoOn  " Turn on Ditto's autocmds
+nmap <leader>di <Plug>ToggleDitto      " Turn Ditto on and off
+
+" If you don't want the autocmds, you can also use an operator to check
+" specific parts of your text:
+" vmap <leader>d <Plug>Ditto	       " Call Ditto on visual selection
+" nmap <leader>d <Plug>Ditto	       " Call Ditto on operator movement
+
+nmap =d <Plug>DittoNext                " Jump to the next word
+nmap -d <Plug>DittoPrev                " Jump to the previous word
+nmap +d <Plug>DittoGood                " Ignore the word under the cursor
+nmap _d <Plug>DittoBad                 " Stop ignoring the word under the cursor
+nmap ]d <Plug>DittoMore                " Show the next matches
+nmap [d <Plug>DittoLess                " Show the previous matches
+
+" }}}
 " plug-in: fzf {{{
 
 nmap <Leader>b :Buffers<CR>
@@ -366,6 +387,22 @@ let g:limelight_eop = '\ze\n^\s'
 " Highlighting priority (default: 10)
 "   Set it to -1 not to overrule hlsearch
 let g:limelight_priority = -1
+
+" }}}
+" plug-in: Pencil {{{
+
+" 0=disable, 1 = enable (def)
+let g:pencil#autoformat = 1
+
+" default is 'hard'
+let g:pencil#wrapModeDefault = 'hard'   "alternatively, 'soft'
+
+augroup pencil
+  autocmd!
+  autocmd FileType markdown,mkd,md call pencil#init()
+  autocmd FileType tex             call pencil#init()
+  autocmd FileType text            call pencil#init()
+augroup END
 
 " }}}
 " plug-in: Neoterm {{{

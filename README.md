@@ -1,4 +1,4 @@
-# Vim - one editor for life. [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
+# Vim - one editor for life [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 
 > Setup, package manager, and various plug-ins for my configuration of the
 > [Vim](http://www.vim.org/index.php) and [Neovim](https://neovim.io/)
@@ -44,6 +44,7 @@ _Here is a list of plug-ins currently integrated into this configuration:_
 * [`bioSyntax-vim`](https://github.com/bioSyntax/bioSyntax-vim)
 * [`codi.vim`](https://github.com/metakirby5/codi.vim)
 * [`deoplete.nvim`](https://github.com/Shougo/deoplete.nvim) (Neovim only)
+* [`ditto.vim`](https://github.com/dbmrq/vim-ditto)
 * [`goyo.vim`](https://github.com/junegunn/goyo.vim)
 * [`gundo.vim`](https://github.com/sjl/gundo.vim)
 * [`indentLine`](https://github.com/Yggdroot/indentLine)
@@ -88,6 +89,14 @@ _This configuration currently supports **three** colorschemes:_
     mode.
 * [Zenburn](https://github.com/jnurmine/Zenburn) in Vim's terminal mode.
 * [Solarized](https://github.com/altercation/vim-colors-solarized) in GUI mode.
+
+---
+
+## Contributions
+
+These are extremely opinionated and imperfect configurations for Vim and Neovim.
+If you find yourself using them and would like to contribute to their
+improvement, a pull request would be very welcome.
 
 ---
 
