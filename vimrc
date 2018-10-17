@@ -420,7 +420,6 @@ let g:pencil#wrapModeDefault = 'hard'   "alternatively, 'soft'
 augroup pencil
   autocmd!
   autocmd FileType markdown,mkd,md call pencil#init()
-  autocmd FileType tex             call pencil#init()
   autocmd FileType text            call pencil#init()
 augroup END
 
