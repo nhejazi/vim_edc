@@ -93,7 +93,11 @@ set lazyredraw          " Only redraw the screen when absolutely necessary.
 set gdefault            " Use global replacements by default with :s/foo/bar
 set synmaxcol=80        " Highlight only 1st 80 chars of line for performance.
 set encoding=utf-8      " Manually set encoding to be used.
-set shell=zsh          " Manually set shell to be used to Bash.
+if exists("$SSH_CONNECTION")
+  set shell=bash        " Manually set shell to bash if remote session.
+else
+  set shell=zsh         " Manually set shell to zsh otherwise.
+endif
 set clipboard=unnamed   " Use system clipboard over Vim clipboard.
 set nocompatible        " Disable backward compatibility with Vi.
 let g:tex_conceal = ""  " Disable syntax concealing for LaTeX.
