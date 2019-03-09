@@ -265,7 +265,7 @@ autocmd BufLeave term://* stopinsert
 
 if v:version >= 800
   " ALE and syntastic plugins conflict
-  let g:ale_emit_conflict_warnings = 0
+  "let g:ale_emit_conflict_warnings = 0
 
   " delays running of linters (default = 200)
   let g:ale_lint_delay = 200
@@ -274,14 +274,14 @@ if v:version >= 800
   let g:ale_completion_enabled = 1
 
   " tweak signs displayed for warnings and errors
-  let g:ale_sign_error = '>>'
-  let g:ale_sign_warning = '--'
+  let g:ale_sign_error = '!!'
+  let g:ale_sign_warning = '>>'
 
   " define linters to run on a language-specific basis
   let g:ale_linters = {
-  \  'python': ['flake8'],
-  \  'r': ['lintr']
-  \}
+       \  'python': ['flake8'],
+       \  'r': ['lintr']
+       \ }
 
   " keep the gutter sign open --- always
   let g:ale_sign_column_always = 1
