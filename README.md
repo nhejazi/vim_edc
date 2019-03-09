@@ -85,9 +85,9 @@ _Here is a list of plug-ins currently integrated into this configuration:_
 
 _This configuration currently supports **three** colorschemes:_
 
-* [Hydrangea](https://github.com/yuttie/hydrangea-vim) in Neovim's terminal
-    mode.
-* [Zenburn](https://github.com/jnurmine/Zenburn) in Vim's terminal mode.
+* [Nord](https://github.com/arcticicestudio/nord-vim).
+* [Zenburn](https://github.com/jnurmine/Zenburn) (previously; still installed,
+   just disabled)
 * [Solarized](https://github.com/altercation/vim-colors-solarized) in GUI mode.
 
 ---

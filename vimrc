@@ -14,6 +14,7 @@ call plug#begin()
 Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
 Plug 'ap/vim-css-color'
+Plug 'arcticicestudio/nord-vim'
 Plug 'bioSyntax/bioSyntax-vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'ConradIrwin/vim-bracketed-paste'
@@ -45,7 +46,6 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/tpope-vim-abolish'
 Plug 'Yggdroot/indentLine'
-Plug 'yuttie/hydrangea-vim'
 Plug 'jalvesaq/Nvim-R'
 if v:version >= 800
   Plug 'w0rp/ale'
@@ -132,16 +132,15 @@ endfunction
 autocmd! ColorScheme zenburn call s:patch_colors()
 autocmd! ColorScheme solarized call s:patch_colors()
 
-" Solarized in GUI, Zenburn when not
+" Solarized in GUI, Nord (previously Zenburn) when not
 set t_Co=256
 if has('gui_running')
   let g:solarized_termcolors=256
   set background=dark
   colorscheme solarized
-elseif !has('gui_running') && !has('nvim')
-  colorscheme zenburn
-else
-  colorscheme hydrangea
+elseif !has('gui_running')
+  colorscheme nord
+  "colorscheme zenburn
 endif
 
 " }}}
@@ -316,7 +315,7 @@ nmap \p! :Goyo!<CR>
 " plug-in: Lightline {{{
 
 let g:lightline = {
-      \ 'colorscheme': 'hydrangea',
+      \ 'colorscheme': 'nord',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]

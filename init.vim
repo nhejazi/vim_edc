@@ -14,6 +14,7 @@ call plug#begin()
 Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
 Plug 'ap/vim-css-color'
+Plug 'arcticicestudio/nord-vim'
 Plug 'bioSyntax/bioSyntax-vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'davidhalter/jedi-vim'
@@ -123,18 +124,16 @@ endfunction
 
 autocmd! ColorScheme zenburn call s:patch_colors()
 autocmd! ColorScheme solarized call s:patch_colors()
-autocmd! ColorScheme hydrangea call s:patch_colors()
 
-" Solarized in GUI, Zenburn when not
+" Solarized in GUI, Nord (previously Zenburn) when not
 set t_Co=256
 if has('gui_running')
   let g:solarized_termcolors=256
   set background=dark
   colorscheme solarized
-elseif !has('gui_running') && !has('nvim')
-  colorscheme zenburn
-else
-  colorscheme hydrangea
+elseif !has('gui_running')
+  colorscheme nord
+  "colorscheme zenburn
 endif
 
 " }}}
@@ -347,7 +346,7 @@ nmap \p! :Goyo!<CR>
 " plug-in: Lightline {{{
 
 let g:lightline = {
-      \ 'colorscheme': 'hydrangea',
+      \ 'colorscheme': 'nord',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
