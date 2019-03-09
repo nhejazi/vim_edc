@@ -29,13 +29,11 @@ Plug 'junegunn/limelight.vim'
 Plug 'mileszs/ack.vim'
 Plug 'neomake/neomake'
 Plug 'plasticboy/vim-markdown'
-Plug 'reedes/vim-pencil'
 Plug 'reedes/vim-wordy'
 Plug 'rhysd/wandbox-vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
-Plug 'sjl/gundo.vim'
 Plug 'sotte/presenting.vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-eunuch'
@@ -346,12 +344,6 @@ nmap \p :Goyo<CR>
 nmap \p! :Goyo!<CR>
 
 " }}}
-" plug-in: Gundo {{{
-
-" 'Super Undo' via Gundo's visual undo tree
-nnoremap <leader>u :GundoToggle<CR>
-
-" }}}
 " plug-in: Lightline {{{
 
 let g:lightline = {
@@ -391,21 +383,6 @@ let g:limelight_eop = '\ze\n^\s'
 " Highlighting priority (default: 10)
 "   Set it to -1 not to overrule hlsearch
 let g:limelight_priority = -1
-
-" }}}
-" plug-in: Pencil {{{
-
-" 0=disable, 1 = enable (def)
-let g:pencil#autoformat = 1
-
-" default is 'hard'
-let g:pencil#wrapModeDefault = 'hard'   "alternatively, 'soft'
-
-augroup pencil
-  autocmd!
-  autocmd FileType markdown,mkd,md call pencil#init()
-  autocmd FileType text            call pencil#init()
-augroup END
 
 " }}}
 " plug-in: Neoterm {{{

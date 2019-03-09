@@ -16,6 +16,7 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'ap/vim-css-color'
 Plug 'bioSyntax/bioSyntax-vim'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'davidhalter/jedi-vim'
 Plug 'dbmrq/vim-ditto'
 Plug 'easymotion/vim-easymotion'
@@ -29,13 +30,11 @@ Plug 'junegunn/limelight.vim'
 Plug 'mileszs/ack.vim'
 Plug 'neomake/neomake'
 Plug 'plasticboy/vim-markdown'
-Plug 'reedes/vim-pencil'
 Plug 'reedes/vim-wordy'
 Plug 'rhysd/wandbox-vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
-Plug 'sjl/gundo.vim'
 Plug 'sotte/presenting.vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-eunuch'
@@ -64,11 +63,12 @@ call plug#end()
 " }}}
 " core customizations {{{
 
-syntax on               " Autostart syntax checking.
+syntax on               " Auto-start syntax checking.
 filetype plugin on      " Enable plugins.
 filetype indent on      " Load type-specific indent files.
 set autoread            " If file updates, load automatically.
 set autochdir           " Switch to current file's parent directory.
+set noautoindent        " Turn of auto-indenting functionality (for pasting)
 set showcmd             " Show (partial) command in status line.
 set showmatch           " Show matching brackets.
 set showmode            " Show current mode.
@@ -313,12 +313,6 @@ nmap \p :Goyo<CR>
 nmap \p! :Goyo!<CR>
 
 " }}}
-" plug-in: Gundo {{{
-
-" 'Super Undo' via Gundo's visual undo tree
-nnoremap <leader>u :GundoToggle<CR>
-
-" }}}
 " plug-in: Lightline {{{
 
 let g:lightline = {
@@ -411,21 +405,6 @@ endif
 " re-mappings to send code selections to R console
 vmap <LocalLeader>. <Plug>RDSendSelection
 nmap <LocalLeader>. <Plug>RDSendLine
-
-" }}}
-" plug-in: Pencil {{{
-
-" 0=disable, 1 = enable (def)
-let g:pencil#autoformat = 1
-
-" default is 'hard'
-let g:pencil#wrapModeDefault = 'hard'   "alternatively, 'soft'
-
-augroup pencil
-  autocmd!
-  autocmd FileType markdown,mkd,md call pencil#init()
-  autocmd FileType text            call pencil#init()
-augroup END
 
 " }}}
 " plug-in: sneak {{{
