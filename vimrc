@@ -240,7 +240,23 @@ if v:version >= 800
   let g:ale_emit_conflict_warnings = 0
 
   " delays running of linters (default = 200)
-  let g:ale_lint_delay = 600
+  let g:ale_lint_delay = 200
+
+  " allow completion
+  let g:ale_completion_enabled = 1
+
+  " tweak signs displayed for warnings and errors
+  let g:ale_sign_error = '>>'
+  let g:ale_sign_warning = '--'
+
+  " define linters to run on a language-specific basis
+  let g:ale_linters = {
+  \  'python': ['flake8'],
+  \  'r': ['lintr']
+  \}
+
+  " keep the gutter sign open --- always
+  let g:ale_sign_column_always = 1
 endif
 
 " }}}
@@ -423,6 +439,11 @@ if v:version < 800
   let g:syntastic_check_on_open = 1
   let g:syntastic_check_on_wq = 0
 endif
+
+" working with R
+let g:syntastic_enable_r_lintr_checker = 1
+let g:syntastic_r_checkers = ['lintr']"
+let g:syntastic_r_lintr_linters = "with_defaults(line_length_linter(80))"
 
 " }}}
 " plug-in: Tmuxline {{{
