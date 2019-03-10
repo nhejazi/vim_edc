@@ -41,7 +41,7 @@ _Here is a list of plug-ins currently integrated into this configuration:_
 
 * [`ack.vim`](https://github.com/mileszs/ack.vim)
 * [`ale`](https://github.com/w0rp/ale) (Vim v8.0+ and Neovim)
-* [ctrlp.vim](https://github.com/ctrlpvim/ctrlp.vim)
+* [`ctrlp.vim`](https://github.com/ctrlpvim/ctrlp.vim)
 * [`deoplete.nvim`](https://github.com/Shougo/deoplete.nvim) (Neovim only)
 * [`ditto.vim`](https://github.com/dbmrq/vim-ditto)
 * [`goyo.vim`](https://github.com/junegunn/goyo.vim)
