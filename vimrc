@@ -15,24 +15,25 @@ Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
 Plug 'ap/vim-css-color'
 Plug 'arcticicestudio/nord-vim'
-Plug 'bioSyntax/bioSyntax-vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'ConradIrwin/vim-bracketed-paste'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'davidhalter/jedi-vim'
 Plug 'dbmrq/vim-ditto'
+Plug 'drewtempelmeyer/palenight.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'edkolev/tmuxline.vim'
 Plug 'ervandew/supertab'
 Plug 'itchyny/lightline.vim'
+Plug 'jalvesaq/Nvim-R'
 Plug 'jnurmine/Zenburn'
 Plug 'JuliaEditorSupport/julia-vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'mileszs/ack.vim'
-Plug 'neomake/neomake'
+Plug 'morhetz/gruvbox'
 Plug 'plasticboy/vim-markdown'
 Plug 'reedes/vim-wordy'
-Plug 'rhysd/wandbox-vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
@@ -46,15 +47,12 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/tpope-vim-abolish'
 Plug 'Yggdroot/indentLine'
-Plug 'jalvesaq/Nvim-R'
 if v:version >= 800
   Plug 'w0rp/ale'
-  Plug 'ncm2/ncm2'
+  " for deoplete
+  Plug 'Shougo/deoplete.nvim'
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
-  Plug 'gaalcaras/ncm-R'
-  Plug 'sirver/UltiSnips'
-  Plug 'Shougo/deoplete.nvim', {'do' : ':UpdateRemotePlugins'}
 else
   Plug 'vim-syntastic/syntastic'
 endif
@@ -114,7 +112,7 @@ let maplocalleader = "'" " The local leader is the apostrophe
 " }}}
 " colorschemes {{{
 
-" Automatically patch Zenburn colors for Goyo
+" Automatically patch Zenburn and Solarized colors for Goyo plugin
 function! s:patch_colors()
   highlight ColorColumn ctermbg=DarkRed guibg=DarkRed
   highlight Comment ctermbg=LightGreen guibg=LightGreen
@@ -132,15 +130,14 @@ endfunction
 autocmd! ColorScheme zenburn call s:patch_colors()
 autocmd! ColorScheme solarized call s:patch_colors()
 
-" Solarized in GUI, Nord (previously Zenburn) when not
+" Solarized in GUI, Gruvbox (Zenburn, Nord, Palenight also available) when not
 set t_Co=256
+set background=dark
 if has('gui_running')
   let g:solarized_termcolors=256
-  set background=dark
   colorscheme solarized
 elseif !has('gui_running')
-  colorscheme nord
-  "colorscheme zenburn
+  colorscheme gruvbox
 endif
 
 " }}}
@@ -237,7 +234,7 @@ autocmd BufRead,BufNewFile *.txt setlocal spell
 
 if v:version >= 800
   " ALE and syntastic plugins conflict
-  "let g:ale_emit_conflict_warnings = 0
+  let g:ale_emit_conflict_warnings = 0
 
   " delays running of linters (default = 200)
   let g:ale_lint_delay = 200
@@ -257,6 +254,23 @@ if v:version >= 800
 
   " keep the gutter sign open --- always
   let g:ale_sign_column_always = 1
+endif
+
+" }}}
+" plug-in: CtrlP {{{
+
+" change default mapping
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+
+" ignore files in gitignore
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+
+" }}}
+" plug-in: Deoplete {{{
+
+if v:version >= 800
+  let g:deoplete#enable_at_startup = 1
 endif
 
 " }}}
@@ -387,7 +401,7 @@ let g:NERDTreeDirArrows=0
 " manually enable vim-tmux split for R
 " (see https://github.com/jalvesaq/Nvim-R/blob/master/R/tmux_split.md)
 if $TMUX != ''
-  let R_source = '~/.vim/misc/tmux_split.vim'
+  let R_source = '~/.vim/tmux_split.vim'
 endif
 
 " print code sent to R console, truncating only when absolutely necessary
@@ -405,13 +419,6 @@ if !has('nvim')
   "let R_tmux_split = 1
   let R_applescript = 0
 endif
-
-"" 21st century R REPL with Nvim-R
-"let R_app = "rtichoke"
-"let R_cmd = "R"
-"let R_hl_term = 0
-"let R_args = []  " if you had set any
-"let R_bracketed_paste = 1
 
 " auto-start R REPL with  .R and .Rmd files
 "autocmd FileType r if string(g:SendCmdToR) == "function('SendCmdToR_fake')" | call StartR("R") | endif
@@ -438,12 +445,16 @@ if v:version < 800
   let g:syntastic_auto_loc_list = 1
   let g:syntastic_check_on_open = 1
   let g:syntastic_check_on_wq = 0
-endif
 
-" working with R
-let g:syntastic_enable_r_lintr_checker = 1
-let g:syntastic_r_checkers = ['lintr']"
-let g:syntastic_r_lintr_linters = "with_defaults(line_length_linter(80))"
+  " working with R (recommended by lintr)
+  let g:syntastic_enable_r_lintr_checker = 1
+  let g:syntastic_r_checkers = ['lintr']"
+  let g:syntastic_r_lintr_linters = "with_defaults(line_length_linter(80))"
+
+  " for Python
+  let g:syntastic_python_checkers = ['flake8']
+
+endif
 
 " }}}
 " plug-in: Tmuxline {{{
