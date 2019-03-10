@@ -53,7 +53,6 @@ if v:version >= 800
   Plug 'Shougo/deoplete.nvim'
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
-  let g:deoplete#enable_at_startup = 1
 else
   Plug 'vim-syntastic/syntastic'
 endif
@@ -266,6 +265,13 @@ let g:ctrlp_cmd = 'CtrlP'
 
 " ignore files in gitignore
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+
+" }}}
+" plug-in: Deoplete {{{
+
+if v:version >= 800
+  let g:deoplete#enable_at_startup = 1
+endif
 
 " }}}
 " plug-in: Ditto {{{

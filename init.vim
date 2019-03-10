@@ -15,26 +15,28 @@ Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
 Plug 'ap/vim-css-color'
 Plug 'arcticicestudio/nord-vim'
-Plug 'bioSyntax/bioSyntax-vim'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'davidhalter/jedi-vim'
 Plug 'dbmrq/vim-ditto'
+Plug 'drewtempelmeyer/palenight.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'edkolev/tmuxline.vim'
 Plug 'ervandew/supertab'
 Plug 'itchyny/lightline.vim'
+Plug 'jalvesaq/Nvim-R'
 Plug 'jnurmine/Zenburn'
 Plug 'JuliaEditorSupport/julia-vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'mileszs/ack.vim'
-Plug 'neomake/neomake'
+Plug 'morhetz/gruvbox'
 Plug 'plasticboy/vim-markdown'
 Plug 'reedes/vim-wordy'
-Plug 'rhysd/wandbox-vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
+Plug 'Shougo/deoplete.nvim', {'do' : ':UpdateRemotePlugins'}
 Plug 'sotte/presenting.vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-eunuch'
@@ -46,13 +48,6 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/tpope-vim-abolish'
 Plug 'w0rp/ale'
 Plug 'Yggdroot/indentLine'
-Plug 'yuttie/hydrangea-vim'
-Plug 'jalvesaq/Nvim-R'
-Plug 'ncm2/ncm2'
-Plug 'roxma/nvim-yarp'
-Plug 'gaalcaras/ncm-R'
-Plug 'sirver/UltiSnips'
-Plug 'Shougo/deoplete.nvim', {'do' : ':UpdateRemotePlugins'}
 call plug#end()
 
 " }}}
@@ -63,6 +58,7 @@ filetype plugin on      " Enable plugins.
 filetype indent on      " Load type-specific indent files.
 set autoread            " If file updates, load automatically.
 set autochdir           " Switch to current file's parent directory.
+set noautoindent        " Turn of auto-indenting functionality (for pasting)
 set showcmd             " Show (partial) command in status line.
 set showmatch           " Show matching brackets.
 set showmode            " Show current mode.
@@ -105,9 +101,9 @@ let mapleader = "," " The leader is the comma
 let maplocalleader = "'" " The local leader is the apostrophe
 
 " }}}
-" colorschemes {{{
+" color schemes {{{
 
-" Automatically patch Zenburn colors for Goyo
+" Automatically patch Zenburn and Solarized colors for Goyo plugin
 function! s:patch_colors()
   highlight ColorColumn ctermbg=DarkRed guibg=DarkRed
   highlight Comment ctermbg=LightGreen guibg=LightGreen
@@ -125,15 +121,14 @@ endfunction
 autocmd! ColorScheme zenburn call s:patch_colors()
 autocmd! ColorScheme solarized call s:patch_colors()
 
-" Solarized in GUI, Nord (previously Zenburn) when not
+" Solarized in GUI, Gruvbox (Zenburn, Nord, Palenight also available) when not
 set t_Co=256
+set background=dark
 if has('gui_running')
   let g:solarized_termcolors=256
-  set background=dark
   colorscheme solarized
 elseif !has('gui_running')
-  colorscheme nord
-  "colorscheme zenburn
+  colorscheme gruvbox
 endif
 
 " }}}
@@ -265,7 +260,7 @@ autocmd BufLeave term://* stopinsert
 
 if v:version >= 800
   " ALE and syntastic plugins conflict
-  "let g:ale_emit_conflict_warnings = 0
+  let g:ale_emit_conflict_warnings = 0
 
   " delays running of linters (default = 200)
   let g:ale_lint_delay = 200
@@ -286,6 +281,16 @@ if v:version >= 800
   " keep the gutter sign open --- always
   let g:ale_sign_column_always = 1
 endif
+
+" }}}
+" plug-in: CtrlP {{{
+
+" change default mapping
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+
+" ignore files in gitignore
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
 " }}}
 " plug-in: Deoplete {{{
