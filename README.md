@@ -66,6 +66,7 @@ _Here is a list of plug-ins currently integrated into this configuration:_
 * [`vim-markdown`](https://github.com/plasticboy/vim-markdown)
 * [`vim-multiple-cursors`](https://github.com/terryma/vim-multiple-cursors)
 * [`vim-obsession`](https://github.com/tpope/vim-obsession)
+* [`vim-pencil`](https://github.com/reedes/vim-pencil)
 * [`vim-polyglot`](https://github.com/sheerun/vim-polyglot)
 * [`vim-sensible`](https://github.com/tpope/vim-sensible)
 * [`vim-sleuth`](https://github.com/tpope/vim-sleuth)

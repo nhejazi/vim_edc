@@ -32,6 +32,7 @@ Plug 'junegunn/limelight.vim'
 Plug 'mileszs/ack.vim'
 Plug 'morhetz/gruvbox'
 Plug 'plasticboy/vim-markdown'
+Plug 'reedes/vim-pencil'
 Plug 'reedes/vim-wordy'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
@@ -366,6 +367,13 @@ nmap \p :Goyo<CR>
 nmap \p! :Goyo!<CR>
 
 " }}}
+" plug-in: indentLine {{{
+
+" automatically excludes certain file types from conceallevel = 2
+" https://vi.stackexchange.com/questions/7258/how-do-i-prevent-vim-from-hiding-symbols-in-markdown-and-json
+let g:indentLine_setConceal = 0
+
+" }}}
 " plug-in: Lightline {{{
 
 let g:lightline = {
@@ -468,6 +476,21 @@ let R_min_editor_width = 80
 " re-mappings to send code selections to R console
 vmap <LocalLeader>. <Plug>RDSendSelection
 nmap <LocalLeader>. <Plug>RDSendLine
+
+" }}}
+" plug-in: Pencil {{{
+
+" 0=disable, 1 = enable (def)
+let g:pencil#autoformat = 1
+
+" default is 'hard'
+let g:pencil#wrapModeDefault = 'hard'   "alternatively, 'soft'
+
+augroup pencil
+  autocmd!
+  autocmd FileType markdown,mkd,md call pencil#init()
+  autocmd FileType text            call pencil#init()
+augroup END
 
 " }}}
 " plug-in: sneak {{{
