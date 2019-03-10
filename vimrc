@@ -112,7 +112,7 @@ let maplocalleader = "'" " The local leader is the apostrophe
 " }}}
 " colorschemes {{{
 
-" Automatically patch Zenburn and Solarized colors for Goyo
+" Automatically patch Zenburn and Solarized colors for Goyo plugin
 function! s:patch_colors()
   highlight ColorColumn ctermbg=DarkRed guibg=DarkRed
   highlight Comment ctermbg=LightGreen guibg=LightGreen
@@ -401,7 +401,7 @@ let g:NERDTreeDirArrows=0
 " manually enable vim-tmux split for R
 " (see https://github.com/jalvesaq/Nvim-R/blob/master/R/tmux_split.md)
 if $TMUX != ''
-  let R_source = '~/.vim/misc/tmux_split.vim'
+  let R_source = '~/.vim/tmux_split.vim'
 endif
 
 " print code sent to R console, truncating only when absolutely necessary
@@ -419,13 +419,6 @@ if !has('nvim')
   "let R_tmux_split = 1
   let R_applescript = 0
 endif
-
-"" 21st century R REPL with Nvim-R
-"let R_app = "rtichoke"
-"let R_cmd = "R"
-"let R_hl_term = 0
-"let R_args = []  " if you had set any
-"let R_bracketed_paste = 1
 
 " auto-start R REPL with  .R and .Rmd files
 "autocmd FileType r if string(g:SendCmdToR) == "function('SendCmdToR_fake')" | call StartR("R") | endif

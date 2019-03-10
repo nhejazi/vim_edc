@@ -461,13 +461,6 @@ let R_source_args = "echo=TRUE, print.eval=TRUE"
 let R_rconsole_width = 90
 let R_min_editor_width = 80
 
-"" 21st century R REPL with Nvim-R
-"let R_app = "rtichoke"
-"let R_cmd = "R"
-"let R_hl_term = 0
-"let R_args = []  " if you had set any
-"let R_bracketed_paste = 1
-
 " auto-start R REPL with  .R and .Rmd files
 "autocmd FileType r if string(g:SendCmdToR) == "function('SendCmdToR_fake')" | call StartR("R") | endif
 "autocmd FileType rmd if string(g:SendCmdToR) == "function('SendCmdToR_fake')" | call StartR("R") | endif
