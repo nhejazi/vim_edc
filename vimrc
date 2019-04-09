@@ -47,7 +47,7 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/tpope-vim-abolish'
-Plug 'Yggdroot/indentLine'
+"Plug 'Yggdroot/indentLine'
 if v:version >= 800
   Plug 'w0rp/ale'
   " for deoplete
@@ -347,7 +347,7 @@ nmap \p! :Goyo!<CR>
 
 " automatically excludes certain file types from conceallevel = 2
 " https://vi.stackexchange.com/questions/7258/how-do-i-prevent-vim-from-hiding-symbols-in-markdown-and-json
-let g:indentLine_setConceal = 0
+"let g:indentLine_setConceal = 0
 
 " }}}
 " plug-in: Lightline {{{

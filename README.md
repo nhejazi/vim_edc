@@ -88,6 +88,17 @@ _This configuration currently supports several colorscheme options:_
 
 ---
 
+## Notes
+
+Miscellaneous useful notes and resources:
+
+* [Vim Tips & Tricks](https://bluz71.github.io/2017/05/15/vim-tips-tricks.html)
+* [Building a good `vimrc`](https://dougblack.io/words/a-good-vimrc.html#colors)
+* [Vim graphical
+    tutorial](http://www.viemu.com/a_vi_vim_graphical_cheat_sheet_tutorial.html)
+
+---
+
 ## Contributions
 
 These are extremely opinionated and imperfect configurations for Vim and Neovim.
@@ -109,4 +120,3 @@ issue](https://github.com/nhejazi/vimForLife/issues).
 
 The contents of this repository are distributed under the MIT license. See file
 `LICENSE` for details.
-
