@@ -1,11 +1,8 @@
-# Vim - one editor for life [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
+# Vim - one editor for life
 
 > Setup, package manager, and various plug-ins for my configuration of the
 > [Vim](http://www.vim.org/index.php) and [Neovim](https://neovim.io/)
-> editors.
-
-_Caveat emptor_ - using this configuration can be unintuitive at first
-(especially for those new to Vim/Neovim).
+> editors. [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 
 ---
 
@@ -64,7 +61,6 @@ _Here is a list of plug-ins currently integrated into this configuration:_
 * [`vim-fugitive`](https://github.com/tpope/vim-fugitive)
 * [`vim-gitgutter`](https://github.com/airblade/vim-gitgutter)
 * [`vim-markdown`](https://github.com/plasticboy/vim-markdown)
-* [`vim-multiple-cursors`](https://github.com/terryma/vim-multiple-cursors)
 * [`vim-obsession`](https://github.com/tpope/vim-obsession)
 * [`vim-pencil`](https://github.com/reedes/vim-pencil)
 * [`vim-polyglot`](https://github.com/sheerun/vim-polyglot)
@@ -72,6 +68,7 @@ _Here is a list of plug-ins currently integrated into this configuration:_
 * [`vim-sleuth`](https://github.com/tpope/vim-sleuth)
 * [`vim-surround`](https://github.com/tpope/vim-surround)
 * [`vim-tmux-navigator`](https://github.com/christoomey/vim-tmux-navigator)
+* [`vim-visual-multi`](https://github.com/mg979/vim-visual-multi)
 * [`vim-wordy`](https://github.com/reedes/vim-wordy)
 
 ---
@@ -85,6 +82,17 @@ _This configuration currently supports several colorscheme options:_
 * [Nord](https://github.com/arcticicestudio/nord-vim)
 * [Zenburn](https://github.com/jnurmine/Zenburn)
 * [Solarized](https://github.com/altercation/vim-colors-solarized)
+
+---
+
+## Notes
+
+Miscellaneous useful notes and resources:
+
+* [Vim Tips & Tricks](https://bluz71.github.io/2017/05/15/vim-tips-tricks.html)
+* [Building a good `vimrc`](https://dougblack.io/words/a-good-vimrc.html#colors)
+* [Vim graphical
+    tutorial](http://www.viemu.com/a_vi_vim_graphical_cheat_sheet_tutorial.html)
 
 ---
 
@@ -109,4 +117,3 @@ issue](https://github.com/nhejazi/vimForLife/issues).
 
 The contents of this repository are distributed under the MIT license. See file
 `LICENSE` for details.
-
