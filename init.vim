@@ -481,15 +481,20 @@ nmap <LocalLeader>. <Plug>RDSendLine
 " plug-in: Pencil {{{
 
 " 0=disable, 1 = enable (def)
-let g:pencil#autoformat = 1
+let g:pencil#autoformat = 0
 
 " default is 'hard'
 let g:pencil#wrapModeDefault = 'hard'   "alternatively, 'soft'
 
+" 0=disable, 1=enable (def)
+let g:pencil#cursorwrap = 0
+
+" initialize for different file types
 augroup pencil
   autocmd!
-  autocmd FileType markdown,mkd,md call pencil#init()
-  autocmd FileType text            call pencil#init()
+  autocmd FileType markdown,mkd,md call pencil#init({'wrap': 'hard')
+  autocmd FileType text,txt        call pencil#init({'wrap': 'hard')
+  autocmd FileType tex             call pencil#init({'wrap': 'hard')
 augroup END
 
 " }}}
