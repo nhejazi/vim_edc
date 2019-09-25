@@ -451,9 +451,9 @@ let g:pencil#cursorwrap = 0
 " initialize for different file types
 augroup pencil
   autocmd!
-  autocmd FileType markdown,mkd,md call pencil#init({'wrap': 'hard')
-  autocmd FileType text,txt        call pencil#init({'wrap': 'hard')
-  autocmd FileType tex             call pencil#init({'wrap': 'hard')
+  autocmd FileType markdown,mkd,md call pencil#init({'wrap': 'hard'})
+  autocmd FileType text,txt        call pencil#init({'wrap': 'hard'})
+  autocmd FileType tex             call pencil#init({'wrap': 'hard'})
 augroup END
 
 " }}}
