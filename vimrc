@@ -50,11 +50,14 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/tpope-vim-abolish'
 Plug 'Yggdroot/indentLine'
 if v:version >= 800
-  Plug 'w0rp/ale'
-  " for deoplete
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
+  if has('nvim')
+    Plug 'dense-analysis/ale'
+    Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
+  else
+    Plug 'Shougo/deoplete.nvim'
+    Plug 'roxma/nvim-yarp'
+    Plug 'roxma/vim-hug-neovim-rpc'
+  endif
 else
   Plug 'vim-syntastic/syntastic'
 endif
@@ -237,22 +240,27 @@ autocmd BufRead,BufNewFile *.txt setlocal spell
 if v:version >= 800
   " ALE and syntastic plugins conflict
   let g:ale_emit_conflict_warnings = 0
+  call deoplete#custom#option('sources', {
+  \ '_': ['ale'],
+  \})
+
+  " disable completion to use deoplete integration
+  let g:ale_completion_enabled = 1
 
   " delays running of linters (default = 200)
   let g:ale_lint_delay = 200
-
-  " allow completion
-  let g:ale_completion_enabled = 1
 
   " tweak signs displayed for warnings and errors
   let g:ale_sign_error = '!!'
   let g:ale_sign_warning = '>>'
 
-  " define linters to run on a language-specific basis
+  " define linters to run on a language-specific basis and fix-on-save
   let g:ale_linters = {
-       \  'python': ['flake8'],
-       \  'r': ['lintr']
+       \  'python': ['flake8', 'pylint'],
+       \  'r': ['lintr', 'styler'],
+       \  'tex': ['proselint']
        \ }
+  let g:ale_fix_on_save = 1
 
   " keep the gutter sign open --- always
   let g:ale_sign_column_always = 1

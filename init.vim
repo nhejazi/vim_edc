@@ -19,6 +19,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'davidhalter/jedi-vim'
 Plug 'dbmrq/vim-ditto'
+Plug 'dense-analysis/ale'
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'edkolev/tmuxline.vim'
@@ -48,7 +49,6 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/tpope-vim-abolish'
-Plug 'w0rp/ale'
 Plug 'Yggdroot/indentLine'
 call plug#end()
 
@@ -263,22 +263,27 @@ autocmd BufLeave term://* stopinsert
 if v:version >= 800
   " ALE and syntastic plugins conflict
   let g:ale_emit_conflict_warnings = 0
+  call deoplete#custom#option('sources', {
+  \ '_': ['ale'],
+  \})
+
+  " disable completion to use deoplete integration
+  let g:ale_completion_enabled = 1
 
   " delays running of linters (default = 200)
   let g:ale_lint_delay = 200
-
-  " allow completion
-  let g:ale_completion_enabled = 1
 
   " tweak signs displayed for warnings and errors
   let g:ale_sign_error = '!!'
   let g:ale_sign_warning = '>>'
 
-  " define linters to run on a language-specific basis
+  " define linters to run on a language-specific basis and fix-on-save
   let g:ale_linters = {
-       \  'python': ['flake8'],
-       \  'r': ['lintr']
+       \  'python': ['flake8', 'pylint'],
+       \  'r': ['lintr', 'styler'],
+       \  'tex': ['proselint']
        \ }
+  let g:ale_fix_on_save = 1
 
   " keep the gutter sign open --- always
   let g:ale_sign_column_always = 1
