@@ -23,7 +23,7 @@ Plug 'dbmrq/vim-ditto'
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'edkolev/tmuxline.vim'
-Plug 'ervandew/supertab'
+"Plug 'ervandew/supertab'
 Plug 'itchyny/lightline.vim'
 Plug 'jalvesaq/vimcmdline'
 Plug 'jalvesaq/Nvim-R'
@@ -31,6 +31,9 @@ Plug 'jnurmine/Zenburn'
 Plug 'JuliaEditorSupport/julia-vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
+Plug 'lervag/vimtex'
+Plug 'lifepillar/vim-mucomplete'
+Plug 'majutsushi/tagbar'
 Plug 'mg979/vim-visual-multi'
 Plug 'mileszs/ack.vim'
 Plug 'morhetz/gruvbox'
@@ -40,6 +43,7 @@ Plug 'reedes/vim-wordy'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
+Plug 'SirVer/UltiSnips'
 Plug 'sotte/presenting.vim'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
@@ -49,15 +53,18 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/tpope-vim-abolish'
 Plug 'Yggdroot/indentLine'
+Plug 'wellle/tmux-complete.vim'
 if v:version >= 800
-  if has('nvim')
-    Plug 'dense-analysis/ale'
-    Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
-  else
-    Plug 'Shougo/deoplete.nvim'
-    Plug 'roxma/nvim-yarp'
-    Plug 'roxma/vim-hug-neovim-rpc'
-  endif
+  "Plug 'roxma/nvim-yarp'
+  "Plug 'roxma/vim-hug-neovim-rpc'
+  "Plug 'ncm2/ncm2'
+  "Plug 'ncm2/ncm2-ultisnips'
+  "Plug 'ncm2/ncm2-bufword'
+  "Plug 'ncm2/ncm2-tmux'
+  "Plug 'ncm2/ncm2-path'
+  "Plug 'ncm2/ncm2-jedi'       " Python autocompletion
+  "Plug 'gaalcaras/ncm-R'      " R autocompletion
+  Plug 'dense-analysis/ale'
 else
   Plug 'vim-syntastic/syntastic'
 endif
@@ -101,7 +108,7 @@ if exists("$SSH_CONNECTION")
 else
   set shell=zsh         " Manually set shell to zsh otherwise.
 endif
-set clipboard=unnamed   " Use system clipboard over Vim clipboard.
+set clipboard+=unnamed  " Use system clipboard over Vim clipboard.
 set nocompatible        " Disable backward compatibility with Vi.
 let g:tex_conceal = ""  " Disable syntax concealing for LaTeX.
 vnoremap <C-n> :norm    " Re-map 'norm' to run arbitrary Vim commands easily.
@@ -240,11 +247,8 @@ autocmd BufRead,BufNewFile *.txt setlocal spell
 if v:version >= 800
   " ALE and syntastic plugins conflict
   let g:ale_emit_conflict_warnings = 0
-  call deoplete#custom#option('sources', {
-  \ '_': ['ale'],
-  \})
 
-  " disable completion to use deoplete integration
+  " enable completion
   let g:ale_completion_enabled = 1
 
   " delays running of linters (default = 200)
@@ -260,7 +264,6 @@ if v:version >= 800
        \  'r': ['lintr', 'styler'],
        \  'tex': ['proselint']
        \ }
-  let g:ale_fix_on_save = 1
 
   " keep the gutter sign open --- always
   let g:ale_sign_column_always = 1
@@ -303,13 +306,6 @@ let g:ctrlp_cmd = 'CtrlP'
 
 " ignore files in gitignore
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
-
-" }}}
-" plug-in: Deoplete {{{
-
-if v:version >= 800
-  let g:deoplete#enable_at_startup = 1
-endif
 
 " }}}
 " plug-in: Ditto {{{
@@ -513,13 +509,29 @@ if v:version < 800
 
   " working with R (recommended by lintr)
   let g:syntastic_enable_r_lintr_checker = 1
-  let g:syntastic_r_checkers = ['lintr']"
+  let g:syntastic_r_checkers = ['lintr', 'styler']"
   let g:syntastic_r_lintr_linters = "with_defaults(line_length_linter(80))"
 
   " for Python
-  let g:syntastic_python_checkers = ['flake8']
+  let g:syntastic_python_checkers = ['flake8', 'pylint']
 
 endif
+
+" }}}
+" plug-in: Tmux-complete {{{
+
+let g:tmuxcomplete#asyncomplete_source_options = {
+            \ 'name':      'tmuxcomplete',
+            \ 'whitelist': ['*'],
+            \ 'config': {
+            \     'splitmode':      'words',
+            \     'filter_prefix':   1,
+            \     'show_incomplete': 1,
+            \     'sort_candidates': 0,
+            \     'scrollback':      0,
+            \     'truncate':        0
+            \     }
+            \ }
 
 " }}}
 " plug-in: Tmuxline {{{

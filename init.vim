@@ -16,6 +16,7 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'ap/vim-css-color'
 Plug 'arcticicestudio/nord-vim'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'davidhalter/jedi-vim'
 Plug 'dbmrq/vim-ditto'
@@ -23,7 +24,7 @@ Plug 'dense-analysis/ale'
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'edkolev/tmuxline.vim'
-Plug 'ervandew/supertab'
+"Plug 'ervandew/supertab'
 Plug 'itchyny/lightline.vim'
 Plug 'jalvesaq/vimcmdline'
 Plug 'jalvesaq/Nvim-R'
@@ -31,6 +32,9 @@ Plug 'jnurmine/Zenburn'
 Plug 'JuliaEditorSupport/julia-vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
+Plug 'lervag/vimtex'
+Plug 'lifepillar/vim-mucomplete'
+Plug 'majutsushi/tagbar'
 Plug 'mg979/vim-visual-multi'
 Plug 'mileszs/ack.vim'
 Plug 'morhetz/gruvbox'
@@ -40,7 +44,7 @@ Plug 'reedes/vim-wordy'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
-Plug 'Shougo/deoplete.nvim', {'do' : ':UpdateRemotePlugins'}
+Plug 'SirVer/UltiSnips'
 Plug 'sotte/presenting.vim'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
@@ -50,6 +54,7 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/tpope-vim-abolish'
 Plug 'Yggdroot/indentLine'
+Plug 'wellle/tmux-complete.vim'
 call plug#end()
 
 " }}}
@@ -328,11 +333,6 @@ let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
 " }}}
-" plug-in: Deoplete {{{
-
-let g:deoplete#enable_at_startup = 1
-
-" }}}
 " plug-in: Ditto {{{
 
 " Use autocmds to check your text automatically and keep the highlighting
@@ -532,9 +532,20 @@ augroup pencil
 augroup END
 
 " }}}
-" plug-in: sneak {{{
+" plug-in: Tmux-complete {{{
 
-let g:sneak#label = 1
+let g:tmuxcomplete#asyncomplete_source_options = {
+            \ 'name':      'tmuxcomplete',
+            \ 'whitelist': ['*'],
+            \ 'config': {
+            \     'splitmode':      'words',
+            \     'filter_prefix':   1,
+            \     'show_incomplete': 1,
+            \     'sort_candidates': 0,
+            \     'scrollback':      0,
+            \     'truncate':        0
+            \     }
+            \ }
 
 " }}}
 " plug-in: Tmuxline {{{
