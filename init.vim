@@ -268,9 +268,6 @@ autocmd BufLeave term://* stopinsert
 if v:version >= 800
   " ALE and syntastic plugins conflict
   let g:ale_emit_conflict_warnings = 0
-  call deoplete#custom#option('sources', {
-  \ '_': ['ale'],
-  \})
 
   " disable completion to use deoplete integration
   let g:ale_completion_enabled = 1
