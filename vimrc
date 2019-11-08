@@ -53,16 +53,8 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/tpope-vim-abolish'
 Plug 'Yggdroot/indentLine'
 Plug 'wellle/tmux-complete.vim'
-if v:version >= 800
-  "Plug 'roxma/nvim-yarp'
-  "Plug 'roxma/vim-hug-neovim-rpc'
-  "Plug 'ncm2/ncm2'
-  "Plug 'ncm2/ncm2-ultisnips'
-  "Plug 'ncm2/ncm2-bufword'
-  "Plug 'ncm2/ncm2-tmux'
-  "Plug 'ncm2/ncm2-path'
-  "Plug 'ncm2/ncm2-jedi'       " Python autocompletion
-  "Plug 'gaalcaras/ncm-R'      " R autocompletion
+" linting conditional on {version, type}
+if v:version >= 800 || has('nvim')
   Plug 'dense-analysis/ale'
 else
   Plug 'vim-syntastic/syntastic'
