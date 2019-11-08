@@ -29,7 +29,6 @@ Plug 'itchyny/lightline.vim'
 Plug 'jalvesaq/vimcmdline'
 Plug 'jalvesaq/Nvim-R'
 Plug 'jnurmine/Zenburn'
-Plug 'JuliaEditorSupport/julia-vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'lervag/vimtex'
@@ -527,6 +526,12 @@ augroup pencil
   autocmd FileType text,txt        call pencil#init({'wrap': 'hard'})
   autocmd FileType tex             call pencil#init({'wrap': 'hard'})
 augroup END
+
+" }}}
+" plug-in: Polyglot {{{
+
+" disable Polyglot for TeX
+let g:polyglot_disabled = ['latex']
 
 " }}}
 " plug-in: Tmux-complete {{{
