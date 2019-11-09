@@ -1,5 +1,7 @@
 #!/bin/sh
 
+cp vimrc init.vim
+
 echo "Setting up Vim"
 # set up vim-plug manager for Vim
 if [ -e ~/.vim/autoload/plug.vim ]; then
