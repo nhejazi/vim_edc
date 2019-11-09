@@ -91,7 +91,9 @@ set shiftwidth=2        " Indentation amount for < and > commands.
 set noerrorbells        " No beeps.
 set modeline            " Enable modeline.
 set modelines=1         " For high-level section view via folding.
-set esckeys             " Cursor keys in insert mode.
+if !has('nvim')
+  set esckeys           " Cursor keys in insert mode.
+endif
 set linespace=0         " Set line-spacing to minimum.
 set colorcolumn=80      " Set vertical colored bar for 80-column rule.
 set cursorline          " Set horizontal line at where cursor is/was.
