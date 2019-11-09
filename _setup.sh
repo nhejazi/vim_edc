@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/sh
 
 echo "Setting up Vim"
 # set up vim-plug manager for Vim
