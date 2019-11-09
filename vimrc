@@ -31,13 +31,12 @@ Plug 'dbmrq/vim-ditto'
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'edkolev/tmuxline.vim'
-"Plug 'ervandew/supertab'
 Plug 'itchyny/lightline.vim'
 Plug 'jalvesaq/Nvim-R'
 Plug 'jnurmine/Zenburn'
+Plug 'jpalardy/vim-slime'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
-Plug 'kassio/neoterm'
 Plug 'lervag/vimtex'
 Plug 'lifepillar/vim-mucomplete'
 Plug 'majutsushi/tagbar'
@@ -384,39 +383,18 @@ let g:limelight_eop = '\ze\n^\s'
 let g:limelight_priority = -1
 
 " }}}
-" plug-in: MU-Complete {{{
+" plug-in: MUcomplete {{{
 
 " recommended settings: https://github.com/lifepillar/vim-mucomplete
-set completeopt+=menuone,noselect,longest
+set completeopt+=menuone,noselect
+set completeopt-=preview
 set shortmess+=c   " Shut off completion messages
 set belloff+=ctrlg " If Vim beeps during completion
+
+let g:jedi#popup_on_dot = 1  " Python's jedi
 let g:mucomplete#enable_auto_at_startup = 1
+imap <expr> <down> mucomplete#extend_fwd("\<down>")
 let g:mucomplete#completion_delay = 1
-
-" }}}
-" plug-in: Neoterm {{{
-
-if v:version >= 800 || has('nvim')
-  "let g:neoterm_position = 'horizontal' "could also be 'vertical'
-  let g:neoterm_automap_keys = ',tt'
-  nnoremap <Leader>n :TREPLSendFile<cr>
-  nnoremap <Leader>m :TREPLSend<cr>
-  vnoremap <Leader>m :TREPLSend<cr>
-
-  " run set test lib
-  nnoremap <silent> ,rt :call neoterm#test#run('all')<cr>
-  nnoremap <silent> ,rf :call neoterm#test#run('file')<cr>
-  nnoremap <silent> ,rn :call neoterm#test#run('current')<cr>
-  nnoremap <silent> ,rr :call neoterm#test#rerun()<cr>
-
-  " useful (re)-maps
-  nnoremap <silent> ,th :call neoterm#close()<cr>  "hide/close terminal
-  nnoremap <silent> ,tl :call neoterm#clear()<cr>  "clear terminal
-  nnoremap <silent> ,tc :call neoterm#kill()<cr>   "kill current job <Ctrl-c>
-
-  " Git commands
-  command! -nargs=+ Tg :T git <args>
-endif
 
 " }}}
 " plug-in: NerdTree {{{
@@ -489,6 +467,15 @@ augroup END
 
 " disable Polyglot for TeX
 let g:polyglot_disabled = ['latex']
+
+" }}}
+" plug-in: Slime {{{
+
+" set target to tmux (screen is default)
+let g:slime_target = "tmux"
+
+" default to pane to the right of editor pane
+let g:slime_default_config = {"socket_name": "default", "target_pane": "{right-of}"}
 
 " }}}
 " plug-in: Syntastic {{{

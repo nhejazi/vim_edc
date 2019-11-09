@@ -1,4 +1,4 @@
-# Vim - one editor for life
+# Vim: one editor for life
 
 > Setup, package manager, and various plug-ins for my configuration of the
 > [Vim](http://www.vim.org/index.php) and [Neovim](https://neovim.io/)
@@ -45,12 +45,10 @@ _Here is a list of plug-ins currently integrated into this configuration:_
 * [`jedi-vim`](https://github.com/davidhalter/jedi-vim)
 * [`lightline`](https://github.com/itchyny/lightline.vim)
 * [`limelight`](https://github.com/junegunn/limelight.vim)
-* [`neoterm`](https://github.com/kassio/neoterm)
 * [`nerdcommenter`](https://github.com/scrooloose/nerdcommenter)
 * [`NERDTree`](https://github.com/scrooloose/nerdtree)
 * [`Nvim-R`](https://github.com/jalvesaq/Nvim-R)
 * [`presenting.vim`](https://github.com/sotte/presenting.vim)
-* [`supertab`](https://github.com/ervandew/supertab) [disabled by default]
 * [`syntastic`](https://github.com/vim-syntastic/syntastic) (Vim pre-v8.0 only)
 * [`tagbar`](https://github.com/majutsushi/tagbar)
 * [`tmuxline.vim`](https://github.com/edkolev/tmuxline.vim)
@@ -72,6 +70,7 @@ _Here is a list of plug-ins currently integrated into this configuration:_
 * [`vim-polyglot`](https://github.com/sheerun/vim-polyglot)
 * [`vim-sensible`](https://github.com/tpope/vim-sensible)
 * [`vim-sleuth`](https://github.com/tpope/vim-sleuth)
+* [`vim-slime`](https://github.com/jpalardy/vim-slime)
 * [`vim-surround`](https://github.com/tpope/vim-surround)
 * [`vim-tmux-navigator`](https://github.com/christoomey/vim-tmux-navigator)
 * [`vim-visual-multi`](https://github.com/mg979/vim-visual-multi)
