@@ -1,10 +1,18 @@
-" Nima's Vim configuration
+" Nima's Vim/Neovim configuration
 " auto-install vim-plug {{{
 
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-   \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+if !has('nvim')
+  if empty(glob('~/.vim/autoload/plug.vim'))
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+  endif
+else
+  if empty(glob('~/.config/nvim/autoload/plug.vim'))
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+  endif
 endif
 
 " }}}
@@ -25,11 +33,11 @@ Plug 'easymotion/vim-easymotion'
 Plug 'edkolev/tmuxline.vim'
 "Plug 'ervandew/supertab'
 Plug 'itchyny/lightline.vim'
-Plug 'jalvesaq/vimcmdline'
 Plug 'jalvesaq/Nvim-R'
 Plug 'jnurmine/Zenburn'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
+Plug 'kassio/neoterm'
 Plug 'lervag/vimtex'
 Plug 'lifepillar/vim-mucomplete'
 Plug 'majutsushi/tagbar'
@@ -113,25 +121,7 @@ let mapleader = "," " The leader is the comma
 let maplocalleader = "'" " The local leader is the apostrophe
 
 " }}}
-" colorschemes {{{
-
-" Automatically patch Zenburn and Solarized colors for Goyo plugin
-function! s:patch_colors()
-  highlight ColorColumn ctermbg=DarkRed guibg=DarkRed
-  highlight Comment ctermbg=LightGreen guibg=LightGreen
-  highlight Constant cterm=underline gui=underline
-  highlight Normal cterm=none gui=none
-  highlight NonText cterm=none gui=none
-  highlight Special ctermbg=DarkGray guibg=DarkGray
-  highlight Cursor ctermbg=DarkCyan guibg=DarkCyan
-  highlight clear SpellBad
-  highlight SpellBad ctermbg=Red guibg=Red
-  highlight TermCursor ctermbg=DarkCyan guibg=DarkCyan
-  highlight ExtraWhitespace ctermbg=DarkMagenta guibg=DarkMagenta
-endfunction
-
-autocmd! ColorScheme zenburn call s:patch_colors()
-autocmd! ColorScheme solarized call s:patch_colors()
+" colorschemes and highlighting {{{
 
 " Solarized in GUI, Gruvbox (Zenburn, Nord, Palenight also available) when not
 set t_Co=256
@@ -142,6 +132,30 @@ if has('gui_running')
 elseif !has('gui_running')
   colorscheme gruvbox
 endif
+
+" Automatically patch for Goyo plugin
+function! s:patch_colors()
+  highlight ColorColumn ctermbg=DarkRed guibg=DarkRed
+  highlight Comment ctermbg=LightGreen guibg=LightGreen
+  highlight Constant cterm=underline gui=underline
+  highlight Normal cterm=none gui=none
+  highlight NonText cterm=none gui=none
+  highlight Special ctermbg=DarkGray guibg=DarkGray
+  highlight Cursor ctermbg=Cyan guibg=Cyan
+  highlight clear SpellBad
+  highlight SpellBad ctermbg=Red guibg=Red
+  highlight TermCursor ctermbg=Cyan guibg=Cyan
+endfunction
+
+autocmd! ColorScheme gruvbox call s:patch_colors()
+autocmd! ColorScheme zenburn call s:patch_colors()
+autocmd! ColorScheme solarized call s:patch_colors()
+autocmd! ColorScheme palenight call s:patch_colors()
+autocmd! ColorScheme nord call s:patch_colors()
+
+" Highlight all tabs and trailing whitespace characters
+highlight ExtraWhitespace ctermbg=DarkMagenta guibg=DarkMagenta
+match ExtraWhitespace /\s\+$\|\t/
 
 " }}}
 " backups {{{
@@ -199,24 +213,6 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 " }}}
-" highlighting {{{
-
-highlight ColorColumn ctermbg=DarkRed guibg=DarkRed
-highlight Comment ctermbg=LightGreen guibg=LightGreen
-highlight Constant cterm=underline gui=underline
-highlight Normal cterm=none gui=none
-highlight NonText cterm=none gui=none
-highlight Special ctermbg=DarkGray guibg=DarkGray
-highlight Cursor ctermbg=DarkCyan guibg=DarkCyan
-highlight clear SpellBad
-highlight SpellBad ctermbg=Red guibg=Red
-highlight TermCursor ctermbg=DarkCyan guibg=DarkCyan
-
-" Highlight all tabs and trailing whitespace characters
-highlight ExtraWhitespace ctermbg=DarkMagenta guibg=DarkMagenta
-match ExtraWhitespace /\s\+$\|\t/
-
-" }}}
 " auto-wrapping {{{
 
 au BufRead,BufNewFile *.md setlocal textwidth=80
@@ -255,38 +251,11 @@ if v:version >= 800
        \  'r': ['lintr', 'styler'],
        \  'tex': ['proselint']
        \ }
+  let g:ale_fix_on_save = 1
 
   " keep the gutter sign open --- always
   let g:ale_sign_column_always = 1
 endif
-
-" }}}
-" plug-in: cmdline {{{
-
-" recommended mappings
-let cmdline_map_start          = '<LocalLeader>s'
-let cmdline_map_send           = '<Space>'
-let cmdline_map_send_and_stay  = '<LocalLeader><Space>'
-let cmdline_map_source_fun     = '<LocalLeader>f'
-let cmdline_map_send_paragraph = '<LocalLeader>p'
-let cmdline_map_send_block     = '<LocalLeader>b'
-let cmdline_map_quit           = '<LocalLeader>q'
-
-" recommended options
-let cmdline_vsplit      = 1      " Split the window vertically
-let cmdline_esc_term    = 1      " Remap <Esc> to :stopinsert in Neovim's terminal
-let cmdline_in_buffer   = 1      " Start the interpreter in a Neovim's terminal
-let cmdline_term_height = 15     " Initial height of interpreter window or pane
-let cmdline_term_width  = 80     " Initial width of interpreter window or pane
-let cmdline_tmp_dir     = '/tmp' " Temporary directory to save files
-let cmdline_outhl       = 1      " Syntax highlight the output
-let cmdline_auto_scroll = 1      " Keep the cursor at the end of terminal (nvim)
-
-" default applications by filetype
-let cmdline_app             = {}
-let cmdline_app['sh']       = 'zsh'
-let cmdline_app['python']   = 'ipython'
-let cmdline_app['julia']    = 'julia'
 
 " }}}
 " plug-in: CtrlP {{{
@@ -415,6 +384,41 @@ let g:limelight_eop = '\ze\n^\s'
 let g:limelight_priority = -1
 
 " }}}
+" plug-in: MU-Complete {{{
+
+" recommended settings: https://github.com/lifepillar/vim-mucomplete
+set completeopt+=menuone,noselect,longest
+set shortmess+=c   " Shut off completion messages
+set belloff+=ctrlg " If Vim beeps during completion
+let g:mucomplete#enable_auto_at_startup = 1
+let g:mucomplete#completion_delay = 1
+
+" }}}
+" plug-in: Neoterm {{{
+
+if v:version >= 800 || has('nvim')
+  "let g:neoterm_position = 'horizontal' "could also be 'vertical'
+  let g:neoterm_automap_keys = ',tt'
+  nnoremap <Leader>n :TREPLSendFile<cr>
+  nnoremap <Leader>m :TREPLSend<cr>
+  vnoremap <Leader>m :TREPLSend<cr>
+
+  " run set test lib
+  nnoremap <silent> ,rt :call neoterm#test#run('all')<cr>
+  nnoremap <silent> ,rf :call neoterm#test#run('file')<cr>
+  nnoremap <silent> ,rn :call neoterm#test#run('current')<cr>
+  nnoremap <silent> ,rr :call neoterm#test#rerun()<cr>
+
+  " useful (re)-maps
+  nnoremap <silent> ,th :call neoterm#close()<cr>  "hide/close terminal
+  nnoremap <silent> ,tl :call neoterm#clear()<cr>  "clear terminal
+  nnoremap <silent> ,tc :call neoterm#kill()<cr>   "kill current job <Ctrl-c>
+
+  " Git commands
+  command! -nargs=+ Tg :T git <args>
+endif
+
+" }}}
 " plug-in: NerdTree {{{
 
 " Open a NERDTree automatically when Vim starts up if no files were specified
@@ -430,12 +434,6 @@ let g:NERDTreeDirArrows=0
 " }}}
 " plug-in: NVim-R {{{
 
-" manually enable vim-tmux split for R
-" (see https://github.com/jalvesaq/Nvim-R/blob/master/R/tmux_split.md)
-if $TMUX != ''
-  let R_source = '~/.vim/tmux_split.vim'
-endif
-
 " print code sent to R console, truncating only when absolutely necessary
 let R_source_args = "echo=TRUE, print.eval=TRUE"
 
@@ -450,6 +448,12 @@ if !has('nvim')
   let R_clear_line = 1
   "let R_tmux_split = 1
   let R_applescript = 0
+
+  " manually enable vim-tmux split for R
+  " (see https://github.com/jalvesaq/Nvim-R/blob/master/R/tmux_split.md)
+  if $TMUX != ''
+    let R_source = '~/.vim/tmux_split.vim'
+  endif
 endif
 
 " auto-start R REPL with  .R and .Rmd files
@@ -487,14 +491,9 @@ augroup END
 let g:polyglot_disabled = ['latex']
 
 " }}}
-" plug-in: sneak {{{
-
-let g:sneak#label = 1
-
-" }}}
 " plug-in: Syntastic {{{
 
-if v:version < 800
+if v:version < 800 && !has('nvim')
   " recommended beginner settings
   set statusline+=%#warningmsg#
   set statusline+=%{SyntasticStatuslineFlag()}

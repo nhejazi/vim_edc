@@ -11,13 +11,13 @@
 * For use with _Vim_, clone the configuration in this repo using the following:
   ```bash
   git clone https://github.com/nhejazi/vimForLife.git ~/.vim
-  sh ~/.vim/_setupVim.sh
+  sh ~/.vim/_setup.sh
   ```
 
 - For use with _Neovim_, instead clone the configuration in this repo like so:
   ```bash
   git clone https://github.com/nhejazi/vimForLife.git ~/.config/nvim
-  sh ~/.config/nvim/_setupNeovim.sh
+  sh ~/.config/nvim/_setup.sh
   ```
 
 - To __install plugins__ with the
@@ -39,29 +39,34 @@ _Here is a list of plug-ins currently integrated into this configuration:_
 * [`ack.vim`](https://github.com/mileszs/ack.vim)
 * [`ale`](https://github.com/w0rp/ale) (Vim v8.0+ and Neovim)
 * [`ctrlp.vim`](https://github.com/ctrlpvim/ctrlp.vim)
-* [`deoplete.nvim`](https://github.com/Shougo/deoplete.nvim) (Neovim only)
 * [`ditto.vim`](https://github.com/dbmrq/vim-ditto)
 * [`goyo.vim`](https://github.com/junegunn/goyo.vim)
 * [`indentLine`](https://github.com/Yggdroot/indentLine)
 * [`jedi-vim`](https://github.com/davidhalter/jedi-vim)
-* [`julia-vim`](https://github.com/JuliaEditorSupport/julia-vim)
 * [`lightline`](https://github.com/itchyny/lightline.vim)
+* [`limelight`](https://github.com/junegunn/limelight.vim)
+* [`neoterm`](https://github.com/kassio/neoterm)
 * [`nerdcommenter`](https://github.com/scrooloose/nerdcommenter)
 * [`NERDTree`](https://github.com/scrooloose/nerdtree)
 * [`Nvim-R`](https://github.com/jalvesaq/Nvim-R)
 * [`presenting.vim`](https://github.com/sotte/presenting.vim)
-* [`supertab`](https://github.com/ervandew/supertab)
-* [`syntastic`](https://github.com/vim-syntastic/syntastic) (Vim pre-8.0 only)
+* [`supertab`](https://github.com/ervandew/supertab) [disabled by default]
+* [`syntastic`](https://github.com/vim-syntastic/syntastic) (Vim pre-v8.0 only)
+* [`tagbar`](https://github.com/majutsushi/tagbar)
 * [`tmuxline.vim`](https://github.com/edkolev/tmuxline.vim)
-* [`vimcmdline`](https://github.com/jalvesaq/vimcmdline)
+* [`tmux-complete.vim`](https://github.com/wellle/tmux-complete.vim)
+* [`UltiSnips`](https://github.com/SirVer/ultisnips)
+* [`vimtex`](https://github.com/lervag/vimtex)
 * [`vim-abolish`](https://github.com/tpope/tpope-vim-abolish)
 * [`vim-bracketed-paste`](https://github.com/ConradIrwin/vim-bracketed-paste)
    (Vim only)
 * [`vim-css-color`](https://github.com/ap/vim-css-color)
+* [`vim-easymotion`](https://github.com/easymotion/vim-easymotion)
 * [`vim-eunuch`](https://github.com/tpope/vim-eunuch)
 * [`vim-fugitive`](https://github.com/tpope/vim-fugitive)
 * [`vim-gitgutter`](https://github.com/airblade/vim-gitgutter)
 * [`vim-markdown`](https://github.com/plasticboy/vim-markdown)
+* [`vim-mucomplete`](https://github.com/lifepillar/vim-mucomplete)
 * [`vim-obsession`](https://github.com/tpope/vim-obsession)
 * [`vim-pencil`](https://github.com/reedes/vim-pencil)
 * [`vim-polyglot`](https://github.com/sheerun/vim-polyglot)
@@ -100,8 +105,8 @@ Miscellaneous useful notes and resources:
 ## Contributions
 
 These are extremely opinionated and imperfect configurations for Vim and Neovim.
-If you find yourself using them and would like to contribute to their
-improvement, a pull request would be very welcome.
+If you would like to contribute to their improvement, a pull request would be
+welcome.
 
 ---
 

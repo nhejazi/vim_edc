@@ -1,5 +1,6 @@
 #!/usr/bin/bash
 
+echo "Setting up Vim"
 # set up vim-plug manager for Vim
 if [ -e ~/.vim/autoload/plug.vim ]; then
   echo "vim-plug exists - will be removed.";
@@ -15,3 +16,14 @@ if [ -e ~/.vimrc ]; then
   rm ~/.vimrc;
 fi
 ln -s ~/.vim/vimrc ~/.vimrc
+
+
+echo "Setting up Neovim"
+# set up vim-plug manager for Neovim
+if [ -e ~/.config/nvim/autoload/plug.vim ]; then
+	echo "vim-plug exists - will be removed.";
+	rm -f ~/.config/nvim/autoload/plug.vim;
+fi
+
+curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
+    	https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
