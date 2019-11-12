@@ -348,7 +348,7 @@ let g:indentLine_setConceal = 0
 " plug-in: Lightline {{{
 
 let g:lightline = {
-      \ 'colorscheme': 'seoul256',
+      \ 'colorscheme': 'zenburn',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
@@ -357,6 +357,14 @@ let g:lightline = {
       \   'gitbranch': 'fugitive#head'
       \ },
       \ }
+
+let g:lightline.tabline = {
+      \ 'left': [ ['tabs'] ],
+      \ 'right': [ ['close'] ]
+      \ }
+
+set showtabline=2  " show tabline
+set guioptions-=e   " turn off GUI tabline
 
 " }}}
 " plug-in: Limelight {{{
