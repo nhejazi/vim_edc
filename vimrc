@@ -22,13 +22,13 @@ call plug#begin()
 Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
 Plug 'ap/vim-css-color'
-Plug 'arcticicestudio/nord-vim'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'ConradIrwin/vim-bracketed-paste'
+if !has('nvim')
+  Plug 'ConradIrwin/vim-bracketed-paste'
+endif
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'davidhalter/jedi-vim'
 Plug 'dbmrq/vim-ditto'
-Plug 'drewtempelmeyer/palenight.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'edkolev/tmuxline.vim'
 Plug 'itchyny/lightline.vim'
@@ -36,6 +36,8 @@ Plug 'jalvesaq/Nvim-R'
 Plug 'jnurmine/Zenburn'
 Plug 'jpalardy/vim-slime'
 Plug 'junegunn/goyo.vim'
+Plug 'junegunn/gv.vim'
+Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'lervag/vimtex'
 Plug 'lifepillar/vim-mucomplete'
@@ -124,7 +126,7 @@ let maplocalleader = "'" " The local leader is the apostrophe
 " }}}
 " colorschemes and highlighting {{{
 
-" Solarized in GUI, Gruvbox (Zenburn, Nord, Palenight also available) when not
+" Solarized in GUI, Gruvbox when not
 set t_Co=256
 set background=dark
 if has('gui_running')
@@ -151,8 +153,7 @@ endfunction
 autocmd! ColorScheme gruvbox call s:patch_colors()
 autocmd! ColorScheme zenburn call s:patch_colors()
 autocmd! ColorScheme solarized call s:patch_colors()
-autocmd! ColorScheme palenight call s:patch_colors()
-autocmd! ColorScheme nord call s:patch_colors()
+autocmd! ColorScheme seoul256 call s:patch_colors()
 
 " Highlight all tabs and trailing whitespace characters
 highlight ExtraWhitespace ctermbg=DarkMagenta guibg=DarkMagenta
@@ -299,34 +300,34 @@ nmap <Leader>r :Tags<CR>
 " plug-in: Goyo {{{
 
 function! s:goyo_enter()
-  set spell
+  if executable('tmux') && strlen($TMUX)
+    silent !tmux set status off
+    silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
+  endif
   set noshowmode
   set noshowcmd
+  set scrolloff=999
   Limelight
-  set t_Co=256
-  let g:solarized_termcolors=256
-  set background=light
-  colorscheme solarized
-  if exists('$TMUX')
-    silent !tmux set status off
-  endif
+  set background=dark
+  colorscheme seoul256
 endfunction
 
 function! s:goyo_leave()
-  set nospell
+  if executable('tmux') && strlen($TMUX)
+    silent !tmux set status on
+    silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
+  endif
   set showmode
   set showcmd
+  set scrolloff=5
   Limelight!
-  set t_Co=256
   if !has('gui_running')
     set background=dark
-    colorscheme zenburn
+    colorscheme gruvbox
   elseif has('gui_running')
     let g:solarized_termcolors=256
     set background=dark
     colorscheme solarized
-  elseif exists('$TMUX')
-    silent !tmux set status on
   endif
 endfunction
 
@@ -347,7 +348,7 @@ let g:indentLine_setConceal = 0
 " plug-in: Lightline {{{
 
 let g:lightline = {
-      \ 'colorscheme': 'nord',
+      \ 'colorscheme': 'seoul256',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]

@@ -41,6 +41,7 @@ _Here is a list of plug-ins currently integrated into this configuration:_
 * [`ctrlp.vim`](https://github.com/ctrlpvim/ctrlp.vim)
 * [`ditto.vim`](https://github.com/dbmrq/vim-ditto)
 * [`goyo.vim`](https://github.com/junegunn/goyo.vim)
+* [`gv.vim`](https://github.com/junegunn/gv.vim)
 * [`indentLine`](https://github.com/Yggdroot/indentLine)
 * [`jedi-vim`](https://github.com/davidhalter/jedi-vim)
 * [`lightline`](https://github.com/itchyny/lightline.vim)
@@ -82,11 +83,10 @@ _Here is a list of plug-ins currently integrated into this configuration:_
 
 _This configuration currently supports several colorscheme options:_
 
-* [Gruvbox](https://github.com/morhetz/gruvbox) (current default)
-* [Palenight](https://github.com/drewtempelmeyer/palenight.vim)
-* [Nord](https://github.com/arcticicestudio/nord-vim)
-* [Zenburn](https://github.com/jnurmine/Zenburn)
+* [Gruvbox](https://github.com/morhetz/gruvbox)
 * [Solarized](https://github.com/altercation/vim-colors-solarized)
+* [Zenburn](https://github.com/jnurmine/Zenburn)
+* [Seoul256](https://github.com/junegunn/seoul256.vim)
 
 ---
 
