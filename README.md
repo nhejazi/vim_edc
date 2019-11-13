@@ -52,7 +52,6 @@ _Here is a list of plug-ins currently integrated into this configuration:_
 * [`Nvim-R`](https://github.com/jalvesaq/Nvim-R)
 * [`presenting.vim`](https://github.com/sotte/presenting.vim)
 * [`syntastic`](https://github.com/vim-syntastic/syntastic) (Vim pre-v8.0 only)
-* [`tagbar`](https://github.com/majutsushi/tagbar)
 * [`tmuxline.vim`](https://github.com/edkolev/tmuxline.vim)
 * [`tmux-complete.vim`](https://github.com/wellle/tmux-complete.vim)
 * [`UltiSnips`](https://github.com/SirVer/ultisnips)
