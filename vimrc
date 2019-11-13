@@ -41,7 +41,7 @@ Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'lervag/vimtex'
 Plug 'lifepillar/vim-mucomplete'
-Plug 'majutsushi/tagbar'
+Plug 'mengelbrecht/lightline-bufferline'
 Plug 'mg979/vim-visual-multi'
 Plug 'mileszs/ack.vim'
 Plug 'morhetz/gruvbox'
@@ -120,8 +120,8 @@ vnoremap <C-n> :norm    " Re-map 'norm' to run arbitrary Vim commands easily.
 
 " Remap colon operator semicolon for ease of use
 nnoremap ; :
-let mapleader = "," " The leader is the comma
-let maplocalleader = "'" " The local leader is the apostrophe
+let mapleader = ","  " leader is the comma
+let maplocalleader = "'"  " local leader is the apostrophe
 
 " }}}
 " colorschemes and highlighting {{{
@@ -345,7 +345,7 @@ nmap \p! :Goyo!<CR>
 let g:indentLine_setConceal = 0
 
 " }}}
-" plug-in: Lightline {{{
+" plug-in: Lightline w/ Bufferline {{{
 
 let g:lightline = {
       \ 'colorscheme': 'zenburn',
@@ -359,12 +359,28 @@ let g:lightline = {
       \ }
 
 let g:lightline.tabline = {
-      \ 'left': [ ['tabs'] ],
+      \ 'left': [ ['buffers'] ],
       \ 'right': [ ['close'] ]
       \ }
+let g:lightline.component_expand = {'buffers': 'lightline#bufferline#buffers'}
+let g:lightline.component_type   = {'buffers': 'tabsel'}
 
-set showtabline=2  " show tabline
-set guioptions-=e   " turn off GUI tabline
+" show buffers in the tabline
+set showtabline=2
+let g:lightline#bufferline#show_number  = 0
+let g:lightline#bufferline#shorten_path = 1
+let g:lightline#bufferline#unnamed      = '[No Name]'
+
+" use shortcuts to move between buffers
+nmap <Leader>1 <Plug>lightline#bufferline#go(1)
+nmap <Leader>2 <Plug>lightline#bufferline#go(2)
+nmap <Leader>3 <Plug>lightline#bufferline#go(3)
+nmap <Leader>4 <Plug>lightline#bufferline#go(4)
+nmap <Leader>5 <Plug>lightline#bufferline#go(5)
+nmap <Leader>6 <Plug>lightline#bufferline#go(6)
+nmap <Leader>7 <Plug>lightline#bufferline#go(7)
+nmap <Leader>8 <Plug>lightline#bufferline#go(8)
+nmap <Leader>9 <Plug>lightline#bufferline#go(9)
 
 " }}}
 " plug-in: Limelight {{{

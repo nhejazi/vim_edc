@@ -45,6 +45,7 @@ _Here is a list of plug-ins currently integrated into this configuration:_
 * [`indentLine`](https://github.com/Yggdroot/indentLine)
 * [`jedi-vim`](https://github.com/davidhalter/jedi-vim)
 * [`lightline`](https://github.com/itchyny/lightline.vim)
+* [`lightline-bufferline`](https://github.com/mengelbrecht/lightline-bufferline)
 * [`limelight`](https://github.com/junegunn/limelight.vim)
 * [`nerdcommenter`](https://github.com/scrooloose/nerdcommenter)
 * [`NERDTree`](https://github.com/scrooloose/nerdtree)
