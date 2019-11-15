@@ -52,13 +52,13 @@ _Here is a list of plug-ins currently integrated into this configuration:_
 * [`Nvim-R`](https://github.com/jalvesaq/Nvim-R)
 * [`presenting.vim`](https://github.com/sotte/presenting.vim)
 * [`syntastic`](https://github.com/vim-syntastic/syntastic) (Vim pre-v8.0 only)
+* [`tabular`](https://github.com/godlygeek/tabular)
 * [`tmuxline.vim`](https://github.com/edkolev/tmuxline.vim)
 * [`tmux-complete.vim`](https://github.com/wellle/tmux-complete.vim)
 * [`UltiSnips`](https://github.com/SirVer/ultisnips)
 * [`vimtex`](https://github.com/lervag/vimtex)
 * [`vim-abolish`](https://github.com/tpope/tpope-vim-abolish)
 * [`vim-bracketed-paste`](https://github.com/ConradIrwin/vim-bracketed-paste)
-   (Vim only)
 * [`vim-css-color`](https://github.com/ap/vim-css-color)
 * [`vim-easymotion`](https://github.com/easymotion/vim-easymotion)
 * [`vim-eunuch`](https://github.com/tpope/vim-eunuch)
@@ -74,7 +74,6 @@ _Here is a list of plug-ins currently integrated into this configuration:_
 * [`vim-slime`](https://github.com/jpalardy/vim-slime)
 * [`vim-surround`](https://github.com/tpope/vim-surround)
 * [`vim-tmux-navigator`](https://github.com/christoomey/vim-tmux-navigator)
-* [`vim-visual-multi`](https://github.com/mg979/vim-visual-multi)
 * [`vim-wordy`](https://github.com/reedes/vim-wordy)
 
 ---
