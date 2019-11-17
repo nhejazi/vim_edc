@@ -31,6 +31,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'edkolev/tmuxline.vim'
 Plug 'godlygeek/tabular'
 Plug 'itchyny/lightline.vim'
+Plug 'kkoomen/vim-doge'
 Plug 'jalvesaq/Nvim-R'
 Plug 'jnurmine/Zenburn'
 Plug 'jpalardy/vim-slime'
@@ -267,6 +268,15 @@ let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
 " }}}
+" plug-in: DoGe {{{
+
+" remappings
+let g:doge_mapping = '<localleader>d'
+
+" set default documentation standard for languages
+let g:doge_doc_standard_python = 'numpy'
+
+" }}}
 " plug-in: Ditto {{{
 
 " Use autocmds to check your text automatically and keep the highlighting
@@ -345,7 +355,7 @@ let g:indentLine_setConceal = 0
 " plug-in: Lightline w/ Bufferline {{{
 
 let g:lightline = {
-      \ 'colorscheme': 'zenburn',
+      \ 'colorscheme': 'seoul256',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
@@ -410,15 +420,15 @@ let g:limelight_priority = -1
 " plug-in: MUcomplete {{{
 
 " recommended settings: https://github.com/lifepillar/vim-mucomplete
-set completeopt+=menuone,noselect
 set completeopt-=preview
+set completeopt+=menuone,noselect
 set shortmess+=c   " Shut off completion messages
 set belloff+=ctrlg " If Vim beeps during completion
 
-let g:jedi#popup_on_dot = 1  " Python's jedi
+let g:jedi#popup_on_dot = 0  " Python's jedi
 let g:mucomplete#enable_auto_at_startup = 1
 imap <expr> <down> mucomplete#extend_fwd("\<down>")
-let g:mucomplete#completion_delay = 1
+let g:mucomplete#completion_delay = 0
 
 " }}}
 " plug-in: NerdTree {{{
@@ -496,10 +506,10 @@ let g:polyglot_disabled = ['latex']
 " plug-in: Slime {{{
 
 " set target to tmux (screen is default)
-let g:slime_target = "tmux"
+let g:slime_target = 'tmux'
 
 " default to pane to the right of editor pane
-let g:slime_default_config = {"socket_name": "default", "target_pane": "{right-of}"}
+let g:slime_default_config = {'socket_name': 'default', 'target_pane': '{right-of}'}
 
 " }}}
 " plug-in: Syntastic {{{

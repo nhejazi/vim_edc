@@ -60,6 +60,7 @@ _Here is a list of plug-ins currently integrated into this configuration:_
 * [`vim-abolish`](https://github.com/tpope/tpope-vim-abolish)
 * [`vim-bracketed-paste`](https://github.com/ConradIrwin/vim-bracketed-paste)
 * [`vim-css-color`](https://github.com/ap/vim-css-color)
+* [`vim-doge`](https://github.com/kkoomen/vim-doge)
 * [`vim-easymotion`](https://github.com/easymotion/vim-easymotion)
 * [`vim-eunuch`](https://github.com/tpope/vim-eunuch)
 * [`vim-fugitive`](https://github.com/tpope/vim-fugitive)
