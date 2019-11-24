@@ -1,22 +1,21 @@
-# Vim: one editor for life
+# `vim_lyfe`: one editor, one life
 
-> Setup, package manager, and various plug-ins for my configuration of the
-> [Vim](http://www.vim.org/index.php) and [Neovim](https://neovim.io/)
-> editors [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
+> Setup, package manager, and various plug-ins for my configuration of
+> [Vim](http://www.vim.org/index.php) (also compatible with
+> [Neovim](https://neovim.io/))
 
 ---
-
-## _How do I use `vimForLife`?_
+## _How do I use `vim_lyfe`?_
 
 * For use with _Vim_, clone the configuration in this repo using the following:
   ```bash
-  git clone https://github.com/nhejazi/vimForLife.git ~/.vim
+  git clone https://github.com/nhejazi/vim_lyfe.git ~/.vim
   sh ~/.vim/_setup.sh
   ```
 
 - For use with _Neovim_, instead clone the configuration in this repo like so:
   ```bash
-  git clone https://github.com/nhejazi/vimForLife.git ~/.config/nvim
+  git clone https://github.com/nhejazi/vim_lyfe.git ~/.config/nvim
   sh ~/.config/nvim/_setup.sh
   ```
 
@@ -90,21 +89,10 @@ _This configuration currently supports several colorscheme options:_
 
 ---
 
-## Notes
-
-Miscellaneous useful notes and resources:
-
-* [Vim Tips & Tricks](https://bluz71.github.io/2017/05/15/vim-tips-tricks.html)
-* [Building a good `vimrc`](https://dougblack.io/words/a-good-vimrc.html#colors)
-* [Vim graphical
-    tutorial](http://www.viemu.com/a_vi_vim_graphical_cheat_sheet_tutorial.html)
-
----
-
 ## Contributions
 
-These are extremely opinionated and imperfect configurations for Vim and Neovim.
-If you would like to contribute to their improvement, a pull request would be
+These are extremely opinionated and imperfect configuration files for Vim. If
+you would like to contribute to their improvement, a pull request would be very
 welcome.
 
 ---
@@ -112,13 +100,14 @@ welcome.
 ## Issues
 
 If you encounter any bugs or have any specific feature requests, please [file an
-issue](https://github.com/nhejazi/vimForLife/issues).
+issue](https://github.com/nhejazi/vim_lyfe/issues).
 
 ---
 
 ## License
 
 &copy; 2016-2019 [Nima Hejazi](https://nimahejazi.org)
+[![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 
 The contents of this repository are distributed under the MIT license. See file
 `LICENSE` for details.
