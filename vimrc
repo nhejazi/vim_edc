@@ -28,7 +28,6 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'davidhalter/jedi-vim'
 Plug 'dbmrq/vim-ditto'
 Plug 'easymotion/vim-easymotion'
-Plug 'edkolev/tmuxline.vim'
 Plug 'godlygeek/tabular'
 Plug 'itchyny/lightline.vim'
 Plug 'kkoomen/vim-doge'
@@ -549,18 +548,6 @@ let g:tmuxcomplete#asyncomplete_source_options = {
             \     'truncate':        0
             \     }
             \ }
-
-" }}}
-" plug-in: Tmuxline {{{
-
-" disable powerline separators
-let g:tmuxline_powerline_separators = 0
-
-" disable vim-airline colors in tmuxline
-let g:airline#extensions#tmuxline#enabled = 0
-
-" choose a stock / pre-set theme
-let g:tmuxline_preset = 'full'
 
 " }}}
 " plug-in: vim-markdown {{{

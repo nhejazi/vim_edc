@@ -52,7 +52,6 @@ _Here is a list of plug-ins currently integrated into this configuration:_
 * [`presenting.vim`](https://github.com/sotte/presenting.vim)
 * [`syntastic`](https://github.com/vim-syntastic/syntastic) (Vim pre-v8.0 only)
 * [`tabular`](https://github.com/godlygeek/tabular)
-* [`tmuxline.vim`](https://github.com/edkolev/tmuxline.vim)
 * [`tmux-complete.vim`](https://github.com/wellle/tmux-complete.vim)
 * [`UltiSnips`](https://github.com/SirVer/ultisnips)
 * [`vimtex`](https://github.com/lervag/vimtex)
