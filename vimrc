@@ -446,7 +446,8 @@ let g:NERDTreeDirArrows=0
 " plug-in: NVim-R {{{
 
 " defaults from https://github.com/randy3k/radian
-let R_app = "radian"
+" NOTE: radian doesn't seem to work with tmux/vim
+"let R_app = "radian"
 let R_cmd = "R"
 let R_hl_term = 0
 let R_args = ["--no-save"]
