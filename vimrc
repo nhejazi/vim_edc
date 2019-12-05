@@ -445,6 +445,13 @@ let g:NERDTreeDirArrows=0
 " }}}
 " plug-in: NVim-R {{{
 
+" defaults from https://github.com/randy3k/radian
+let R_app = "radian"
+let R_cmd = "R"
+let R_hl_term = 0
+let R_args = []
+let R_bracketed_paste = 1
+
 " print code sent to R console, truncating only when absolutely necessary
 let R_source_args = "echo=TRUE, print.eval=TRUE"
 
@@ -452,7 +459,7 @@ let R_source_args = "echo=TRUE, print.eval=TRUE"
 let R_rconsole_width = 90
 let R_min_editor_width = 80
 
-" use Tmux to send communicate with the R REPL when not using Neovim
+" use Tmux to communicate with the R REPL when not using Neovim
 if !has('nvim')
   let R_in_buffer = 0
   let R_notmuxconf = 1
