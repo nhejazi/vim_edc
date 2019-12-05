@@ -449,7 +449,7 @@ let g:NERDTreeDirArrows=0
 let R_app = "radian"
 let R_cmd = "R"
 let R_hl_term = 0
-let R_args = []
+let R_args = ["--no-save"]
 let R_bracketed_paste = 1
 
 " print code sent to R console, truncating only when absolutely necessary
