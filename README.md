@@ -105,7 +105,7 @@ issue](https://github.com/nhejazi/vim_lyfe/issues).
 
 ## License
 
-&copy; 2016-2019 [Nima Hejazi](https://nimahejazi.org)
+&copy; 2016-2020 [Nima Hejazi](https://nimahejazi.org)
 
 The contents of this repository are distributed under the MIT license. See file
 `LICENSE` for details.
