@@ -31,7 +31,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'godlygeek/tabular'
 Plug 'itchyny/lightline.vim'
 Plug 'kkoomen/vim-doge'
-Plug 'jalvesaq/Nvim-R'
+Plug 'jalvesaq/Nvim-R', {'branch': 'stable'}
 Plug 'jnurmine/Zenburn'
 Plug 'jpalardy/vim-slime'
 Plug 'junegunn/goyo.vim'
