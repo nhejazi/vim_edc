@@ -22,6 +22,7 @@ call plug#begin()
 Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
 Plug 'ap/vim-css-color'
+Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -90,6 +91,7 @@ set shiftwidth=2        " Indentation amount for < and > commands.
 set noerrorbells        " No beeps.
 set modeline            " Enable modeline.
 set modelines=1         " For high-level section view via folding.
+set hidden              " For operations modifying multiple buffers like rename
 if !has('nvim')
   set esckeys           " Cursor keys in insert mode.
 endif
@@ -349,6 +351,25 @@ nmap \p! :Goyo!<CR>
 " automatically excludes certain file types from conceallevel = 2
 " https://vi.stackexchange.com/questions/7258/how-do-i-prevent-vim-from-hiding-symbols-in-markdown-and-json
 let g:indentLine_setConceal = 0
+
+" }}}
+" plug-in: Language Server {{{
+
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
+    \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
+    \ 'python': ['/usr/local/bin/pyls'],
+    \ 'r': ['R', '--slave', '-e', 'languageserver::run()'],
+    \ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
+    \ }
+
+" NOTE: if you are using Plug mapping you should not use `noremap` mappings
+nmap <F5> <Plug>(lcn-menu)
+" Or map each action separately
+nmap <silent>K <Plug>(lcn-hover)
+nmap <silent> gd <Plug>(lcn-definition)
+nmap <silent> <F2> <Plug>(lcn-rename)
 
 " }}}
 " plug-in: Lightline w/ Bufferline {{{
