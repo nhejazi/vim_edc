@@ -467,9 +467,8 @@ let g:NERDTreeDirArrows=0
 " plug-in: NVim-R {{{
 
 " defaults from https://github.com/randy3k/radian
-"let R_app = "radian"  " NOTE: radian doesn't seem to work with tmux/vim
+let R_app = "radian"  " NOTE: radian doesn't seem to work with tmux/vim
 let R_cmd = "R"
-let R_hl_term = 0
 let R_args = ["--no-save"]
 "let R_bracketed_paste = 1  " causes R process to hang after sending commands
 
@@ -477,8 +476,8 @@ let R_args = ["--no-save"]
 let R_source_args = "echo=TRUE, print.eval=TRUE"
 
 " try to use a vertical split always
-let R_rconsole_width = 90
-let R_min_editor_width = 80
+let R_rconsole_width = 70
+let R_min_editor_width = 85
 
 " use Tmux to communicate with the R REPL when not using Neovim
 if !has('nvim')
