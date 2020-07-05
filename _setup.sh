@@ -6,7 +6,7 @@ cp vimrc init.vim
 # set up vim-plug manager for Vim
 echo "Setting up Vim"
 if [ -e ~/.vim/autoload/plug.vim ]; then
-  echo "vim-plug exists - will be removed.";
+  echo "vim-plug exists -- will be removed.";
   rm -f ~/.vim/autoload/plug.vim;
 fi
 
@@ -16,7 +16,7 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 # set up Vim customization file
 if [ -e ~/.vimrc ]; then
   echo "vimrc file exists...backing up.";
-  cp ~/.vimrc ~/.vimrc_backup;
+  mv ~/.vimrc ~/.vimrc_backup;
 fi
 ln -s ~/.vim/vimrc ~/.vimrc
 
@@ -27,7 +27,7 @@ wget -O tmux_split.vim \
 # set up vim-plug manager for Neovim
 echo "Setting up Neovim"
 if [ -e ~/.config/nvim/autoload/plug.vim ]; then
-  echo "vim-plug exists - will be removed.";
+  echo "vim-plug exists -- will be removed.";
   rm -f ~/.config/nvim/autoload/plug.vim;
 fi
 
