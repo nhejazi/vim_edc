@@ -477,8 +477,8 @@ let R_bracketed_paste = 1  " NOTE: required for sending R code to radian
 let R_source_args = "echo=TRUE, print.eval=TRUE"
 
 " try to use a vertical split always
-let R_rconsole_width = 70
-let R_min_editor_width = 85
+let R_rconsole_width = 80
+let R_min_editor_width = 80
 
 " use Tmux to communicate with the R REPL when not using Neovim
 if !has('nvim')
