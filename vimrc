@@ -480,6 +480,10 @@ let R_source_args = "echo=TRUE, print.eval=TRUE"
 let R_rconsole_width = 90
 let R_min_editor_width = 80
 
+" disable line jumps during debugging
+" as per https://github.com/jalvesaq/Nvim-R/issues/507
+let R_debug = 0
+
 " use Tmux to communicate with the R REPL when not using Neovim
 if !has('nvim')
   let R_in_buffer = 0
