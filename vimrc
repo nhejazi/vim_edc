@@ -71,48 +71,49 @@ call plug#end()
 " }}}
 " core customizations {{{
 
-syntax on               " Auto-start syntax checking.
-filetype plugin on      " Enable plugins.
-filetype indent on      " Load type-specific indent files.
-set autoread            " If file updates, load automatically.
-set autochdir           " Switch to current file's parent directory.
-set noautoindent        " Turn of auto-indenting functionality (for pasting)
-set showcmd             " Show (partial) command in status line.
-set showmatch           " Show matching brackets.
-set showmode            " Show current mode.
-set ruler               " Show the line and column numbers of cursor.
-set number              " Show the line numbers on the left side.
-set formatoptions+=o    " Continue comment marker in new lines.
-set textwidth=0         " Hard-wrap long lines as you type them.
-set expandtab           " Insert spaces when TAB is pressed.
-set tabstop=4           " Render TABs using this many spaces.
-set softtabstop=2       " Number of spaces caused by TABs when editing.
-set shiftwidth=2        " Indentation amount for < and > commands.
-set noerrorbells        " No beeps.
-set modeline            " Enable modeline.
-set modelines=1         " For high-level section view via folding.
-set hidden              " For operations modifying multiple buffers like rename
+syntax on                   " Auto-start syntax checking.
+filetype plugin on          " Enable plugins.
+filetype indent on          " Load type-specific indent files.
+set autoread                " If file updates, load automatically.
+set autochdir               " Switch to current file's parent directory.
+set noautoindent            " Turn of auto-indenting functionality.
+set showcmd                 " Show (partial) command in status line.
+set showmatch               " Show matching brackets.
+set showmode                " Show current mode.
+set ruler                   " Show the line and column numbers of cursor.
+set number                  " Show the line numbers on the left side.
+set formatoptions+=o        " Continue comment marker in new lines.
+set textwidth=0             " Hard-wrap long lines as you type them.
+set expandtab               " Insert spaces when TAB is pressed.
+set tabstop=4               " Render TABs using this many spaces.
+set softtabstop=2           " Number of spaces caused by TABs when editing.
+set shiftwidth=2            " Indentation amount for < and > commands.
+set noerrorbells            " No beeps.
+set modeline                " Enable modeline.
+set modelines=1             " For high-level section view via folding.
+set hidden                  " For operations modifying multiple buffers.
 if !has('nvim')
-  set esckeys           " Cursor keys in insert mode.
+  set esckeys               " Cursor keys in insert mode.
 endif
-set linespace=0         " Set line-spacing to minimum.
-set colorcolumn=80      " Set vertical colored bar for 80-column rule.
-set cursorline          " Set horizontal line at where cursor is/was.
-set wildmenu            " Visual auto-complete for command menu.
-set wildmode=full       " Enhanced auto-completions via use of TAB.
-set lazyredraw          " Only redraw the screen when absolutely necessary.
-set gdefault            " Use global replacements by default with :s/foo/bar
-set synmaxcol=80        " Highlight only 1st 80 chars of line for performance.
-set encoding=utf-8      " Manually set encoding to be used.
+set linespace=0             " Set line-spacing to minimum.
+set colorcolumn=80          " Set vertical colored bar for 80-column rule.
+set cursorline              " Set horizontal line at where cursor is/was.
+set wildmenu                " Visual auto-complete for command menu.
+set wildmode=full           " Enhanced auto-completions via use of TAB.
+set lazyredraw              " Only redraw the screen when absolutely necessary.
+set gdefault                " Global replacements by default with :s/foo/bar
+set synmaxcol=80            " Highlight only 1st 80 chars of line.
+set encoding=utf-8          " Manually set encoding to be used.
 if exists("$SSH_CONNECTION")
-  set shell=bash        " Manually set shell to bash if remote session.
+  set shell=bash            " Manually set shell to bash if remote session.
 else
-  set shell=zsh         " Manually set shell to zsh otherwise.
+  set shell=zsh             " Manually set shell to zsh otherwise.
 endif
-set clipboard+=unnamed  " Use system clipboard over Vim clipboard.
-set nocompatible        " Disable backward compatibility with Vi.
-let g:tex_conceal = ""  " Disable syntax concealing for LaTeX.
-vnoremap <C-n> :norm    " Re-map 'norm' to run arbitrary Vim commands easily.
+set clipboard+=unnamed      " Use system clipboard over Vim clipboard.
+set nocompatible            " Disable backward compatibility with Vi.
+let g:tex_flavor = "latex"  " Disable syntax concealing for LaTeX.
+let g:tex_conceal = ""      " Disable syntax concealing for LaTeX.
+vnoremap <C-n> :norm        " Re-map 'norm' to run arbitrary commands easily.
 
 " }}}
 " leader mappings {{{
