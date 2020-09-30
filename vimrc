@@ -16,10 +16,17 @@ else
 endif
 
 " }}}
-" vim-plug + plug-ins {{{
+" disable Polyglot plug-in for TeX compatiblity {{{
 
 " apparently, g:polyglot_disabled must be defined before loading plugin
-let g:polyglot_disabled = ['latex'] " disable Polyglot for TeX
+if !exists('g:polyglot_disabled')
+  " disable Polyglot for TeX compatibility since conflicts with vimtex as per
+  " https://github.com/sheerun/vim-polyglot/issues/204
+  let g:polyglot_disabled = ['latex']
+endif
+
+" }}}
+" vim-plug + plug-ins {{{
 
 " load plugins
 call plug#begin()
