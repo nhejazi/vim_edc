@@ -18,6 +18,10 @@ endif
 " }}}
 " vim-plug + plug-ins {{{
 
+" apparently, g:polyglot_disabled must be defined before loading plugin
+let g:polyglot_disabled = ['latex'] " disable Polyglot for TeX
+
+" load plugins
 call plug#begin()
 Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
@@ -527,12 +531,6 @@ augroup pencil
   autocmd FileType text,txt        call pencil#init({'wrap': 'hard'})
   autocmd FileType tex             call pencil#init({'wrap': 'hard'})
 augroup END
-
-" }}}
-" plug-in: Polyglot {{{
-
-" disable Polyglot for TeX
-let g:polyglot_disabled = ['latex']
 
 " }}}
 " plug-in: Slime {{{
