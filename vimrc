@@ -326,8 +326,8 @@ let g:indentLine_setConceal = 0
 " plug-in: Jedi (python) {{{
 
 let g:jedi#auto_vim_configuration = 0
-let g:jedi#popup_on_dot = 1  " Python's jedi
-let g:jedi#popup_select_first = 0
+let g:jedi#popup_on_dot = 1
+let g:jedi#popup_select_first = 1
 
 " }}}
 " plug-in: Language Server {{{
@@ -418,7 +418,7 @@ let g:limelight_priority = -1
 
 " recommended settings: https://github.com/lifepillar/vim-mucomplete
 set completeopt-=preview
-set completeopt+=longest,menuone,noselect
+set completeopt+=menuone,noselect
 set shortmess+=c   " Shut off completion messages
 set belloff+=ctrlg " If Vim beeps during completion
 
