@@ -30,8 +30,13 @@ endif
 
 " load plugins
 call plug#begin()
-Plug 'airblade/vim-gitgutter'
+" colorschemes
 Plug 'altercation/vim-colors-solarized'
+Plug 'jnurmine/Zenburn'
+Plug 'junegunn/seoul256.vim'
+Plug 'morhetz/gruvbox'
+" feature-enhancing plugins
+Plug 'airblade/vim-gitgutter'
 Plug 'ap/vim-css-color'
 Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
 Plug 'christoomey/vim-tmux-navigator'
@@ -44,17 +49,13 @@ Plug 'godlygeek/tabular'
 Plug 'itchyny/lightline.vim'
 Plug 'kkoomen/vim-doge'
 Plug 'jalvesaq/Nvim-R', {'branch': 'stable'}
-Plug 'jnurmine/Zenburn'
 Plug 'jpalardy/vim-slime'
-Plug 'junegunn/goyo.vim'
 Plug 'junegunn/gv.vim'
-Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'lervag/vimtex'
 Plug 'lifepillar/vim-mucomplete'
 Plug 'mengelbrecht/lightline-bufferline'
 Plug 'mileszs/ack.vim'
-Plug 'morhetz/gruvbox'
 Plug 'plasticboy/vim-markdown'
 Plug 'reedes/vim-pencil'
 Plug 'reedes/vim-wordy'
@@ -64,11 +65,9 @@ Plug 'sheerun/vim-polyglot'
 Plug 'SirVer/UltiSnips'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
-Plug 'tpope/tpope-vim-abolish'
 Plug 'Yggdroot/indentLine'
 Plug 'wellle/tmux-complete.vim'
 " linting conditional on {version, type}
@@ -317,52 +316,18 @@ nmap <Leader>t :Files<CR>
 nmap <Leader>r :Tags<CR>
 
 " }}}
-" plug-in: Goyo {{{
-
-function! s:goyo_enter()
-  if executable('tmux') && strlen($TMUX)
-    silent !tmux set status off
-    silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
-  endif
-  set noshowmode
-  set noshowcmd
-  set scrolloff=999
-  Limelight
-  set background=dark
-  colorscheme seoul256
-endfunction
-
-function! s:goyo_leave()
-  if executable('tmux') && strlen($TMUX)
-    silent !tmux set status on
-    silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
-  endif
-  set showmode
-  set showcmd
-  set scrolloff=5
-  Limelight!
-  if !has('gui_running')
-    set background=dark
-    colorscheme gruvbox
-  elseif has('gui_running')
-    let g:solarized_termcolors=256
-    set background=dark
-    colorscheme solarized
-  endif
-endfunction
-
-autocmd! User GoyoEnter nested call <SID>goyo_enter()
-autocmd! User GoyoLeave nested call <SID>goyo_leave()
-
-nmap \p :Goyo<CR>
-nmap \p! :Goyo!<CR>
-
-" }}}
 " plug-in: indentLine {{{
 
 " automatically excludes certain file types from conceallevel = 2
 " https://vi.stackexchange.com/questions/7258/how-do-i-prevent-vim-from-hiding-symbols-in-markdown-and-json
 let g:indentLine_setConceal = 0
+
+" }}}
+" plug-in: Jedi (python) {{{
+
+let g:jedi#auto_vim_configuration = 0
+let g:jedi#popup_on_dot = 1  " Python's jedi
+let g:jedi#popup_select_first = 0
 
 " }}}
 " plug-in: Language Server {{{
@@ -453,11 +418,10 @@ let g:limelight_priority = -1
 
 " recommended settings: https://github.com/lifepillar/vim-mucomplete
 set completeopt-=preview
-set completeopt+=menuone,noselect
+set completeopt+=longest,menuone,noselect
 set shortmess+=c   " Shut off completion messages
 set belloff+=ctrlg " If Vim beeps during completion
 
-let g:jedi#popup_on_dot = 0  " Python's jedi
 let g:mucomplete#enable_auto_at_startup = 1
 imap <expr> <down> mucomplete#extend_fwd("\<down>")
 let g:mucomplete#completion_delay = 0
