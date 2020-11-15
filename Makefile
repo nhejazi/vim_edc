@@ -1,8 +1,5 @@
 .PHONY : all
-all: clean setup
+all: setup
 
 setup:
 	./_setup.sh
-
-clean:
-	rm init.vim
