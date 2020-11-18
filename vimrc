@@ -16,7 +16,7 @@ else
 endif
 
 " }}}
-" disable Polyglot plug-in for TeX compatiblity {{{
+" disable Polyglot for LaTeX {{{
 
 " apparently, g:polyglot_disabled must be defined before loading plugin
 if !exists('g:polyglot_disabled')
@@ -47,7 +47,7 @@ Plug 'dbmrq/vim-ditto'
 Plug 'easymotion/vim-easymotion'
 Plug 'godlygeek/tabular'
 Plug 'itchyny/lightline.vim'
-Plug 'kkoomen/vim-doge'
+Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
 Plug 'jalvesaq/Nvim-R', {'branch': 'stable'}
 Plug 'jpalardy/vim-slime'
 Plug 'junegunn/gv.vim'
@@ -69,6 +69,7 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'Yggdroot/indentLine'
+Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'wellle/tmux-complete.vim'
 " linting conditional on {version, type}
 if v:version >= 800 || has('nvim')
@@ -448,6 +449,7 @@ let R_cmd = "R"
 let R_args = ["--quiet", "--no-save"]
 let R_hl_term = 0
 let R_bracketed_paste = 1  " NOTE: required for sending R code to radian
+let R_rmdchunk = '``'
 
 " print code sent to R console, truncating only when absolutely necessary
 let R_source_args = "echo=TRUE, print.eval=TRUE"
@@ -459,6 +461,16 @@ let R_min_editor_width = 80
 " disable line jumps during debugging
 " as per https://github.com/jalvesaq/Nvim-R/issues/507
 let R_debug = 0
+
+" to disable the completion of non R code in Rmd and Rnoweb files, to allow
+" omni-completion from other packages, e.g., vim-pandoc
+let R_non_r_compl = 0
+
+" if you include Python chunks in your Rmd document, you should put the lines
+" below in your |vimrc| to get them highlighted:
+let g:markdown_fenced_languages = ['r', 'python']
+let g:rmd_fenced_languages = ['r', 'python']
+let g:rmd_syn_hl_chunk = 1
 
 " use Tmux to communicate with the R REPL when not using Neovim
 if !has('nvim')

@@ -63,6 +63,7 @@ _Here is a list of plug-ins currently integrated into this configuration:_
 * [`vim-gitgutter`](https://github.com/airblade/vim-gitgutter)
 * [`vim-markdown`](https://github.com/plasticboy/vim-markdown)
 * [`vim-mucomplete`](https://github.com/lifepillar/vim-mucomplete)
+* [`vim-pandoc-syntax`](https://github.com/vim-pandoc/vim-pandoc-syntax)
 * [`vim-pencil`](https://github.com/reedes/vim-pencil)
 * [`vim-polyglot`](https://github.com/sheerun/vim-polyglot)
 * [`vim-sensible`](https://github.com/tpope/vim-sensible)
