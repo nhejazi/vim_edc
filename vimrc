@@ -443,9 +443,9 @@ let g:NERDTreeDirArrows=0
 " plug-in: NVim-R {{{
 
 " defaults from https://github.com/randy3k/radian
-let R_app = "radian"  " set default to a nicer/modern R REPL
+let R_app = "radian"  " set default to a modern R REPL
 let R_cmd = "R"
-let R_args = ["--no-save"]
+let R_args = ["--quiet", "--no-save"]
 let R_hl_term = 0
 let R_bracketed_paste = 1  " NOTE: required for sending R code to radian
 
