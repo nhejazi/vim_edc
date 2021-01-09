@@ -332,6 +332,18 @@ let g:jedi#popup_on_dot = 1
 let g:jedi#popup_select_first = 1
 
 " }}}
+" plug-in: Julia {{{
+
+" disable partial auto-completion of TeX to unicode substitutions
+"let g:latex_to_unicode_suggestions = 0
+
+" disable eager auto-completion of TeX to unicode substitutions
+let g:latex_to_unicode_eager = 0
+
+" enable as-you-type auto-completion of TeX to unicode
+let g:latex_to_unicode_auto = 1
+
+" }}}
 " plug-in: Language Server {{{
 
 let g:LanguageClient_serverCommands = {
