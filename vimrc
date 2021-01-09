@@ -50,6 +50,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
 Plug 'jalvesaq/Nvim-R', {'branch': 'stable'}
 Plug 'jpalardy/vim-slime'
+Plug 'JuliaEditorSupport/julia-vim'
 Plug 'junegunn/gv.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'lervag/vimtex'

@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # use exact same config for Vim and Neovim
-cp vimrc init.vim
+cp -f vimrc init.vim
 
 # set up vim-plug manager for Vim
 echo "Setting up Vim"
