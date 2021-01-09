@@ -42,6 +42,7 @@ _Here is a list of plug-ins currently integrated into this configuration:_
 * [`gv.vim`](https://github.com/junegunn/gv.vim)
 * [`indentLine`](https://github.com/Yggdroot/indentLine)
 * [`jedi-vim`](https://github.com/davidhalter/jedi-vim)
+* [`julia-vim`](https://github.com/JuliaEditorSupport/julia-vim)
 * [`LanguageClient-neovim`](https://github.com/autozimu/LanguageClient-neovim)
 * [`lightline`](https://github.com/itchyny/lightline.vim)
 * [`lightline-bufferline`](https://github.com/mengelbrecht/lightline-bufferline)
