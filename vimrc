@@ -56,6 +56,7 @@ Plug 'junegunn/limelight.vim'
 Plug 'lervag/vimtex'
 Plug 'lifepillar/vim-mucomplete'
 Plug 'mengelbrecht/lightline-bufferline'
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'mileszs/ack.vim'
 Plug 'plasticboy/vim-markdown'
 Plug 'reedes/vim-pencil'
@@ -583,7 +584,12 @@ let g:tmuxcomplete#asyncomplete_source_options = {
 " plug-in: vim-markdown {{{
 
 let g:vim_markdown_folding_disabled = 1 "disable folding
-let g:vim_markdown_conceal = 0 "do NOT hide/conceal syntax
+let g:vim_markdown_conceal = 0 "disable syntax concealing
+
+" }}}
+" plug-in: vimtex {{{
+
+let g:vimtex_syntax_conceal_default = 0 "disable syntax concealing
 
 " }}}
 " vim:foldmethod=marker:foldlevel=0
