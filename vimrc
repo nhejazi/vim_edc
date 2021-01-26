@@ -311,13 +311,6 @@ nmap ]d <Plug>DittoMore                " Show the next matches
 nmap [d <Plug>DittoLess                " Show the previous matches
 
 " }}}
-" plug-in: fzf {{{
-
-nmap <Leader>b :Buffers<CR>
-nmap <Leader>t :Files<CR>
-nmap <Leader>r :Tags<CR>
-
-" }}}
 " plug-in: indentLine {{{
 
 " automatically excludes certain file types from conceallevel = 2
@@ -346,13 +339,23 @@ let g:latex_to_unicode_auto = 1
 " }}}
 " plug-in: Language Server {{{
 
+let g:LanguageClient_autoStart = 1
+
 let g:LanguageClient_serverCommands = {
-    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
-    \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
-    \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
+    \ 'julia': ['julia', '--startup-file=no', '--history-file=no', '-e', '
+    \     using LanguageServer;
+    \     using Pkg;
+    \     import StaticLint;
+    \     import SymbolServer;
+    \     env_path = dirname(Pkg.Types.Context().env.project_file);
+    \
+    \     server = LanguageServer.LanguageServerInstance(stdin, stdout,
+    \                                                    env_path, "");
+    \     server.runlinter = true;
+    \     run(server);
+    \ '],
     \ 'python': ['/usr/local/bin/pyls'],
-    \ 'r': ['R', '--slave', '-e', 'languageserver::run()'],
-    \ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
+    \ 'r': ['R', '--slave', '-e', 'languageserver::run()']
     \ }
 
 " NOTE: if you are using Plug mapping you should not use `noremap` mappings
