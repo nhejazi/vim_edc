@@ -1,8 +1,8 @@
 # `vim_lyfe`: one editor, for life
 
-> Setup, package manager, and various plug-ins for my configuration of
-> [Vim](http://www.vim.org/index.php) (also compatible with
-> [Neovim](https://neovim.io/)) [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
+> Setup, package manager, and plug-ins for my configuration of
+> [Vim](http://www.vim.org/index.php) (and [Neovim](https://neovim.io/))
+> [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 
 ---
 ## _How do I use `vim_lyfe`?_
