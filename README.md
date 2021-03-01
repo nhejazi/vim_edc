@@ -2,7 +2,6 @@
 
 > Setup, package manager, and plug-ins for my configuration of
 > [Vim](http://www.vim.org/index.php) (and [Neovim](https://neovim.io/))
-> [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 
 ---
 ## _How do I use `vim_lyfe`?_
@@ -103,7 +102,7 @@ issue](https://github.com/nhejazi/vim_lyfe/issues).
 
 ## License
 
-&copy; 2016-2021 [Nima Hejazi](https://nimahejazi.org)
+&copy; 2016-2021 [Nima Hejazi](https://nimahejazi.org) [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 
 The contents of this repository are distributed under the MIT license. See file
 `LICENSE` for details.
