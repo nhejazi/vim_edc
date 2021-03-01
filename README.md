@@ -1,4 +1,4 @@
-# `vim_lyfe`: one editor, one life
+# `vim_lyfe`: one editor, for life
 
 > Setup, package manager, and various plug-ins for my configuration of
 > [Vim](http://www.vim.org/index.php) (also compatible with
@@ -103,7 +103,7 @@ issue](https://github.com/nhejazi/vim_lyfe/issues).
 
 ## License
 
-&copy; 2016-2020 [Nima Hejazi](https://nimahejazi.org)
+&copy; 2016-2021 [Nima Hejazi](https://nimahejazi.org)
 
 The contents of this repository are distributed under the MIT license. See file
 `LICENSE` for details.
