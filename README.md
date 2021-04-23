@@ -79,9 +79,8 @@ _Here is a list of plug-ins currently integrated into this configuration:_
 _This configuration currently supports several colorscheme options:_
 
 * [Gruvbox](https://github.com/morhetz/gruvbox)
-* [Solarized](https://github.com/altercation/vim-colors-solarized)
-* [Zenburn](https://github.com/jnurmine/Zenburn)
 * [Seoul256](https://github.com/junegunn/seoul256.vim)
+* [Solarized](https://github.com/altercation/vim-colors-solarized)
 
 ---
 
