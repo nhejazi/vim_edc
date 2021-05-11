@@ -1,4 +1,4 @@
-# `vim_lyfe` - do you need more than one editor? ¯\_(ツ)_/¯
+# `vim_lyfe` ¯\_(ツ)_/¯
 
 > Setup, package manager, and plug-ins for my configuration of
 > [Vim](http://www.vim.org/index.php) (and [Neovim](https://neovim.io/))
