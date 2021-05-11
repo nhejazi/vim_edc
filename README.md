@@ -1,4 +1,4 @@
-# `vim_lyfe`: one editor, for life
+# `vim_lyfe` - do you need more than one editor? ¯\_(ツ)_/¯
 
 > Setup, package manager, and plug-ins for my configuration of
 > [Vim](http://www.vim.org/index.php) (and [Neovim](https://neovim.io/))
@@ -46,7 +46,8 @@ _Here is a list of plug-ins currently integrated into this configuration:_
 * [`lightline`](https://github.com/itchyny/lightline.vim)
 * [`lightline-bufferline`](https://github.com/mengelbrecht/lightline-bufferline)
 * [`limelight`](https://github.com/junegunn/limelight.vim)
-* [`NERDTree`](https://github.com/preservim/nerdtree)
+* [`nerdcommenter`](https://github.com/preservim/nerdcommenter)
+* [`nerdtree`](https://github.com/preservim/nerdtree)
 * [`Nvim-R`](https://github.com/jalvesaq/Nvim-R)
 * [`syntastic`](https://github.com/vim-syntastic/syntastic) (Vim pre-v8.0 only)
 * [`tabular`](https://github.com/godlygeek/tabular)

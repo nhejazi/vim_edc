@@ -32,7 +32,6 @@ endif
 call plug#begin()
 " colorschemes
 Plug 'altercation/vim-colors-solarized'
-Plug 'jnurmine/Zenburn'
 Plug 'junegunn/seoul256.vim'
 Plug 'morhetz/gruvbox'
 " feature-enhancing plugins
@@ -62,6 +61,7 @@ Plug 'plasticboy/vim-markdown'
 Plug 'reedes/vim-pencil'
 Plug 'reedes/vim-wordy'
 Plug 'preservim/nerdtree'
+Plug 'preservim/nerdcommenter'
 Plug 'sheerun/vim-polyglot'
 Plug 'SirVer/UltiSnips'
 Plug 'tpope/vim-eunuch'
@@ -163,7 +163,6 @@ function! s:patch_colors()
 endfunction
 
 autocmd! ColorScheme gruvbox call s:patch_colors()
-autocmd! ColorScheme zenburn call s:patch_colors()
 autocmd! ColorScheme solarized call s:patch_colors()
 autocmd! ColorScheme seoul256 call s:patch_colors()
 
@@ -290,8 +289,8 @@ nmap <leader>di <Plug>ToggleDitto      " Turn Ditto on and off
 
 " If you don't want the autocmds, you can also use an operator to check
 " specific parts of your text:
-" vmap <leader>d <Plug>Ditto	       " Call Ditto on visual selection
-" nmap <leader>d <Plug>Ditto	       " Call Ditto on operator movement
+" vmap <leader>d <Plug>Ditto           " Call Ditto on visual selection
+" nmap <leader>d <Plug>Ditto           " Call Ditto on operator movement
 
 nmap =d <Plug>DittoNext                " Jump to the next word
 nmap -d <Plug>DittoPrev                " Jump to the previous word
