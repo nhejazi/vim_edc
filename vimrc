@@ -466,7 +466,8 @@ let R_cmd = "R"
 let R_args = ["--quiet", "--no-save"]
 let R_hl_term = 0
 let R_bracketed_paste = 1  " NOTE: required for sending R code to radian
-let R_rmdchunk = '``'
+let R_rmdchunk = "``"
+let R_nvimpager = "horizontal"
 
 " print code sent to R console, truncating only when absolutely necessary
 let R_source_args = "echo=TRUE, print.eval=TRUE"
