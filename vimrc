@@ -32,6 +32,7 @@ endif
 call plug#begin()
 " colorschemes
 Plug 'altercation/vim-colors-solarized'
+Plug 'ayu-theme/ayu-vim'
 Plug 'junegunn/seoul256.vim'
 Plug 'morhetz/gruvbox'
 " feature-enhancing plugins
@@ -145,7 +146,10 @@ if has('gui_running')
   let g:solarized_termcolors=256
   colorscheme solarized
 elseif !has('gui_running')
-  colorscheme gruvbox
+  "colorscheme gruvbox
+  set termguicolors
+  let ayucolor="mirage"
+  colorscheme ayu
 endif
 
 " Automatically patch for Goyo plugin

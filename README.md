@@ -77,8 +77,9 @@ _Here is a list of plug-ins currently integrated into this configuration:_
 
 ## Colorschemes
 
-_This configuration currently supports several colorscheme options:_
+_This configuration currently pre-installs a few colorscheme options:_
 
+* [Ayu](https://github.com/ayu-theme/ayu-vim)
 * [Gruvbox](https://github.com/morhetz/gruvbox)
 * [Seoul256](https://github.com/junegunn/seoul256.vim)
 * [Solarized](https://github.com/altercation/vim-colors-solarized)
@@ -87,9 +88,8 @@ _This configuration currently supports several colorscheme options:_
 
 ## Contributions
 
-These are extremely opinionated and imperfect configuration files for Vim. If
-you would like to contribute to their improvement, a pull request would be very
-welcome.
+This Vim configuration is extremely opinionated and imperfect. If you would like
+to contribute to its improvement, a pull request would be very welcome.
 
 ---
 
