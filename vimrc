@@ -146,9 +146,14 @@ if has('gui_running')
   let g:solarized_termcolors=256
   colorscheme solarized
 elseif !has('gui_running')
+  " Gruvbox requires nothing extra
   "colorscheme gruvbox
-  set termguicolors
-  let ayucolor="mirage"
+
+  " Ayu requires tweaks for true color support
+  set termguicolors     " enable true colors support
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  let ayucolor="mirage" " for mirage version of theme
   colorscheme ayu
 endif
 
