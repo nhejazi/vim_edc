@@ -124,8 +124,6 @@ else
 endif
 set clipboard+=unnamed      " Use system clipboard over Vim clipboard.
 set nocompatible            " Disable backward compatibility with Vi.
-let g:tex_flavor = "latex"  " Disable syntax concealing for LaTeX.
-let g:tex_conceal = ""      " Disable syntax concealing for LaTeX.
 vnoremap <C-n> :norm        " Re-map 'norm' to run arbitrary commands easily.
 
 " }}}
@@ -157,7 +155,7 @@ elseif !has('gui_running')
   colorscheme ayu
 endif
 
-" Automatically patch for Goyo plugin
+" Automatically patch colors for Goyo plugin
 function! s:patch_colors()
   highlight ColorColumn ctermbg=DarkRed guibg=DarkRed
   highlight Comment ctermbg=LightGreen guibg=LightGreen
@@ -166,11 +164,12 @@ function! s:patch_colors()
   highlight NonText cterm=none gui=none
   highlight Special ctermbg=DarkGray guibg=DarkGray
   highlight Cursor ctermbg=Cyan guibg=Cyan
-  highlight clear SpellBad
   highlight SpellBad ctermbg=Red guibg=Red
   highlight TermCursor ctermbg=Cyan guibg=Cyan
+  highlight clear SpellBad
 endfunction
 
+autocmd! ColorScheme ayu call s:patch_colors()
 autocmd! ColorScheme gruvbox call s:patch_colors()
 autocmd! ColorScheme solarized call s:patch_colors()
 autocmd! ColorScheme seoul256 call s:patch_colors()
@@ -325,7 +324,10 @@ nnoremap <silent><leader>b :Buffers<CR>
 
 " automatically excludes certain file types from conceallevel = 2
 " https://vi.stackexchange.com/questions/7258/how-do-i-prevent-vim-from-hiding-symbols-in-markdown-and-json
-let g:indentLine_setConceal = 0
+"let g:indentLine_setConceal = 0
+let g:indentLine_setConceal = 2
+let g:indentLine_concealcursor = 'nv'
+let g:indentLine_fileTypeExclude = ['md', 'json']
 
 " }}}
 " plug-in: Jedi (Python) {{{
@@ -366,7 +368,7 @@ let g:LanguageClient_serverCommands = {
     \ '],
     \ 'python': ['/usr/local/bin/pyls'],
     \ 'r': ['R', '--slave', '-e', 'languageserver::run()']
-    \ }
+  \ }
 
 " NOTE: if you are using Plug mapping you should not use `noremap` mappings
 nmap <F5> <Plug>(lcn-menu)
@@ -599,7 +601,23 @@ let g:vim_markdown_conceal = 0 "disable syntax concealing
 " }}}
 " plug-in: vimtex {{{
 
-let g:vimtex_syntax_conceal_default = 0 "disable syntax concealing
+" disable syntax concealing only for select options
+let g:vimtex_syntax_conceal = {
+      \ 'accents': 1,
+      \ 'cites': 0,
+      \ 'fancy': 1,
+      \ 'greek': 1,
+      \ 'math_bounds': 0,
+      \ 'math_delimiters': 1,
+      \ 'math_fracs': 1,
+      \ 'math_super_sub': 1,
+      \ 'math_symbols': 1,
+      \ 'sections': 0,
+      \ 'styles': 1
+    \ }
+
+"set to 1 to disable syntax concealing
+let g:vimtex_syntax_conceal_disable = 1
 
 " }}}
 " vim:foldmethod=marker:foldlevel=0
