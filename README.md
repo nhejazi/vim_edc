@@ -1,4 +1,4 @@
-# `vim_lyfe` ¯\_(ツ)_/¯
+# `vim_lyfe`: living life with the one true editor
 
 > Setup, package manager, and plug-ins for my configuration of
 > [Vim](http://www.vim.org/index.php) (and [Neovim](https://neovim.io/))
