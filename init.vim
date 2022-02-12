@@ -72,6 +72,7 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'Yggdroot/indentLine'
 Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'quarto-dev/quarto-vim'
 Plug 'wellle/tmux-complete.vim'
 " linting conditional on {version, type}
 if v:version >= 800 || has('nvim')

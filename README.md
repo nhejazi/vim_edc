@@ -49,6 +49,7 @@ _Here is a list of plug-ins currently integrated into this configuration:_
 * [`nerdcommenter`](https://github.com/preservim/nerdcommenter)
 * [`nerdtree`](https://github.com/preservim/nerdtree)
 * [`Nvim-R`](https://github.com/jalvesaq/Nvim-R)
+* [`quarto-vim`](https://github.com/quarto-dev/quarto-vim)
 * [`syntastic`](https://github.com/vim-syntastic/syntastic) (Vim pre-v8.0 only)
 * [`tabular`](https://github.com/godlygeek/tabular)
 * [`tmux-complete.vim`](https://github.com/wellle/tmux-complete.vim)
@@ -102,7 +103,7 @@ issue](https://github.com/nhejazi/vim_lyfe/issues).
 
 ## License
 
-&copy; 2016-2021 [Nima Hejazi](https://nimahejazi.org) [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
+&copy; 2016-2022 [Nima Hejazi](https://nimahejazi.org) [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 
 The contents of this repository are distributed under the MIT license. See file
 `LICENSE` for details.
