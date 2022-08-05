@@ -513,7 +513,7 @@ if !has('nvim')
   " manually enable vim-tmux split for R
   " (see https://github.com/jalvesaq/Nvim-R/blob/master/R/tmux_split.md)
   if $TMUX != ''
-    let R_source = '~/.vim/tmux_split.vim'
+    let R_source = '$HOME/.vim/plugged/Nvim-R/R/tmux_split.vim'
   endif
 endif
 
