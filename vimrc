@@ -492,12 +492,12 @@ let R_min_editor_width = 80
 " as per https://github.com/jalvesaq/Nvim-R/issues/507
 let R_debug = 0
 
-" to disable the completion of non R code in Rmd and Rnoweb files, to allow
+" to disable the completion of non-R code in Rmd and Rnoweb files, to allow
 " omni-completion from other packages, e.g., vim-pandoc
 let R_non_r_compl = 0
 
 " if you include Python chunks in your Rmd document, you should put the lines
-" below in your |vimrc| to get them highlighted:
+" below in vimrc to get them highlighted:
 let g:markdown_fenced_languages = ['r', 'python']
 let g:rmd_fenced_languages = ['r', 'python']
 let g:rmd_syn_hl_chunk = 1
@@ -514,6 +514,7 @@ if !has('nvim')
   " (see https://github.com/jalvesaq/Nvim-R/blob/master/R/tmux_split.md)
   if $TMUX != ''
     let R_source = '$HOME/.vim/plugged/Nvim-R/R/tmux_split.vim'
+    let R_tmux_title = 'automatic'
   endif
 endif
 
