@@ -20,10 +20,6 @@ if [ -e ~/.vimrc ]; then
 fi
 ln -s ~/.vim/vimrc ~/.vimrc
 
-# copy latest tmux-split.vim from Nvim-R plugin
-wget -O tmux_split.vim \
-  https://raw.githubusercontent.com/jalvesaq/Nvim-R/master/R/tmux_split.vim
-
 # set up vim-plug manager for Neovim
 echo "Setting up Neovim"
 if [ -e ~/.config/nvim/autoload/plug.vim ]; then
