@@ -485,8 +485,8 @@ let R_nvimpager = "horizontal"
 let R_source_args = "echo=TRUE, print.eval=TRUE"
 
 " try to use a vertical split always
-let R_rconsole_width =70
-let R_min_editor_width = 70
+let R_rconsole_width = 80
+let R_min_editor_width = 80
 
 " disable line jumps during debugging
 " as per https://github.com/jalvesaq/Nvim-R/issues/507
