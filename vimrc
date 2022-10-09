@@ -475,7 +475,7 @@ let g:NERDTreeDirArrows=0
 " defaults from https://github.com/randy3k/radian
 let R_app = "radian"  " set default to a modern R REPL
 let R_cmd = "R"
-let R_args = ["--quiet", "--no-save", "--vanilla"]
+let R_args = ["--quiet", "--no-save"]
 let R_hl_term = 0
 let R_bracketed_paste = 1  " NOTE: required for sending R code to radian
 let R_rmdchunk = "``"
