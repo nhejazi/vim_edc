@@ -576,9 +576,9 @@ let g:tmuxcomplete#asyncomplete_source_options = {
 let g:vim_markdown_folding_disabled = 1   " folding
 let g:vim_markdown_conceal = 0            " syntax concealing
 
-" disable math conceal with LaTeX math syntax enabled
+" disable math conceal when LaTeX math syntax enabled
 let g:vim_markdown_math = 1
-let g:tex_conceal = 'bdmgs'
+"let g:tex_conceal = 'bdmgs'
 
 " disable conceal for fenced code blocks
 let g:vim_markdown_conceal_code_blocks = 1
@@ -592,22 +592,22 @@ let g:pandoc#modules#disabled = ['folding']
 
 " disable syntax concealing only for select options
 let g:vimtex_syntax_conceal = {
-      \ 'accents': 1,
+      \ 'accents': 0,
       \ 'cites': 0,
-      \ 'fancy': 1,
+      \ 'fancy': 0,
       \ 'greek': 1,
       \ 'ligatures': 0,
       \ 'math_bounds': 0,
       \ 'math_delimiters': 0,
       \ 'math_fracs': 1,
       \ 'math_super_sub': 0,
-      \ 'math_symbols': 1,
-      \ 'sections': 0,
-      \ 'styles': 1
+      \ 'math_symbols': 0,
+      \ 'sections': 1,
+      \ 'styles': 0
     \ }
 
 "set to 1 to disable syntax concealing
-let g:vimtex_syntax_conceal_disable = 0
+let g:vimtex_syntax_conceal_disable = 1
 
 " some more sensible defaults/recommendations
 let g:vimtex_view_forward_search_on_start = 0
