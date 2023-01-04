@@ -353,7 +353,7 @@ let g:LanguageClient_serverCommands = {
     \     run(server);
     \ '],
     \ 'python': ['/usr/local/bin/pyls'],
-    \ 'r': ['R', '--quiet', '--slave', '-e', 'languageserver::run()']
+    \ 'r': ['R', '--quiet', '--slave', '-e', 'languageserver::run()'],
     \ 'rmd': ['R', '--quiet', '--slave', '-e', 'languageserver::run()']
   \ }
 
