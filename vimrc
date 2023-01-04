@@ -338,8 +338,7 @@ let g:latex_to_unicode_auto = 1
 " }}}
 " plug-in: Language Server {{{
 
-let g:LanguageClient_autoStart = 1
-
+# set language-specific configurations
 let g:LanguageClient_serverCommands = {
     \ 'julia': ['julia', '--startup-file=no', '--history-file=no', '-e', '
     \     using LanguageServer;
@@ -354,8 +353,12 @@ let g:LanguageClient_serverCommands = {
     \     run(server);
     \ '],
     \ 'python': ['/usr/local/bin/pyls'],
-    \ 'r': ['R', '--slave', '-e', 'languageserver::run()']
+    \ 'r': ['R', '--quiet', '--slave', '-e', 'languageserver::run()']
+    \ 'rmd': ['R', '--quiet', '--slave', '-e', 'languageserver::run()']
   \ }
+
+# enable auto-starting
+let g:LanguageClient_autoStart = 1
 
 " NOTE: if you are using Plug mapping you should not use `noremap` mappings
 nmap <F5> <Plug>(lcn-menu)
