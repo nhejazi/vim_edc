@@ -338,7 +338,7 @@ let g:latex_to_unicode_auto = 1
 " }}}
 " plug-in: Language Server {{{
 
-# set language-specific configurations
+" set language-specific configurations
 let g:LanguageClient_serverCommands = {
     \ 'julia': ['julia', '--startup-file=no', '--history-file=no', '-e', '
     \     using LanguageServer;
@@ -357,7 +357,7 @@ let g:LanguageClient_serverCommands = {
     \ 'rmd': ['R', '--quiet', '--slave', '-e', 'languageserver::run()']
   \ }
 
-# enable auto-starting
+" enable auto-starting
 let g:LanguageClient_autoStart = 1
 
 " NOTE: if you are using Plug mapping you should not use `noremap` mappings
