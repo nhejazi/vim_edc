@@ -43,6 +43,9 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'davidhalter/jedi-vim'
 Plug 'dbmrq/vim-ditto'
+if v:version >= 900 || has('nvim')
+  Plug 'github/copilot.vim'
+endif
 Plug 'godlygeek/tabular'
 Plug 'itchyny/lightline.vim'
 Plug 'jalvesaq/Nvim-R', {'branch': 'stable'}

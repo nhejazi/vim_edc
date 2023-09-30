@@ -35,7 +35,8 @@ provided in the `README` of that project.
 _Here is a list of plug-ins currently integrated into this configuration:_
 
 * [`ack.vim`](https://github.com/mileszs/ack.vim)
-* [`ale`](https://github.com/w0rp/ale) (Vim v8.0+ and Neovim)
+* [`ale`](https://github.com/w0rp/ale) (Vim v8.0+, Neovim)
+* [`copilot.vim`](https://github.com/github/copilot.vim) (Vim v9.0+, Neovim)
 * [`ditto.vim`](https://github.com/dbmrq/vim-ditto)
 * [`gv.vim`](https://github.com/junegunn/gv.vim)
 * [`fzf.vim`](https://github.com/junegunn/fzf.vim)
@@ -49,7 +50,7 @@ _Here is a list of plug-ins currently integrated into this configuration:_
 * [`nerdtree`](https://github.com/preservim/nerdtree)
 * [`Nvim-R`](https://github.com/jalvesaq/Nvim-R)
 * [`quarto-vim`](https://github.com/quarto-dev/quarto-vim)
-* [`syntastic`](https://github.com/vim-syntastic/syntastic) (Vim pre-v8.0 only)
+* [`syntastic`](https://github.com/vim-syntastic/syntastic) (Vim < v8.0 only)
 * [`tabular`](https://github.com/godlygeek/tabular)
 * [`tmux-complete.vim`](https://github.com/wellle/tmux-complete.vim)
 * [`vimtex`](https://github.com/lervag/vimtex)
@@ -89,7 +90,7 @@ issue](https://github.com/nhejazi/vim_lyfe/issues).
 
 ## License
 
-&copy; 2016-2022 [Nima Hejazi](https://nimahejazi.org) [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
+&copy; 2016-2023 [Nima Hejazi](https://nimahejazi.org) [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 
 The contents of this repository are distributed under the MIT license. See file
 `LICENSE` for details.
