@@ -36,47 +36,53 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'ayu-theme/ayu-vim'
 Plug 'morhetz/gruvbox'
 " feature-enhancing plugins
-Plug 'airblade/vim-gitgutter'
 Plug 'ap/vim-css-color'
-Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'ConradIrwin/vim-bracketed-paste'
-Plug 'davidhalter/jedi-vim'
-Plug 'dbmrq/vim-ditto'
+Plug 'autozimu/LanguageClient-neovim', {
+     \ 'branch': 'next',
+     \ 'do': 'bash install.sh',
+     \ }
+Plug 'lifepillar/vim-mucomplete'
 if v:version >= 900 || has('nvim')
   Plug 'github/copilot.vim'
 endif
 Plug 'godlygeek/tabular'
 Plug 'itchyny/lightline.vim'
-Plug 'jalvesaq/Nvim-R', {'branch': 'stable'}
-Plug 'jpalardy/vim-slime'
-Plug 'JuliaEditorSupport/julia-vim'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'junegunn/gv.vim'
-Plug 'lervag/vimtex'
-Plug 'lifepillar/vim-mucomplete'
 Plug 'mengelbrecht/lightline-bufferline'
-Plug 'mg979/vim-visual-multi', {'branch': 'master'}
-Plug 'mileszs/ack.vim'
-Plug 'preservim/vim-markdown'
-Plug 'preservim/vim-pencil'
-Plug 'preservim/vim-wordy'
+Plug 'airblade/vim-gitgutter'
 Plug 'preservim/nerdtree'
 Plug 'preservim/nerdcommenter'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'Yggdroot/indentLine'
+" plugins for navigation
+Plug 'jpalardy/vim-slime'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'ConradIrwin/vim-bracketed-paste'
+" plugins for searching
+Plug 'mileszs/ack.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+" plugins for language/writing
+Plug 'preservim/vim-markdown'
+Plug 'preservim/vim-pencil'
+Plug 'preservim/vim-wordy'
+Plug 'dbmrq/vim-ditto'
+" plugins for R/Julia/Python/TeX/pandoc
+Plug 'davidhalter/jedi-vim'
+Plug 'jalvesaq/Nvim-R', {'branch': 'stable'}
+Plug 'lervag/vimtex'
+Plug 'JuliaEditorSupport/julia-vim'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
-Plug 'vim-pandoc/vim-rmarkdown'
 Plug 'quarto-dev/quarto-vim'
 Plug 'qpkorr/vim-bufkill'
 Plug 'wellle/tmux-complete.vim'
+" plugins for git
+Plug 'tpope/vim-fugitive'
+Plug 'junegunn/gv.vim'
 " linting conditional on {version, type}
 if v:version >= 800 || has('nvim')
   Plug 'dense-analysis/ale'
