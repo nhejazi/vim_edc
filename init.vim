@@ -16,13 +16,11 @@ else
 endif
 
 " }}}
-" disable Polyglot for LaTeX {{{
+" disable Polyglot for markdown {{{
 
-" apparently, g:polyglot_disabled must be defined before loading plugin
+" g:polyglot_disabled must be defined before loading plugin
 if !exists('g:polyglot_disabled')
-  " disable Polyglot for TeX compatibility since conflicts with vimtex as per
-  " https://github.com/sheerun/vim-polyglot/issues/204
-  let g:polyglot_disabled = ['latex']
+  let g:polyglot_disabled = ['markdown']
 endif
 
 " }}}
@@ -32,54 +30,54 @@ endif
 call plug#begin()
 " colorschemes
 Plug 'altercation/vim-colors-solarized'
+Plug 'arcticicestudio/nord-vim'
 Plug 'ayu-theme/ayu-vim'
-Plug 'junegunn/seoul256.vim'
 Plug 'morhetz/gruvbox'
 " feature-enhancing plugins
-Plug 'airblade/vim-gitgutter'
 Plug 'ap/vim-css-color'
-Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'ConradIrwin/vim-bracketed-paste'
-Plug 'davidhalter/jedi-vim'
-Plug 'dbmrq/vim-ditto'
-Plug 'godlygeek/tabular'
+Plug 'autozimu/LanguageClient-neovim', {
+     \ 'branch': 'next',
+     \ 'do': 'bash install.sh',
+     \ }
+if v:version >= 900 || has('nvim')
+  Plug 'github/copilot.vim'
+endif
 Plug 'itchyny/lightline.vim'
-Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
-Plug 'jalvesaq/Nvim-R', {'branch': 'stable'}
-Plug 'jpalardy/vim-slime'
-Plug 'JuliaEditorSupport/julia-vim'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'junegunn/gv.vim'
-Plug 'junegunn/limelight.vim'
-Plug 'lervag/vimtex'
-Plug 'lifepillar/vim-mucomplete'
 Plug 'mengelbrecht/lightline-bufferline'
-Plug 'mg979/vim-visual-multi', {'branch': 'master'}
-Plug 'mileszs/ack.vim'
-Plug 'plasticboy/vim-markdown'
-Plug 'reedes/vim-pencil'
-Plug 'reedes/vim-wordy'
+Plug 'airblade/vim-gitgutter'
 Plug 'preservim/nerdtree'
 Plug 'preservim/nerdcommenter'
 Plug 'sheerun/vim-polyglot'
-Plug 'SirVer/UltiSnips'
 Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'Yggdroot/indentLine'
+" plugin for LSP and linting
+Plug 'dense-analysis/ale'
+" plugins for navigation
+Plug 'jpalardy/vim-slime'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'ConradIrwin/vim-bracketed-paste'
+" plugins for searching
+Plug 'mileszs/ack.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+" plugins for language/writing
+Plug 'preservim/vim-pencil'
+Plug 'preservim/vim-wordy'
+Plug 'dbmrq/vim-ditto'
+" plugins for R/Julia/Python/pandoc (LSP used for syntax/linting)
+Plug 'jalvesaq/Nvim-R', {'branch': 'stable'}
+Plug 'JuliaEditorSupport/julia-vim'
+Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'quarto-dev/quarto-vim'
+Plug 'qpkorr/vim-bufkill'
 Plug 'wellle/tmux-complete.vim'
-" linting conditional on {version, type}
-if v:version >= 800 || has('nvim')
-  Plug 'dense-analysis/ale'
-else
-  Plug 'vim-syntastic/syntastic'
-endif
+" plugins for git
+Plug 'tpope/vim-fugitive'
+Plug 'junegunn/gv.vim'
 call plug#end()
 
 " }}}
@@ -138,9 +136,32 @@ let maplocalleader = "'"  " local leader is the apostrophe
 " }}}
 " colorschemes and highlighting {{{
 
-" Solarized in GUI, Gruvbox when not
+" Set color range and background
+" needs to be before Conceal color...because wtf
+" https://github.com/arcticicestudio/nord-vim/issues/149
 set t_Co=256
 set background=dark
+
+" Encode custom colors/highlights
+function! CustomHighlights() abort
+  highlight Normal         cterm=none gui=none
+  highlight NonText        cterm=none gui=none
+  highlight ColorColumn    ctermbg=DarkRed guibg=DarkRed
+  "highlight Comment        ctermbg=DarkGreen guibg=DarkGreen
+  highlight Visual         ctermbg=DarkBlue guibg=DarkBlue
+  highlight Cursor         ctermbg=LightGrey guibg=LightGrey
+  highlight TermCursor     ctermbg=LightGrey guibg=LightGrey
+  highlight SpellBad       cterm=underline gui=underline
+  highlight Conceal        ctermfg=NONE guifg=NONE guibg=NONE ctermbg=NONE
+endfunction
+
+" Deploy custom colors/highlights
+augroup MyColors
+  autocmd!
+  autocmd ColorScheme * call CustomHighlights()
+augroup END
+
+" Solarized in GUI, Gruvbox/Nord/Ayu when not
 if has('gui_running')
   let g:solarized_termcolors=256
   colorscheme solarized
@@ -148,32 +169,16 @@ elseif !has('gui_running')
   " Gruvbox requires nothing extra
   "colorscheme gruvbox
 
+  " Nord requires nothing extra
+  colorscheme nord
+
   " Ayu requires tweaks for true color support
-  set termguicolors     " enable true colors support
-  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-  let ayucolor="mirage" " for mirage version of theme
-  colorscheme ayu
+  "set termguicolors
+  "let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  "let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  "let ayucolor='mirage'
+  "colorscheme ayu
 endif
-
-" Automatically patch colors for Goyo plugin
-function! s:patch_colors()
-  highlight ColorColumn ctermbg=DarkRed guibg=DarkRed
-  highlight Comment ctermbg=LightGreen guibg=LightGreen
-  highlight Constant cterm=underline gui=underline
-  highlight Normal cterm=none gui=none
-  highlight NonText cterm=none gui=none
-  highlight Special ctermbg=DarkGray guibg=DarkGray
-  highlight Cursor ctermbg=Cyan guibg=Cyan
-  highlight SpellBad ctermbg=Red guibg=Red
-  highlight TermCursor ctermbg=Cyan guibg=Cyan
-  highlight clear SpellBad
-endfunction
-
-autocmd! ColorScheme ayu call s:patch_colors()
-autocmd! ColorScheme gruvbox call s:patch_colors()
-autocmd! ColorScheme solarized call s:patch_colors()
-autocmd! ColorScheme seoul256 call s:patch_colors()
 
 " Highlight all tabs and trailing whitespace characters
 highlight ExtraWhitespace ctermbg=DarkMagenta guibg=DarkMagenta
@@ -196,24 +201,11 @@ set writebackup
 autocmd VimResized * wincmd =
 
 " }}}
-" comments {{{
-
-" commenting blocks of code
-autocmd FileType c,cpp,java,scala       let b:comment_leader = '// '
-autocmd FileType sh,ruby,python,r,rmd   let b:comment_leader = '# '
-autocmd FileType tex                    let b:comment_leader = '% '
-autocmd FileType vim                    let b:comment_leader = '" '
-
-" re-map shortcuts to use 'cc' for commenting and 'cu' for uncommenting
-noremap <silent> ,cc :<C-B>silent <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:nohlsearch<CR>
-noremap <silent> ,cu :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:nohlsearch<CR>
-
-" }}}
 " searching {{{
 
 " basic searching behavior mods
 set hlsearch            " Highlight search results
-set infercase " Make searching infer case smartly
+set infercase           " Make searching infer case smartly
 set incsearch           " Search incrementally
 set magic               " Use 'magic' patterns (extended RegEx)
 
@@ -280,15 +272,6 @@ if v:version >= 800
 endif
 
 " }}}
-" plug-in: DoGe {{{
-
-" remappings
-let g:doge_mapping = '<localleader>d'
-
-" set default documentation standard for languages
-let g:doge_doc_standard_python = 'numpy'
-
-" }}}
 " plug-in: Ditto {{{
 
 " Use autocmds to check your text automatically and keep the highlighting
@@ -325,17 +308,11 @@ nnoremap <silent><leader>b :Buffers<CR>
 
 " automatically excludes certain file types from conceallevel = 2
 " https://vi.stackexchange.com/questions/7258/how-do-i-prevent-vim-from-hiding-symbols-in-markdown-and-json
-"let g:indentLine_setConceal = 0
-let g:indentLine_setConceal = 2
+let g:indentLine_setColors = 0
+let g:indentLine_setConceal = 0
 let g:indentLine_concealcursor = 'nv'
-let g:indentLine_fileTypeExclude = ['md', 'json']
-
-" }}}
-" plug-in: Jedi (Python) {{{
-
-let g:jedi#auto_vim_configuration = 0
-let g:jedi#popup_on_dot = 1
-let g:jedi#popup_select_first = 1
+let g:indentLine_fileTypeExclude = ['md', 'Rmd', 'json']
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
 " }}}
 " plug-in: Julia {{{
@@ -352,8 +329,7 @@ let g:latex_to_unicode_auto = 1
 " }}}
 " plug-in: Language Server {{{
 
-let g:LanguageClient_autoStart = 1
-
+" set language-specific configurations
 let g:LanguageClient_serverCommands = {
     \ 'julia': ['julia', '--startup-file=no', '--history-file=no', '-e', '
     \     using LanguageServer;
@@ -368,8 +344,12 @@ let g:LanguageClient_serverCommands = {
     \     run(server);
     \ '],
     \ 'python': ['/usr/local/bin/pyls'],
-    \ 'r': ['R', '--slave', '-e', 'languageserver::run()']
+    \ 'r': ['R', '--quiet', '--slave', '-e', 'languageserver::run()'],
+    \ 'rmd': ['R', '--quiet', '--slave', '-e', 'languageserver::run()']
   \ }
+
+" enable auto-starting
+let g:LanguageClient_autoStart = 1
 
 " NOTE: if you are using Plug mapping you should not use `noremap` mappings
 nmap <F5> <Plug>(lcn-menu)
@@ -382,7 +362,7 @@ nmap <silent> <F2> <Plug>(lcn-rename)
 " plug-in: Lightline w/ Bufferline {{{
 
 let g:lightline = {
-      \ 'colorscheme': 'seoul256',
+      \ 'colorscheme': 'nord',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
@@ -417,33 +397,6 @@ nmap <Leader>8 <Plug>lightline#bufferline#go(8)
 nmap <Leader>9 <Plug>lightline#bufferline#go(9)
 
 " }}}
-" plug-in: Limelight {{{
-
-" Color name (:help cterm-colors) or ANSI code
-let g:limelight_conceal_ctermfg = 'gray'
-let g:limelight_conceal_ctermfg = 240
-
-" Color name (:help gui-colors) or RGB color
-let g:limelight_conceal_guifg = 'DarkGray'
-let g:limelight_conceal_guifg = '#777777'
-
-" Default: 0.5
-let g:limelight_default_coefficient = 0.7
-
-" Number of preceding/following paragraphs to include (default: 0)
-let g:limelight_paragraph_span = 1
-
-" Beginning/end of paragraph
-"   When there's no empty line between the paragraphs
-"   and each paragraph starts with indentation
-let g:limelight_bop = '^\s'
-let g:limelight_eop = '\ze\n^\s'
-
-" Highlighting priority (default: 10)
-"   Set it to -1 not to overrule hlsearch
-let g:limelight_priority = -1
-
-" }}}
 " plug-in: MUcomplete {{{
 
 " recommended settings: https://github.com/lifepillar/vim-mucomplete
@@ -459,15 +412,31 @@ let g:mucomplete#completion_delay = 0
 " }}}
 " plug-in: NerdTree {{{
 
-" Open a NERDTree automatically when Vim starts up if no files were specified
+" Start NERDTree. If a file is specified, move the cursor to its window.
 autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+autocmd VimEnter * NERDTree | if argc() > 0 || exists("s:std_in") | wincmd p | endif
 
-" Close Vim if the only window left open is a NERDTree
+" Start NERDTree and put the cursor back in the other window.
+"autocmd VimEnter * NERDTree | wincmd p
+
+" Exit Vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" Exit Vim if NERDTree is the only window remaining in the only tab.
+"autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+
+" If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
+autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
+    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
 
 " stop NERDTree from using fancy arrows
 let g:NERDTreeDirArrows=0
+
+" stop NERDTree from closing Vim when a buffer is closed
+nnoremap c :bp\|bd #<CR>
+
+" make NERDTree buffer smaller by default
+let g:NERDTreeWinSize=30
 
 " }}}
 " plug-in: NVim-R {{{
@@ -475,9 +444,9 @@ let g:NERDTreeDirArrows=0
 " defaults from https://github.com/randy3k/radian
 let R_app = "radian"  " set default to a modern R REPL
 let R_cmd = "R"
-let R_args = ["--quiet", "--no-save", "--vanilla"]
+let R_args = ["--quiet", "--no-save", "--no-init-file"]
 let R_hl_term = 0
-let R_bracketed_paste = 1  " NOTE: required for sending R code to radian
+let R_bracketed_paste = 1  " required for sending R code to radian
 let R_rmdchunk = "``"
 let R_nvimpager = "horizontal"
 
@@ -485,7 +454,7 @@ let R_nvimpager = "horizontal"
 let R_source_args = "echo=TRUE, print.eval=TRUE"
 
 " try to use a vertical split always
-let R_rconsole_width = 80
+let R_rconsole_width = 70
 let R_min_editor_width = 80
 
 " disable line jumps during debugging
@@ -504,7 +473,7 @@ let g:rmd_syn_hl_chunk = 1
 
 " use Tmux to communicate with the R REPL when not using Neovim
 if !has('nvim')
-  let R_in_buffer = 0
+  let R_external_term = 0
   let R_notmuxconf = 1
   let R_clear_line = 1
   "let R_tmux_split = 1
@@ -536,7 +505,7 @@ let g:pencil#autoformat = 0
 let g:pencil#wrapModeDefault = 'hard'   "alternatively, 'soft'
 
 " 0=disable, 1=enable (def)
-let g:pencil#cursorwrap = 0
+let g:pencil#cursorwrap = 1
 
 " initialize for different file types
 augroup pencil
@@ -556,29 +525,6 @@ let g:slime_target = 'tmux'
 let g:slime_default_config = {'socket_name': 'default', 'target_pane': '{right-of}'}
 
 " }}}
-" plug-in: Syntastic {{{
-
-if v:version < 800 && !has('nvim')
-  " recommended beginner settings
-  set statusline+=%#warningmsg#
-  set statusline+=%{SyntasticStatuslineFlag()}
-  set statusline+=%*
-  let g:syntastic_always_populate_loc_list = 1
-  let g:syntastic_auto_loc_list = 1
-  let g:syntastic_check_on_open = 1
-  let g:syntastic_check_on_wq = 0
-
-  " working with R (recommended by lintr)
-  let g:syntastic_enable_r_lintr_checker = 1
-  let g:syntastic_r_checkers = ['lintr', 'styler']"
-  let g:syntastic_r_lintr_linters = "with_defaults(line_length_linter(80))"
-
-  " for Python
-  let g:syntastic_python_checkers = ['flake8', 'pylint']
-
-endif
-
-" }}}
 " plug-in: Tmux-complete {{{
 
 let g:tmuxcomplete#asyncomplete_source_options = {
@@ -595,31 +541,22 @@ let g:tmuxcomplete#asyncomplete_source_options = {
             \ }
 
 " }}}
-" plug-in: vim-markdown {{{
+" plug-in: vim-markdown/vim-pandoc {{{
 
-let g:vim_markdown_folding_disabled = 1 "disable folding
-let g:vim_markdown_conceal = 0 "disable syntax concealing
+" 0 = disable, 1 = enable
+let g:vim_markdown_folding_disabled = 1   " folding
+let g:vim_markdown_conceal = 0            " syntax concealing
 
-" }}}
-" plug-in: vimtex {{{
+" disable math conceal when LaTeX math syntax enabled
+let g:vim_markdown_math = 1
+"let g:tex_conceal = 'bdmgs'
 
-" disable syntax concealing only for select options
-let g:vimtex_syntax_conceal = {
-      \ 'accents': 1,
-      \ 'cites': 0,
-      \ 'fancy': 1,
-      \ 'greek': 1,
-      \ 'math_bounds': 0,
-      \ 'math_delimiters': 1,
-      \ 'math_fracs': 1,
-      \ 'math_super_sub': 1,
-      \ 'math_symbols': 1,
-      \ 'sections': 0,
-      \ 'styles': 1
-    \ }
+" disable conceal for fenced code blocks
+let g:vim_markdown_conceal_code_blocks = 1
 
-"set to 1 to disable syntax concealing
-let g:vimtex_syntax_conceal_disable = 1
+" tweaks for vim-pandoc
+let g:pandoc#syntax#conceal#use = 0
+let g:pandoc#modules#disabled = ['folding']
 
 " }}}
 " vim:foldmethod=marker:foldlevel=0

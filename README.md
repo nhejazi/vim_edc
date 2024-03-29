@@ -32,7 +32,9 @@ provided in the `README` of that project.
 
 ## Plug-ins
 
-_Here is a list of plug-ins currently integrated into this configuration:_
+_Below is a list of plug-ins currently integrated into this configuration._ The
+configuration assumes Vim v8.0+ at a minimum, and Vim v9.0+ for GitHub copilot
+integration.
 
 * [`ack.vim`](https://github.com/mileszs/ack.vim)
 * [`ale`](https://github.com/w0rp/ale) (Vim v8.0+, Neovim)
@@ -41,7 +43,6 @@ _Here is a list of plug-ins currently integrated into this configuration:_
 * [`gv.vim`](https://github.com/junegunn/gv.vim)
 * [`fzf.vim`](https://github.com/junegunn/fzf.vim)
 * [`indentLine`](https://github.com/Yggdroot/indentLine)
-* [`jedi-vim`](https://github.com/davidhalter/jedi-vim)
 * [`julia-vim`](https://github.com/JuliaEditorSupport/julia-vim)
 * [`LanguageClient-neovim`](https://github.com/autozimu/LanguageClient-neovim)
 * [`lightline`](https://github.com/itchyny/lightline.vim)
@@ -50,17 +51,12 @@ _Here is a list of plug-ins currently integrated into this configuration:_
 * [`nerdtree`](https://github.com/preservim/nerdtree)
 * [`Nvim-R`](https://github.com/jalvesaq/Nvim-R)
 * [`quarto-vim`](https://github.com/quarto-dev/quarto-vim)
-* [`syntastic`](https://github.com/vim-syntastic/syntastic) (Vim < v8.0 only)
-* [`tabular`](https://github.com/godlygeek/tabular)
 * [`tmux-complete.vim`](https://github.com/wellle/tmux-complete.vim)
-* [`vimtex`](https://github.com/lervag/vimtex)
 * [`vim-bracketed-paste`](https://github.com/ConradIrwin/vim-bracketed-paste)
 * [`vim-css-color`](https://github.com/ap/vim-css-color)
 * [`vim-eunuch`](https://github.com/tpope/vim-eunuch)
 * [`vim-fugitive`](https://github.com/tpope/vim-fugitive)
 * [`vim-gitgutter`](https://github.com/airblade/vim-gitgutter)
-* [`vim-markdown`](https://github.com/preservim/vim-markdown)
-* [`vim-mucomplete`](https://github.com/lifepillar/vim-mucomplete)
 * [`vim-pandoc-syntax`](https://github.com/vim-pandoc/vim-pandoc-syntax)
 * [`vim-pencil`](https://github.com/preservim/vim-pencil)
 * [`vim-polyglot`](https://github.com/sheerun/vim-polyglot)
@@ -68,7 +64,6 @@ _Here is a list of plug-ins currently integrated into this configuration:_
 * [`vim-sleuth`](https://github.com/tpope/vim-sleuth)
 * [`vim-slime`](https://github.com/jpalardy/vim-slime)
 * [`vim-surround`](https://github.com/tpope/vim-surround)
-* [`vim-visual-multi`](https://github.com/mg979/vim-visual-multi)
 * [`vim-tmux-navigator`](https://github.com/christoomey/vim-tmux-navigator)
 * [`vim-wordy`](https://github.com/preservim/vim-wordy)
 
@@ -90,7 +85,7 @@ issue](https://github.com/nhejazi/vim_lyfe/issues).
 
 ## License
 
-&copy; 2016-2023 [Nima Hejazi](https://nimahejazi.org) [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
+&copy; 2016-2024 [Nima Hejazi](https://nimahejazi.org) [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 
 The contents of this repository are distributed under the MIT license. See file
 `LICENSE` for details.

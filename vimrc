@@ -16,13 +16,11 @@ else
 endif
 
 " }}}
-" disable Polyglot for LaTeX {{{
+" disable Polyglot for markdown {{{
 
-" apparently, g:polyglot_disabled must be defined before loading plugin
+" g:polyglot_disabled must be defined before loading plugin
 if !exists('g:polyglot_disabled')
-  "" disable Polyglot for TeX compatibility since conflicts with vimtex as per
-  "" https://github.com/sheerun/vim-polyglot/issues/204
-  let g:polyglot_disabled = ['latex']
+  let g:polyglot_disabled = ['markdown']
 endif
 
 " }}}
@@ -41,11 +39,9 @@ Plug 'autozimu/LanguageClient-neovim', {
      \ 'branch': 'next',
      \ 'do': 'bash install.sh',
      \ }
-Plug 'lifepillar/vim-mucomplete'
 if v:version >= 900 || has('nvim')
   Plug 'github/copilot.vim'
 endif
-Plug 'godlygeek/tabular'
 Plug 'itchyny/lightline.vim'
 Plug 'mengelbrecht/lightline-bufferline'
 Plug 'airblade/vim-gitgutter'
@@ -57,6 +53,8 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'Yggdroot/indentLine'
+" plugin for LSP and linting
+Plug 'dense-analysis/ale'
 " plugins for navigation
 Plug 'jpalardy/vim-slime'
 Plug 'christoomey/vim-tmux-navigator'
@@ -66,14 +64,11 @@ Plug 'mileszs/ack.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 " plugins for language/writing
-Plug 'preservim/vim-markdown'
 Plug 'preservim/vim-pencil'
 Plug 'preservim/vim-wordy'
 Plug 'dbmrq/vim-ditto'
-" plugins for R/Julia/Python/TeX/pandoc
-Plug 'davidhalter/jedi-vim'
+" plugins for R/Julia/Python/pandoc (LSP used for syntax/linting)
 Plug 'jalvesaq/Nvim-R', {'branch': 'stable'}
-Plug 'lervag/vimtex'
 Plug 'JuliaEditorSupport/julia-vim'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
@@ -83,12 +78,6 @@ Plug 'wellle/tmux-complete.vim'
 " plugins for git
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
-" linting conditional on {version, type}
-if v:version >= 800 || has('nvim')
-  Plug 'dense-analysis/ale'
-else
-  Plug 'vim-syntastic/syntastic'
-endif
 call plug#end()
 
 " }}}
@@ -256,31 +245,26 @@ autocmd BufRead,BufNewFile *.txt setlocal spell
 " }}}
 " plug-in: ALE {{{
 
-if v:version >= 800
-  " ALE and syntastic plugins conflict
-  let g:ale_emit_conflict_warnings = 0
+" enable completion
+let g:ale_completion_enabled = 1
 
-  " enable completion
-  let g:ale_completion_enabled = 1
+" delays running of linters (default = 200)
+let g:ale_lint_delay = 200
 
-  " delays running of linters (default = 200)
-  let g:ale_lint_delay = 200
+" tweak signs displayed for warnings and errors
+let g:ale_sign_error = '!!'
+let g:ale_sign_warning = '>>'
 
-  " tweak signs displayed for warnings and errors
-  let g:ale_sign_error = '!!'
-  let g:ale_sign_warning = '>>'
+" define linters to run on a language-specific basis and fix-on-save
+let g:ale_linters = {
+     \  'python': ['flake8', 'pylint'],
+     \  'r': ['lintr', 'styler'],
+     \  'tex': ['proselint']
+     \ }
+let g:ale_fix_on_save = 1
 
-  " define linters to run on a language-specific basis and fix-on-save
-  let g:ale_linters = {
-       \  'python': ['flake8', 'pylint'],
-       \  'r': ['lintr', 'styler'],
-       \  'tex': ['proselint']
-       \ }
-  let g:ale_fix_on_save = 1
-
-  " keep the gutter sign open --- always
-  let g:ale_sign_column_always = 1
-endif
+" keep the gutter sign open --- always
+let g:ale_sign_column_always = 1
 
 " }}}
 " plug-in: Ditto {{{
@@ -324,13 +308,6 @@ let g:indentLine_setConceal = 0
 let g:indentLine_concealcursor = 'nv'
 let g:indentLine_fileTypeExclude = ['md', 'Rmd', 'json']
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
-
-" }}}
-" plug-in: Jedi (Python) {{{
-
-let g:jedi#auto_vim_configuration = 0
-let g:jedi#popup_on_dot = 1
-let g:jedi#popup_select_first = 1
 
 " }}}
 " plug-in: Julia {{{
@@ -413,19 +390,6 @@ nmap <Leader>6 <Plug>lightline#bufferline#go(6)
 nmap <Leader>7 <Plug>lightline#bufferline#go(7)
 nmap <Leader>8 <Plug>lightline#bufferline#go(8)
 nmap <Leader>9 <Plug>lightline#bufferline#go(9)
-
-" }}}
-" plug-in: MUcomplete {{{
-
-" recommended settings: https://github.com/lifepillar/vim-mucomplete
-set completeopt-=preview
-set completeopt+=menuone,noselect
-set shortmess+=c   " Shut off completion messages
-set belloff+=ctrlg " If Vim beeps during completion
-
-let g:mucomplete#enable_auto_at_startup = 1
-imap <expr> <down> mucomplete#extend_fwd("\<down>")
-let g:mucomplete#completion_delay = 0
 
 " }}}
 " plug-in: NerdTree {{{
@@ -543,29 +507,6 @@ let g:slime_target = 'tmux'
 let g:slime_default_config = {'socket_name': 'default', 'target_pane': '{right-of}'}
 
 " }}}
-" plug-in: Syntastic {{{
-
-if v:version < 800 && !has('nvim')
-  " recommended beginner settings
-  set statusline+=%#warningmsg#
-  set statusline+=%{SyntasticStatuslineFlag()}
-  set statusline+=%*
-  let g:syntastic_always_populate_loc_list = 1
-  let g:syntastic_auto_loc_list = 1
-  let g:syntastic_check_on_open = 1
-  let g:syntastic_check_on_wq = 0
-
-  " working with R (recommended by lintr)
-  let g:syntastic_enable_r_lintr_checker = 1
-  let g:syntastic_r_checkers = ['lintr', 'styler']"
-  let g:syntastic_r_lintr_linters = "with_defaults(line_length_linter(80))"
-
-  " for Python
-  let g:syntastic_python_checkers = ['flake8', 'pylint']
-
-endif
-
-" }}}
 " plug-in: Tmux-complete {{{
 
 let g:tmuxcomplete#asyncomplete_source_options = {
@@ -582,52 +523,11 @@ let g:tmuxcomplete#asyncomplete_source_options = {
             \ }
 
 " }}}
-" plug-in: vim-markdown/vim-pandoc {{{
+" plug-in: vim-pandoc {{{
 
-" 0 = disable, 1 = enable
-let g:vim_markdown_folding_disabled = 1   " folding
-let g:vim_markdown_conceal = 0            " syntax concealing
-
-" disable math conceal when LaTeX math syntax enabled
-let g:vim_markdown_math = 1
-"let g:tex_conceal = 'bdmgs'
-
-" disable conceal for fenced code blocks
-let g:vim_markdown_conceal_code_blocks = 1
-
-" tweaks for vim-pandoc
+" disable folding and conceal
 let g:pandoc#syntax#conceal#use = 0
 let g:pandoc#modules#disabled = ['folding']
-
-" }}}
-" plug-in: vimtex {{{
-
-" disable syntax concealing only for select options
-let g:vimtex_syntax_conceal = {
-      \ 'accents': 0,
-      \ 'cites': 0,
-      \ 'fancy': 0,
-      \ 'greek': 1,
-      \ 'ligatures': 0,
-      \ 'math_bounds': 0,
-      \ 'math_delimiters': 0,
-      \ 'math_fracs': 1,
-      \ 'math_super_sub': 0,
-      \ 'math_symbols': 0,
-      \ 'sections': 1,
-      \ 'styles': 0
-    \ }
-
-"set to 1 to disable syntax concealing
-let g:vimtex_syntax_conceal_disable = 1
-
-" some more sensible defaults/recommendations
-let g:vimtex_view_forward_search_on_start = 0
-let g:vimtex_view_method='skim'
-let g:vimtex_quickfix_mode = 0
-
-" turn off latexmk functionality
-let g:vimtex_compiler_method = 'latexmk'
 
 " }}}
 " vim:foldmethod=marker:foldlevel=0
