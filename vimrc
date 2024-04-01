@@ -20,7 +20,7 @@ endif
 
 " g:polyglot_disabled must be defined before loading plugin
 if !exists('g:polyglot_disabled')
-  let g:polyglot_disabled = ['markdown']
+  let g:polyglot_disabled = ['markdown', 'latex']
 endif
 
 " }}}

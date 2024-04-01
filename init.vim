@@ -20,7 +20,7 @@ endif
 
 " g:polyglot_disabled must be defined before loading plugin
 if !exists('g:polyglot_disabled')
-  let g:polyglot_disabled = ['markdown']
+  let g:polyglot_disabled = ['markdown', 'latex']
 endif
 
 " }}}
@@ -245,31 +245,26 @@ autocmd BufRead,BufNewFile *.txt setlocal spell
 " }}}
 " plug-in: ALE {{{
 
-if v:version >= 800
-  " ALE and syntastic plugins conflict
-  let g:ale_emit_conflict_warnings = 0
+" enable completion
+let g:ale_completion_enabled = 1
 
-  " enable completion
-  let g:ale_completion_enabled = 1
+" delays running of linters (default = 200)
+let g:ale_lint_delay = 200
 
-  " delays running of linters (default = 200)
-  let g:ale_lint_delay = 200
+" tweak signs displayed for warnings and errors
+let g:ale_sign_error = '!!'
+let g:ale_sign_warning = '>>'
 
-  " tweak signs displayed for warnings and errors
-  let g:ale_sign_error = '!!'
-  let g:ale_sign_warning = '>>'
+" define linters to run on a language-specific basis and fix-on-save
+let g:ale_linters = {
+     \  'python': ['flake8', 'pylint'],
+     \  'r': ['lintr', 'styler'],
+     \  'tex': ['proselint']
+     \ }
+let g:ale_fix_on_save = 1
 
-  " define linters to run on a language-specific basis and fix-on-save
-  let g:ale_linters = {
-       \  'python': ['flake8', 'pylint'],
-       \  'r': ['lintr', 'styler'],
-       \  'tex': ['proselint']
-       \ }
-  let g:ale_fix_on_save = 1
-
-  " keep the gutter sign open --- always
-  let g:ale_sign_column_always = 1
-endif
+" keep the gutter sign open --- always
+let g:ale_sign_column_always = 1
 
 " }}}
 " plug-in: Ditto {{{
@@ -395,19 +390,6 @@ nmap <Leader>6 <Plug>lightline#bufferline#go(6)
 nmap <Leader>7 <Plug>lightline#bufferline#go(7)
 nmap <Leader>8 <Plug>lightline#bufferline#go(8)
 nmap <Leader>9 <Plug>lightline#bufferline#go(9)
-
-" }}}
-" plug-in: MUcomplete {{{
-
-" recommended settings: https://github.com/lifepillar/vim-mucomplete
-set completeopt-=preview
-set completeopt+=menuone,noselect
-set shortmess+=c   " Shut off completion messages
-set belloff+=ctrlg " If Vim beeps during completion
-
-let g:mucomplete#enable_auto_at_startup = 1
-imap <expr> <down> mucomplete#extend_fwd("\<down>")
-let g:mucomplete#completion_delay = 0
 
 " }}}
 " plug-in: NerdTree {{{
@@ -541,20 +523,9 @@ let g:tmuxcomplete#asyncomplete_source_options = {
             \ }
 
 " }}}
-" plug-in: vim-markdown/vim-pandoc {{{
+" plug-in: vim-pandoc {{{
 
-" 0 = disable, 1 = enable
-let g:vim_markdown_folding_disabled = 1   " folding
-let g:vim_markdown_conceal = 0            " syntax concealing
-
-" disable math conceal when LaTeX math syntax enabled
-let g:vim_markdown_math = 1
-"let g:tex_conceal = 'bdmgs'
-
-" disable conceal for fenced code blocks
-let g:vim_markdown_conceal_code_blocks = 1
-
-" tweaks for vim-pandoc
+" disable folding and conceal
 let g:pandoc#syntax#conceal#use = 0
 let g:pandoc#modules#disabled = ['folding']
 
