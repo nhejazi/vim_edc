@@ -16,7 +16,7 @@ else
 endif
 
 " }}}
-" disable Polyglot for markdown {{{
+" disable Polyglot selectively {{{
 
 " g:polyglot_disabled must be defined before loading plugin
 if !exists('g:polyglot_disabled')
@@ -28,13 +28,13 @@ endif
 
 " load plugins
 call plug#begin()
-" colorschemes
+" colors and colorschemes
 Plug 'altercation/vim-colors-solarized'
 Plug 'arcticicestudio/nord-vim'
 Plug 'ayu-theme/ayu-vim'
 Plug 'morhetz/gruvbox'
-" feature-enhancing plugins
 Plug 'ap/vim-css-color'
+" language client and autocompletion
 Plug 'autozimu/LanguageClient-neovim', {
      \ 'branch': 'next',
      \ 'do': 'bash install.sh',
@@ -42,19 +42,24 @@ Plug 'autozimu/LanguageClient-neovim', {
 if v:version >= 900 || has('nvim')
   Plug 'github/copilot.vim'
 endif
+Plug 'lifepillar/vim-mucomplete'
+" plugin for LSP and linting
+Plug 'dense-analysis/ale'
+" customization of lightline/bufferline
 Plug 'itchyny/lightline.vim'
 Plug 'mengelbrecht/lightline-bufferline'
+Plug 'maximbaz/lightline-ale'
+" customization of directory tree
 Plug 'airblade/vim-gitgutter'
 Plug 'preservim/nerdtree'
 Plug 'preservim/nerdcommenter'
+" plugin for styling/formatting
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'Yggdroot/indentLine'
-" plugin for LSP and linting
-Plug 'dense-analysis/ale'
 " plugins for navigation
 Plug 'jpalardy/vim-slime'
 Plug 'christoomey/vim-tmux-navigator'
@@ -251,20 +256,29 @@ let g:ale_completion_enabled = 1
 " delays running of linters (default = 200)
 let g:ale_lint_delay = 200
 
-" tweak signs displayed for warnings and errors
-let g:ale_sign_error = '!!'
-let g:ale_sign_warning = '>>'
-
 " define linters to run on a language-specific basis and fix-on-save
 let g:ale_linters = {
-     \  'python': ['flake8', 'pylint'],
-     \  'r': ['lintr', 'styler'],
-     \  'tex': ['proselint']
-     \ }
+    \  'python': ['flake8', 'pylint'],
+    \  'r': ['lintr', 'styler'],
+    \  'tex': ['proselint'],
+\}
+
+let g:ale_fixers = {
+    \  '*': ['remove_trailing_lines', 'trim_whitespace'],
+\}
 let g:ale_fix_on_save = 1
 
 " keep the gutter sign open --- always
 let g:ale_sign_column_always = 1
+
+" tweak signs displayed for warnings and errors
+let g:ale_sign_error = '!!'
+let g:ale_sign_warning = '--'
+
+" customized error and warning messages
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
 " }}}
 " plug-in: Ditto {{{
@@ -306,17 +320,17 @@ nnoremap <silent><leader>b :Buffers<CR>
 let g:indentLine_setColors = 0
 let g:indentLine_setConceal = 0
 let g:indentLine_concealcursor = 'nv'
-let g:indentLine_fileTypeExclude = ['md', 'Rmd', 'json']
+let g:indentLine_fileTypeExclude = ['md', 'Rmd', 'qmd', 'tex', 'json']
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
 " }}}
 " plug-in: Julia {{{
 
-" disable partial auto-completion of TeX to unicode substitutions
-"let g:latex_to_unicode_suggestions = 0
+" enable partial auto-completion of TeX to unicode substitutions
+let g:latex_to_unicode_suggestions = 1
 
-" disable eager auto-completion of TeX to unicode substitutions
-let g:latex_to_unicode_eager = 0
+" enable eager auto-completion of TeX to unicode substitutions
+let g:latex_to_unicode_eager = 1
 
 " enable as-you-type auto-completion of TeX to unicode
 let g:latex_to_unicode_auto = 1
@@ -340,7 +354,8 @@ let g:LanguageClient_serverCommands = {
     \ '],
     \ 'python': ['/usr/local/bin/pyls'],
     \ 'r': ['R', '--quiet', '--slave', '-e', 'languageserver::run()'],
-    \ 'rmd': ['R', '--quiet', '--slave', '-e', 'languageserver::run()']
+    \ 'rmd': ['R', '--quiet', '--slave', '-e', 'languageserver::run()'],
+    \ 'qmd': ['R', '--quiet', '--slave', '-e', 'languageserver::run()']
   \ }
 
 " enable auto-starting
@@ -357,22 +372,36 @@ nmap <silent> <F2> <Plug>(lcn-rename)
 " plug-in: Lightline w/ Bufferline {{{
 
 let g:lightline = {
-      \ 'colorscheme': 'nord',
+    \ 'colorscheme': 'nord',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'component_function': {
+    \ },
+    \ 'component_function': {
       \   'gitbranch': 'fugitive#head'
-      \ },
-      \ }
+    \ },
+\}
 
 let g:lightline.tabline = {
-      \ 'left': [ ['buffers'] ],
-      \ 'right': [ ['close'] ]
-      \ }
-let g:lightline.component_expand = {'buffers': 'lightline#bufferline#buffers'}
-let g:lightline.component_type   = {'buffers': 'tabsel'}
+    \ 'left': [ ['buffers'] ],
+    \ 'right': [ ['close'] ]
+\}
+let g:lightline.component_expand = {
+    \ 'buffers': 'lightline#bufferline#buffers',
+    \ 'linter_checking': 'lightline#ale#checking',
+    \ 'linter_infos': 'lightline#ale#infos',
+    \ 'linter_warnings': 'lightline#ale#warnings',
+    \ 'linter_errors': 'lightline#ale#errors',
+    \ 'linter_ok': 'lightline#ale#ok',
+\}
+let g:lightline.component_type = {
+    \ 'buffers': 'tabsel',
+    \ 'linter_checking': 'right',
+    \ 'linter_infos': 'right',
+    \ 'linter_warnings': 'warning',
+    \ 'linter_errors': 'error',
+    \ 'linter_ok': 'right',
+\}
 
 " show buffers in the tabline
 set showtabline=2
@@ -390,6 +419,19 @@ nmap <Leader>6 <Plug>lightline#bufferline#go(6)
 nmap <Leader>7 <Plug>lightline#bufferline#go(7)
 nmap <Leader>8 <Plug>lightline#bufferline#go(8)
 nmap <Leader>9 <Plug>lightline#bufferline#go(9)
+
+" }}}
+" plug-in: MUcomplete {{{
+
+" recommended settings: https://github.com/lifepillar/vim-mucomplete
+set completeopt-=preview
+set completeopt+=menuone,noselect
+set shortmess+=c   " Shut off completion messages
+set belloff+=ctrlg " If Vim beeps during completion
+
+let g:mucomplete#enable_auto_at_startup = 1
+imap <expr> <down> mucomplete#extend_fwd("\<down>")
+let g:mucomplete#completion_delay = 0
 
 " }}}
 " plug-in: NerdTree {{{
