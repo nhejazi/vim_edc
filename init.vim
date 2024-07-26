@@ -16,13 +16,14 @@ else
 endif
 
 " }}}
-" disable Polyglot selectively {{{
+" disable Polyglot for LaTeX {{{
 
-" g:polyglot_disabled must be defined before loading plugin
+" apparently, g:polyglot_disabled must be defined before loading plugin
 if !exists('g:polyglot_disabled')
-  let g:polyglot_disabled = ['markdown', 'latex']
+  "" disable Polyglot for TeX compatibility since conflicts with vimtex as per
+  "" https://github.com/sheerun/vim-polyglot/issues/204
+  let g:polyglot_disabled = ['latex']
 endif
-
 " }}}
 " vim-plug + plug-ins {{{
 
@@ -59,6 +60,7 @@ Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-markdown'
 Plug 'Yggdroot/indentLine'
 " plugins for navigation
 Plug 'jpalardy/vim-slime'
@@ -75,6 +77,7 @@ Plug 'dbmrq/vim-ditto'
 " plugins for R/Julia/Python/pandoc (LSP used for syntax/linting)
 Plug 'jalvesaq/Nvim-R', {'branch': 'stable'}
 Plug 'JuliaEditorSupport/julia-vim'
+Plug 'lervag/vimtex'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'quarto-dev/quarto-vim'
@@ -142,7 +145,7 @@ let maplocalleader = "'"  " local leader is the apostrophe
 " colorschemes and highlighting {{{
 
 " Set color range and background
-" needs to be before Conceal color...because wtf
+" needs to be before Conceal color...
 " https://github.com/arcticicestudio/nord-vim/issues/149
 set t_Co=256
 set background=dark
@@ -246,6 +249,9 @@ setlocal spell spelllang=en_us
 set complete+=kspell
 autocmd BufRead,BufNewFile *.md setlocal spell
 autocmd BufRead,BufNewFile *.txt setlocal spell
+autocmd BufRead,BufNewFile *.tex setlocal spell
+autocmd BufRead,BufNewFile *.rmd setlocal spell
+autocmd BufRead,BufNewFile *.qmd setlocal spell
 
 " }}}
 " plug-in: ALE {{{
@@ -318,10 +324,14 @@ nnoremap <silent><leader>b :Buffers<CR>
 " automatically excludes certain file types from conceallevel = 2
 " https://vi.stackexchange.com/questions/7258/how-do-i-prevent-vim-from-hiding-symbols-in-markdown-and-json
 let g:indentLine_setColors = 0
-let g:indentLine_setConceal = 0
+"let g:indentLine_setConceal = 0
 let g:indentLine_concealcursor = 'nv'
-let g:indentLine_fileTypeExclude = ['md', 'Rmd', 'qmd', 'tex', 'json']
+"let g:indentLine_fileTypeExclude = ['md', 'Rmd', 'qmd', 'tex', 'json']
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+
+" https://github.com/Yggdroot/indentLine/issues/78#issuecomment-152849114
+let g:indentLine_concealcursor = ''
+let g:indentLine_conceallevel = 0
 
 " }}}
 " plug-in: Julia {{{
@@ -369,7 +379,7 @@ nmap <silent> gd <Plug>(lcn-definition)
 nmap <silent> <F2> <Plug>(lcn-rename)
 
 " }}}
-" plug-in: Lightline w/ Bufferline {{{
+" plug-in: Lightline w/ Bufferline + ALE {{{
 
 let g:lightline = {
     \ 'colorscheme': 'nord',
@@ -424,14 +434,15 @@ nmap <Leader>9 <Plug>lightline#bufferline#go(9)
 " plug-in: MUcomplete {{{
 
 " recommended settings: https://github.com/lifepillar/vim-mucomplete
-set completeopt-=preview
+"set completeopt-=preview
 set completeopt+=menuone,noselect
 set shortmess+=c   " Shut off completion messages
 set belloff+=ctrlg " If Vim beeps during completion
 
 let g:mucomplete#enable_auto_at_startup = 1
-imap <expr> <down> mucomplete#extend_fwd("\<down>")
 let g:mucomplete#completion_delay = 0
+imap <c-j> <plug>(MUcompleteFwd)
+imap <expr> <down> mucomplete#extend_fwd("\<down>")
 
 " }}}
 " plug-in: NerdTree {{{
@@ -468,7 +479,7 @@ let g:NERDTreeWinSize=30
 " defaults from https://github.com/randy3k/radian
 let R_app = "radian"  " set default to a modern R REPL
 let R_cmd = "R"
-let R_args = ["--quiet", "--no-save", "--no-init-file"]
+let R_args = ["--quiet", "--no-save"]
 let R_hl_term = 0
 let R_bracketed_paste = 1  " required for sending R code to radian
 let R_rmdchunk = "``"
@@ -522,11 +533,14 @@ nmap <LocalLeader>. <Plug>RDSendLine
 " }}}
 " plug-in: Pencil {{{
 
+" disable conceal
+let g:pencil#conceallevel = 0
+
 " 0=disable, 1 = enable (def)
 let g:pencil#autoformat = 0
 
 " default is 'hard'
-let g:pencil#wrapModeDefault = 'hard'   "alternatively, 'soft'
+let g:pencil#wrapModeDefault = 'hard'   "or 'soft'
 
 " 0=disable, 1=enable (def)
 let g:pencil#cursorwrap = 1
@@ -565,11 +579,44 @@ let g:tmuxcomplete#asyncomplete_source_options = {
             \ }
 
 " }}}
-" plug-in: vim-pandoc {{{
+" plug-in: vim-markdown + vim-pandoc {{{
+
+" disable conceal
+let g:markdown_syntax_conceal = 0
 
 " disable folding and conceal
-let g:pandoc#syntax#conceal#use = 0
 let g:pandoc#modules#disabled = ['folding']
+let g:pandoc#syntax#conceal#use = 0
+
+" }}}
+" plug-in: vimtex {{{
+
+" disable syntax concealing only for select options
+let g:vimtex_syntax_conceal = {
+      \ 'accents': 0,
+      \ 'cites': 0,
+      \ 'fancy': 0,
+      \ 'greek': 1,
+      \ 'ligatures': 0,
+      \ 'math_bounds': 0,
+      \ 'math_delimiters': 0,
+      \ 'math_fracs': 1,
+      \ 'math_super_sub': 0,
+      \ 'math_symbols': 0,
+      \ 'sections': 1,
+      \ 'styles': 0
+    \ }
+
+"set to 1 to disable syntax concealing
+let g:vimtex_syntax_conceal_disable = 1
+
+" some more sensible defaults/recommendations
+let g:vimtex_view_forward_search_on_start = 0
+let g:vimtex_view_method='skim'
+let g:vimtex_quickfix_mode = 0
+
+" turn off latexmk functionality
+let g:vimtex_compiler_method = 'latexmk'
 
 " }}}
 " vim:foldmethod=marker:foldlevel=0

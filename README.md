@@ -1,20 +1,20 @@
-# `vim_lyfe`: life in the one true editor
+# `vim_edc`: kit for the one true editor
 
 > Setup, package manager, and plug-ins for my configuration of
 > [Vim](http://www.vim.org/index.php) (and [Neovim](https://neovim.io/))
 
 ---
-## _How do I use `vim_lyfe`?_
+## _How do I use `vim_edc`?_
 
 * For use with _Vim_, clone the configuration in this repo using the following:
   ```bash
-  git clone https://github.com/nhejazi/vim_lyfe.git ~/.vim
+  git clone https://github.com/nhejazi/vim_edc.git ~/.vim
   sh ~/.vim/_setup.sh
   ```
 
 - For use with _Neovim_, instead clone the configuration in this repo like so:
   ```bash
-  git clone https://github.com/nhejazi/vim_lyfe.git ~/.config/nvim
+  git clone https://github.com/nhejazi/vim_edc.git ~/.config/nvim
   sh ~/.config/nvim/_setup.sh
   ```
 
@@ -82,7 +82,7 @@ to contribute to its improvement, a pull request would be very welcome.
 ## Issues
 
 If you encounter any bugs or have any specific feature requests, please [file an
-issue](https://github.com/nhejazi/vim_lyfe/issues).
+issue](https://github.com/nhejazi/vim_edc/issues).
 
 ---
 
