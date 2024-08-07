@@ -30,8 +30,8 @@ endif
 " load plugins
 call plug#begin()
 " colors and colorschemes
-Plug 'altercation/vim-colors-solarized'
 Plug 'arcticicestudio/nord-vim'
+Plug 'rose-pine/vim'
 Plug 'ayu-theme/ayu-vim'
 Plug 'morhetz/gruvbox'
 Plug 'ap/vim-css-color'
@@ -144,13 +144,33 @@ let maplocalleader = "'"  " local leader is the apostrophe
 " }}}
 " colorschemes and highlighting {{{
 
-" Set color range and background
-" needs to be before Conceal color...
-" https://github.com/arcticicestudio/nord-vim/issues/149
-set t_Co=256
+" set colors
+if (has("termguicolors"))
+  set termguicolors
+endif
+
+" set colorscheme
+" Gruvbox: https://github.com/morhetz/gruvbox
+"colorscheme gruvbox
+
+" Nord: https://github.com/nordtheme/vim
+colorscheme nord
+
+" Rosé Pine: https://github.com/rose-pine/vim
+"colorscheme rosepine
+"colorscheme rosepine_moon
+
+" Ayu: https://github.com/ayu-theme/ayu-vim
+" NOTE: requires tweaks for true color support
+"let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+"let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+"let ayucolor='mirage'
+"colorscheme ayu
+
+" set dark background
 set background=dark
 
-" Encode custom colors/highlights
+" encode custom colors/highlights
 function! CustomHighlights() abort
   highlight Normal         cterm=none gui=none
   highlight NonText        cterm=none gui=none
@@ -168,25 +188,6 @@ augroup MyColors
   autocmd!
   autocmd ColorScheme * call CustomHighlights()
 augroup END
-
-" Solarized in GUI, Gruvbox/Nord/Ayu when not
-if has('gui_running')
-  let g:solarized_termcolors=256
-  colorscheme solarized
-elseif !has('gui_running')
-  " Gruvbox requires nothing extra
-  "colorscheme gruvbox
-
-  " Nord requires nothing extra
-  colorscheme nord
-
-  " Ayu requires tweaks for true color support
-  "set termguicolors
-  "let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  "let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-  "let ayucolor='mirage'
-  "colorscheme ayu
-endif
 
 " Highlight all tabs and trailing whitespace characters
 highlight ExtraWhitespace ctermbg=DarkMagenta guibg=DarkMagenta
