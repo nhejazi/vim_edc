@@ -73,7 +73,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'preservim/vim-pencil'
 Plug 'preservim/vim-wordy'
 Plug 'dbmrq/vim-ditto'
-" plugins for R/Julia/Python/pandoc (LSP used for syntax/linting)
+" plugins for R/Julia/Python/pandoc (LSP for syntax/linting)
 Plug 'jalvesaq/Nvim-R', {'branch': 'stable'}
 Plug 'JuliaEditorSupport/julia-vim'
 Plug 'lervag/vimtex'
@@ -241,6 +241,7 @@ au BufRead,BufNewFile *.md setlocal textwidth=80
 au BufRead,BufNewFile *.txt setlocal textwidth=80
 au BufRead,BufNewFile *.tex setlocal textwidth=80
 au BufRead,BufNewFile *.Rmd setlocal textwidth=80
+au BufRead,BufNewFile *.qmd setlocal textwidth=80
 
 " }}}
 " spellchecking {{{
@@ -491,7 +492,7 @@ autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 &&
 nnoremap c :bp\|bd #<CR>
 
 " some stylistic changes
-"let g:NERDTreeMinimalUI=1                 " minimalistic UI
+let g:NERDTreeMinimalUI=1                 " minimalistic UI
 let g:NERDTreeDirArrows=1                 " use arrows
 let g:NERDTreeStatusline='%#NonText#'     " suppress status line
 let g:NERDTreeShowHidden=1                " show hidden files
@@ -609,11 +610,10 @@ let g:tmuxcomplete#asyncomplete_source_options = {
 " plug-in: vim-markdown + vim-pandoc {{{
 
 " disable folding and conceal
-let g:pandoc#modules#disabled = ['folding']
+let g:pandoc#modules#disabled = ['folding', 'spell']
 let g:pandoc#syntax#conceal#use = 0
 
 " disable conceal
-autocmd BufNewFile,BufRead *.md set filetype=markdown
 let g:markdown_syntax_conceal = 0
 
 " }}}
@@ -645,6 +645,17 @@ let g:vimtex_quickfix_mode = 0
 
 " turn off latexmk functionality
 let g:vimtex_compiler_method = 'latexmk'
+
+" }}}
+" filetype autocommands {{{
+
+" for markdown
+autocmd BufNewFile,BufRead *.md set filetype=markdown
+"autocmd FileType markdown setlocal commentstring=<!--\ %s\ -->
+
+" for rmarkdown and quarto
+"autocmd FileType rmd setlocal commentstring=<!--\ %s\ -->
+"autocmd FileType quarto setlocal commentstring=<!--\ %s\ -->
 
 " }}}
 " vim:foldmethod=marker:foldlevel=0
