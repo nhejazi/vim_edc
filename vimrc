@@ -1,4 +1,4 @@
-" Nima's Vim/Neovim configuration
+" vim configuration
 " auto-install vim-plug {{{
 
 if !has('nvim')
@@ -175,7 +175,6 @@ function! CustomHighlights() abort
   highlight Normal         cterm=none gui=none
   highlight NonText        cterm=none gui=none
   highlight ColorColumn    ctermbg=DarkRed guibg=DarkRed
-  "highlight Comment        ctermbg=DarkGreen guibg=DarkGreen
   highlight Visual         ctermbg=DarkBlue guibg=DarkBlue
   highlight Cursor         ctermbg=LightGrey guibg=LightGrey
   highlight TermCursor     ctermbg=LightGrey guibg=LightGrey
@@ -448,31 +447,34 @@ imap <expr> <down> mucomplete#extend_fwd("\<down>")
 " }}}
 " plug-in: NerdTree {{{
 
-" Start NERDTree. If a file is specified, move the cursor to its window.
+" Start NERDTree. If a file is specified, move the cursor to its window
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * NERDTree | if argc() > 0 || exists("s:std_in") | wincmd p | endif
 
 " Start NERDTree and put the cursor back in the other window.
-"autocmd VimEnter * NERDTree | wincmd p
+autocmd VimEnter * NERDTree | wincmd p
 
 " Exit Vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-" Exit Vim if NERDTree is the only window remaining in the only tab.
-"autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+" Close the tab if NERDTree is the only window remaining in it
+autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | call feedkeys(":quit\<CR>:\<BS>") | endif
+
+" Exit Vim if NERDTree is the only window remaining in the only tab
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | call feedkeys(":quit\<CR>:\<BS>") | endif
 
 " If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
 autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
     \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
 
 " stop NERDTree from using fancy arrows
-let g:NERDTreeDirArrows=0
+let g:NERDTreeDirArrows=1
 
 " stop NERDTree from closing Vim when a buffer is closed
 nnoremap c :bp\|bd #<CR>
 
 " make NERDTree buffer smaller by default
-let g:NERDTreeWinSize=30
+let g:NERDTreeWinSize=25
 
 " }}}
 " plug-in: NVim-R {{{
@@ -482,7 +484,7 @@ let R_app = "radian"  " set default to a modern R REPL
 let R_cmd = "R"
 let R_args = ["--quiet", "--no-save"]
 let R_hl_term = 0
-let R_bracketed_paste = 1  " required for sending R code to radian
+let R_bracketed_paste = 1
 let R_rmdchunk = "``"
 let R_nvimpager = "horizontal"
 
@@ -490,8 +492,8 @@ let R_nvimpager = "horizontal"
 let R_source_args = "echo=TRUE, print.eval=TRUE"
 
 " try to use a vertical split always
-let R_rconsole_width = 70
-let R_min_editor_width = 80
+let R_rconsole_width = 72
+let R_min_editor_width = 82
 
 " disable line jumps during debugging
 " as per https://github.com/jalvesaq/Nvim-R/issues/507
@@ -559,6 +561,9 @@ augroup END
 
 " set target to tmux (screen is default)
 let g:slime_target = 'tmux'
+
+" in .vimrc
+let g:slime_bracketed_paste = 1
 
 " default to pane to the right of editor pane
 let g:slime_default_config = {'socket_name': 'default', 'target_pane': '{right-of}'}
