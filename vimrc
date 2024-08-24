@@ -421,7 +421,7 @@ function! LightlineFugitive()
   if len(branch) > 0
     return ''.branch
   else
-    return "detached HEAD " . FugitiveHead(7)
+    return 'detached HEAD'.FugitiveHead(7)
   endif
 endfunction
 
