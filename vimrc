@@ -102,6 +102,7 @@ set showmatch               " Show matching brackets.
 set showmode                " Show current mode.
 set ruler                   " Show the line and column numbers of cursor.
 set number                  " Show the line numbers on the left side.
+set laststatus=2            " Always show the status line.
 set formatoptions+=o        " Continue comment marker in new lines.
 set textwidth=0             " Hard-wrap long lines as you type them.
 set expandtab               " Insert spaces when TAB is pressed.
@@ -381,21 +382,26 @@ nmap <silent> <F2> <Plug>(lcn-rename)
 " }}}
 " plug-in: Lightline w/ Bufferline + ALE {{{
 
+" customize lightline
 let g:lightline = {
-    \ 'colorscheme': 'nord',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-    \ },
-    \ 'component_function': {
-      \   'gitbranch': 'fugitive#head'
-    \ },
+   \ 'active': {
+   \   'left':  [ [ 'filename', 'gitbranch' ],
+   \              [ 'linter' ] ],
+   \   'right': [ [ 'percent', 'lineinfo' ],
+   \              [ 'filetype', 'fileencoding' ] ]
+   \ },
+   \ 'component_function': {
+     \   'gitbranch': 'LightlineFugitive',
+     \   'filename': 'LightlineTabname'
+   \ },
+   \ 'colorscheme': 'nord',
 \}
 
 let g:lightline.tabline = {
     \ 'left': [ ['buffers'] ],
     \ 'right': [ ['close'] ]
 \}
+
 let g:lightline.component_expand = {
     \ 'buffers': 'lightline#bufferline#buffers',
     \ 'linter_checking': 'lightline#ale#checking',
@@ -404,6 +410,7 @@ let g:lightline.component_expand = {
     \ 'linter_errors': 'lightline#ale#errors',
     \ 'linter_ok': 'lightline#ale#ok',
 \}
+
 let g:lightline.component_type = {
     \ 'buffers': 'tabsel',
     \ 'linter_checking': 'right',
@@ -413,11 +420,28 @@ let g:lightline.component_type = {
     \ 'linter_ok': 'right',
 \}
 
+" running vim-fugitive for git
+function! LightlineFugitive()
+  if exists('*fugitive#head')
+    let branch = fugitive#head()
+    return branch !=# '' ? ' '.branch : ''
+  endif
+  return ''
+endfunction
+
+" stop re-naming of NERDTree and Tagbar buffers
+" https://github.com/itchyny/lightline.vim/issues/297
+function! LightlineTabname() abort
+  let fname = expand('%:t')
+  return fname =~ '__Tagbar__' ? 'Tagbar' :
+        \ fname =~ 'NERD_tree' ? 'NERDTree' :
+        \ ('' != fname ? fname : '[No Name]')
+endfunction
+
 " show buffers in the tabline
 set showtabline=2
 let g:lightline#bufferline#show_number  = 0
 let g:lightline#bufferline#shorten_path = 1
-let g:lightline#bufferline#unnamed      = '[No Name]'
 
 " use shortcuts to move between buffers
 nmap <Leader>1 <Plug>lightline#bufferline#go(1)
@@ -447,34 +471,32 @@ imap <expr> <down> mucomplete#extend_fwd("\<down>")
 " }}}
 " plug-in: NerdTree {{{
 
-" Start NERDTree. If a file is specified, move the cursor to its window
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * NERDTree | if argc() > 0 || exists("s:std_in") | wincmd p | endif
+" start NERDTree and put the cursor back in the other window
+augroup NERD
+     au!
+     autocmd VimEnter * NERDTree
+     autocmd VimEnter * wincmd p
+     autocmd VimEnter * call lightline#update()
+augroup END
 
-" Start NERDTree and put the cursor back in the other window.
-autocmd VimEnter * NERDTree | wincmd p
+" exit Vim if the only window left open is a NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") &&
+    \ b:NERDTree.isTabTree()) | q | endif
 
-" Exit Vim if the only window left open is a NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-" Close the tab if NERDTree is the only window remaining in it
-autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | call feedkeys(":quit\<CR>:\<BS>") | endif
-
-" Exit Vim if NERDTree is the only window remaining in the only tab
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | call feedkeys(":quit\<CR>:\<BS>") | endif
-
-" If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
-autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
-    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
-
-" stop NERDTree from using fancy arrows
-let g:NERDTreeDirArrows=1
+" exit Vim if NERDTree is the only window remaining in the only tab
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 &&
+    \ exists('b:NERDTree') && b:NERDTree.isTabTree() |
+    \ call feedkeys(":quit\<CR>:\<BS>") | endif
 
 " stop NERDTree from closing Vim when a buffer is closed
 nnoremap c :bp\|bd #<CR>
 
-" make NERDTree buffer smaller by default
-let g:NERDTreeWinSize=25
+" some stylistic changes
+"let g:NERDTreeMinimalUI=1                 " minimalistic UI
+let g:NERDTreeDirArrows=1                 " use arrows
+let g:NERDTreeStatusline='%#NonText#'     " suppress status line
+let g:NERDTreeShowHidden=1                " show hidden files
+let g:NERDTreeWinSize=26                  " set window size
 
 " }}}
 " plug-in: NVim-R {{{
@@ -492,8 +514,8 @@ let R_nvimpager = "horizontal"
 let R_source_args = "echo=TRUE, print.eval=TRUE"
 
 " try to use a vertical split always
-let R_rconsole_width = 72
-let R_min_editor_width = 82
+let R_rconsole_width = 73
+let R_min_editor_width = 81
 
 " disable line jumps during debugging
 " as per https://github.com/jalvesaq/Nvim-R/issues/507
@@ -587,12 +609,13 @@ let g:tmuxcomplete#asyncomplete_source_options = {
 " }}}
 " plug-in: vim-markdown + vim-pandoc {{{
 
-" disable conceal
-let g:markdown_syntax_conceal = 0
-
 " disable folding and conceal
 let g:pandoc#modules#disabled = ['folding']
 let g:pandoc#syntax#conceal#use = 0
+
+" disable conceal
+autocmd BufNewFile,BufRead *.md set filetype=markdown
+let g:markdown_syntax_conceal = 0
 
 " }}}
 " plug-in: vimtex {{{
