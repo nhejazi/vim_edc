@@ -46,7 +46,6 @@ integration.
 * [`julia-vim`](https://github.com/JuliaEditorSupport/julia-vim)
 * [`LanguageClient-neovim`](https://github.com/autozimu/LanguageClient-neovim)
 * [`lightline`](https://github.com/itchyny/lightline.vim)
-* [`lightline-ale`](https://github.com/maximbaz/lightline-ale)
 * [`lightline-bufferline`](https://github.com/mengelbrecht/lightline-bufferline)
 * [`nerdcommenter`](https://github.com/preservim/nerdcommenter)
 * [`nerdtree`](https://github.com/preservim/nerdtree)

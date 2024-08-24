@@ -46,10 +46,9 @@ endif
 Plug 'lifepillar/vim-mucomplete'
 " plugin for LSP and linting
 Plug 'dense-analysis/ale'
-" customization of lightline/bufferline
+" customization of lightline
 Plug 'itchyny/lightline.vim'
 Plug 'mengelbrecht/lightline-bufferline'
-Plug 'maximbaz/lightline-ale'
 " customization of directory tree
 Plug 'airblade/vim-gitgutter'
 Plug 'preservim/nerdtree'
@@ -382,66 +381,66 @@ nmap <silent> <F2> <Plug>(lcn-rename)
 " }}}
 " plug-in: Lightline w/ Bufferline + ALE {{{
 
-" customize lightline
+" set customized lightline
 let g:lightline = {
    \ 'active': {
-   \   'left':  [ [ 'filename', 'gitbranch' ],
-   \              [ 'linter' ] ],
-   \   'right': [ [ 'percent', 'lineinfo' ],
-   \              [ 'filetype', 'fileencoding' ] ]
+   \   'left':  [ [ 'mode', 'paste', ],
+   \              [ 'gitbranch' , 'filename', 'modified', ] ],
+   \   'right': [ [ 'lineinfo', 'percent', ],
+   \              [ 'filetype', 'fileencoding', ] ],
+   \ },
+   \ 'tabline': {
+   \   'left':  [ ['buffers'] ],
+   \   'right': [ ['close']   ]
    \ },
    \ 'component_function': {
-     \   'gitbranch': 'LightlineFugitive',
-     \   'filename': 'LightlineTabname'
+   \   'filename': 'LightlineTabname',
+   \   'gitbranch': 'LightlineFugitive',
+   \ },
+   \ 'component_expand': {
+   \   'buffers': 'lightline#bufferline#buffers',
+   \ },
+   \ 'component_type': {
+   \   'buffers': 'tabsel'
+   \ },
+   \ 'separator': {
+   \   'left': "\ue0b0",
+   \   'right': "\ue0b2"
+   \ },
+   \ 'subseparator': {
+   \   'left': "\ue0b1",
+   \   'right': "\ue0b3"
    \ },
    \ 'colorscheme': 'nord',
 \}
 
-let g:lightline.tabline = {
-    \ 'left': [ ['buffers'] ],
-    \ 'right': [ ['close'] ]
-\}
-
-let g:lightline.component_expand = {
-    \ 'buffers': 'lightline#bufferline#buffers',
-    \ 'linter_checking': 'lightline#ale#checking',
-    \ 'linter_infos': 'lightline#ale#infos',
-    \ 'linter_warnings': 'lightline#ale#warnings',
-    \ 'linter_errors': 'lightline#ale#errors',
-    \ 'linter_ok': 'lightline#ale#ok',
-\}
-
-let g:lightline.component_type = {
-    \ 'buffers': 'tabsel',
-    \ 'linter_checking': 'right',
-    \ 'linter_infos': 'right',
-    \ 'linter_warnings': 'warning',
-    \ 'linter_errors': 'error',
-    \ 'linter_ok': 'right',
-\}
-
-" running vim-fugitive for git
+" get git branch from fugitive
+" modified from https://github.com/tpope/vim-fugitive/issues/1878
 function! LightlineFugitive()
-  if exists('*fugitive#head')
-    let branch = fugitive#head()
-    return branch !=# '' ? ' '.branch : ''
+  let branch = FugitiveHead()
+  if len(branch) > 0
+    return ''.branch
+  else
+    return "detached HEAD " . FugitiveHead(7)
   endif
-  return ''
 endfunction
 
-" stop re-naming of NERDTree and Tagbar buffers
-" https://github.com/itchyny/lightline.vim/issues/297
+" stop/undo auto-renaming of NERDTree and Tagbar
+" modified from https://github.com/itchyny/lightline.vim/issues/297
 function! LightlineTabname() abort
   let fname = expand('%:t')
   return fname =~ '__Tagbar__' ? 'Tagbar' :
-        \ fname =~ 'NERD_tree' ? 'NERDTree' :
+        \ fname =~ 'NERD_tree' ? 'Tree' :
         \ ('' != fname ? fname : '[No Name]')
 endfunction
+
+" update lightline on buffer changes (for bottom status line)
+autocmd BufWritePost,TextChanged,TextChangedI * call lightline#update()
 
 " show buffers in the tabline
 set showtabline=2
 let g:lightline#bufferline#show_number  = 0
-let g:lightline#bufferline#shorten_path = 1
+let g:lightline#bufferline#shorten_path = 0
 
 " use shortcuts to move between buffers
 nmap <Leader>1 <Plug>lightline#bufferline#go(1)
