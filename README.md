@@ -1,7 +1,7 @@
 # `vim_edc`: kit for the one true editor
 
 > Setup, package manager, and plug-ins for my configuration of
-> [Vim](http://www.vim.org/index.php) (and [Neovim](https://neovim.io/))
+> [Vim](http://www.vim.org/index.php)
 
 ---
 ## _How do I use `vim_edc`?_
@@ -11,13 +11,6 @@
   git clone https://github.com/nhejazi/vim_edc.git ~/.vim
   sh ~/.vim/_setup.sh
   ```
-
-- For use with _Neovim_, instead clone the configuration in this repo like so:
-  ```bash
-  git clone https://github.com/nhejazi/vim_edc.git ~/.config/nvim
-  sh ~/.config/nvim/_setup.sh
-  ```
-
 - To __install plugins__ with the
 [vim-plug](https://github.com/junegunn/vim-plug) manager, see the directions
 provided in the `README` of that project.
@@ -37,8 +30,8 @@ configuration assumes Vim v8.0+ at a minimum, and Vim v9.0+ for GitHub copilot
 integration.
 
 * [`ack.vim`](https://github.com/mileszs/ack.vim)
-* [`ale`](https://github.com/w0rp/ale) (Vim v8.0+, Neovim)
-* [`copilot.vim`](https://github.com/github/copilot.vim) (Vim v9.0+, Neovim)
+* [`ale`](https://github.com/w0rp/ale) (Vim v8.0+m)
+* [`copilot.vim`](https://github.com/github/copilot.vim) (Vim v9.0+)
 * [`ditto.vim`](https://github.com/dbmrq/vim-ditto)
 * [`gv.vim`](https://github.com/junegunn/gv.vim)
 * [`fzf.vim`](https://github.com/junegunn/fzf.vim)

@@ -1,5 +1,2 @@
-.PHONY : all
-all: setup
-
-setup:
+all:
 	./_setup.sh
