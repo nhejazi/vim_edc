@@ -1,7 +1,11 @@
-# `vim_edc`: kit for the one true editor
+# `vim_edc`: everyday carry Vim configuration
 
-> Setup, package manager, and plug-ins for my configuration of
-> [Vim](http://www.vim.org/index.php)
+> My once-lightweight configuration and plug-ins for the
+> [Vim](http://www.vim.org/index.php) editor.
+
+> ["Vim is a masterpiece, the gleaming precise machining tool from which so
+> much of modernity was
+> crafted."](https://x.com/colmmacc/status/1687861827223556096)
 
 ---
 ## _How do I use `vim_edc`?_
